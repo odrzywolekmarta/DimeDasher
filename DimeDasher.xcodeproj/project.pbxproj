@@ -24,6 +24,7 @@
 		2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */; };
 		2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */; };
 		2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */; };
+		2DA7D7C42A4B161200F25939 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C32A4B161200F25939 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
 		2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListItem.swift; sourceTree = "<group>"; };
+		2DA7D7C32A4B161200F25939 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				2DA7D7AF2A4AD10500F25939 /* Constants.swift */,
 				2DA7D78D2A4AB76C00F25939 /* ContentView.swift */,
 				2DA7D7942A4AB76D00F25939 /* Persistence.swift */,
+				2DA7D7C22A4B160000F25939 /* DataController */,
 				2DA7D79E2A4AC5AB00F25939 /* Views */,
 				2DA7D7B42A4AE72E00F25939 /* Fonts */,
 				2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */,
@@ -130,6 +133,14 @@
 				2DA7D7B72A4AE78700F25939 /* Raleway-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2DA7D7C22A4B160000F25939 /* DataController */ = {
+			isa = PBXGroup;
+			children = (
+				2DA7D7C32A4B161200F25939 /* DataController.swift */,
+			);
+			path = DataController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +222,7 @@
 				2DA7D7AA2A4AC89500F25939 /* ChartView.swift in Sources */,
 				2DA7D7A62A4AC75900F25939 /* CustomTabView.swift in Sources */,
 				2DA7D78E2A4AB76C00F25939 /* ContentView.swift in Sources */,
+				2DA7D7C42A4B161200F25939 /* DataController.swift in Sources */,
 				2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */,
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
