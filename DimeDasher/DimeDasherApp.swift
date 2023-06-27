@@ -13,7 +13,7 @@ struct DimeDasherApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabsContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

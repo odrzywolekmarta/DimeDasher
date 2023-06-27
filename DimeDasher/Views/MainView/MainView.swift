@@ -9,8 +9,15 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Color.gray
-            .ignoresSafeArea()
+        ZStack {
+            Color(Constants.beige)
+                .ignoresSafeArea()
+            
+            VStack {
+            SummaryView()
+                Spacer()
+            } // vstack
+        } // zstack
     }
 }
 

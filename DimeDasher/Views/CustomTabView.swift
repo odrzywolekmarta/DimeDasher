@@ -39,6 +39,7 @@ struct CustomTabView: View {
                         .foregroundColor(Color(Constants.darkPink))
                         
                 }
+                
             } // button
             .offset(y: -32)
             
@@ -56,6 +57,8 @@ struct CustomTabView: View {
             
             Spacer()
         } // hstack
+        .background(Color.white)
+        
     }
 }
 
