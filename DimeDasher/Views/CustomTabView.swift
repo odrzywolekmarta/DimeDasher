@@ -57,7 +57,6 @@ struct CustomTabView: View {
             
             Spacer()
         } // hstack
-        .background(Color.white)
         
     }
 }

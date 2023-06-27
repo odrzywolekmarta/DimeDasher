@@ -13,8 +13,10 @@ struct MainView: View {
             Color(Constants.beige)
                 .ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 0) {
+            HeaderView()
             SummaryView()
+                TransactionList()
                 Spacer()
             } // vstack
         } // zstack

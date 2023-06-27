@@ -21,6 +21,9 @@
 		2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7B22A4AE4FC00F25939 /* SummaryView.swift */; };
 		2DA7D7B82A4AE78700F25939 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7B72A4AE78700F25939 /* Raleway-Bold.ttf */; };
 		2DA7D7BB2A4AE92D00F25939 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BA2A4AE92D00F25939 /* Raleway-Regular.ttf */; };
+		2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */; };
+		2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */; };
+		2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		2DA7D7B72A4AE78700F25939 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		2DA7D7B92A4AE79C00F25939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2DA7D7BA2A4AE92D00F25939 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
+		2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				2DA7D7A72A4AC78100F25939 /* MainView.swift */,
+				2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */,
 				2DA7D7B22A4AE4FC00F25939 /* SummaryView.swift */,
+				2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */,
+				2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -202,8 +211,11 @@
 				2DA7D7AA2A4AC89500F25939 /* ChartView.swift in Sources */,
 				2DA7D7A62A4AC75900F25939 /* CustomTabView.swift in Sources */,
 				2DA7D78E2A4AB76C00F25939 /* ContentView.swift in Sources */,
+				2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */,
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
+				2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */,
+				2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */,
 				2DA7D7B02A4AD10500F25939 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

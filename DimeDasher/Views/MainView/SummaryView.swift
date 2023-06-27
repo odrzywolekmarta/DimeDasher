@@ -11,7 +11,7 @@ struct SummaryView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 30)
             .fill(Constants.gradient)
-            .frame(height: 250)
+            .frame(height: 200)
             .shadow(radius: 20)
             .padding()
             .overlay {
@@ -57,5 +57,6 @@ struct SummaryView: View {
 struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
         SummaryView()
+            .previewLayout(.sizeThatFits)
     }
 }
