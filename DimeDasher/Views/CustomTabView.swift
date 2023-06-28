@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomTabView: View {
     @Binding var selectedTab: Tab
+    @Binding var newTransactionPresented: Bool
+    
     var body: some View {
         HStack {
             Spacer()
@@ -26,7 +28,9 @@ struct CustomTabView: View {
             Spacer()
             
             Button {
-                
+                withAnimation {
+                    newTransactionPresented.toggle()
+                }
             } label: {
                 ZStack {
                     Circle()
@@ -63,7 +67,7 @@ struct CustomTabView: View {
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTabView(selectedTab: .constant(.main))
+        CustomTabView(selectedTab: .constant(.main), newTransactionPresented: .constant(false))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -14,22 +14,34 @@ enum Tab {
 
 struct TabsContentView: View {
     @State private var selectedTab: Tab = .main
-    var body: some View {
-        VStack {
-            switch selectedTab {
-            case .main:
-                NavigationView {
-                    MainView()
-                }
-            case .chart:
-                NavigationView {
-                    ChartView()
-                }
+    @State private var newTransactionPresented: Bool = false
 
+    var body: some View {
+        ZStack {
+            VStack {
+                switch selectedTab {
+                case .main:
+                    NavigationView {
+                        MainView()
+                    }
+                case .chart:
+                    NavigationView {
+                        ChartView()
+                    }
+                } // switch
+                
+                CustomTabView(selectedTab: $selectedTab, newTransactionPresented: $newTransactionPresented)
+            } // vstack
+            .zIndex(0)
+            
+            if newTransactionPresented {
+                NewTransactionView(newTransactionPresented: $newTransactionPresented)
+                    .padding()
+                    .zIndex(1)
             }
             
-            CustomTabView(selectedTab: $selectedTab)
-        } // vstack
+        } // zstack
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

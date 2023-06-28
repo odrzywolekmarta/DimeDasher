@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftui-currency-field",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jtrinc/swiftui-currency-field.git",
+      "state" : {
+        "revision" : "8a0f3f26695710464ca8a0a7ddba2f3a6b2f2f2d",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 2
+}

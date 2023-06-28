@@ -25,6 +25,10 @@
 		2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */; };
 		2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */; };
 		2DA7D7C42A4B161200F25939 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C32A4B161200F25939 /* DataController.swift */; };
+		2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */; };
+		2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */; };
+		2DA7D7CB2A4CAB1300F25939 /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7CA2A4CAB1300F25939 /* CurrencyField */; };
+		2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,9 @@
 		2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
 		2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListItem.swift; sourceTree = "<group>"; };
 		2DA7D7C32A4B161200F25939 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
+		2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
+		2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA7D7CB2A4CAB1300F25939 /* CurrencyField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +114,10 @@
 		2DA7D79E2A4AC5AB00F25939 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2DA7D7A52A4AC75900F25939 /* CustomTabView.swift */,
+				2DA7D7CC2A4CB65C00F25939 /* FirstLaunchView */,
 				2DA7D7AB2A4ACB2200F25939 /* TabsContentView.swift */,
+				2DA7D7A52A4AC75900F25939 /* CustomTabView.swift */,
+				2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */,
 				2DA7D7B12A4AE4EB00F25939 /* MainView */,
 				2DA7D7A92A4AC89500F25939 /* ChartView.swift */,
 			);
@@ -143,6 +153,15 @@
 			path = DataController;
 			sourceTree = "<group>";
 		};
+		2DA7D7CC2A4CB65C00F25939 /* FirstLaunchView */ = {
+			isa = PBXGroup;
+			children = (
+				2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */,
+				2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */,
+			);
+			path = FirstLaunchView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +178,9 @@
 			dependencies = (
 			);
 			name = DimeDasher;
+			packageProductDependencies = (
+				2DA7D7CA2A4CAB1300F25939 /* CurrencyField */,
+			);
 			productName = DimeDasher;
 			productReference = 2DA7D7882A4AB76C00F25939 /* DimeDasher.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +209,9 @@
 				Base,
 			);
 			mainGroup = 2DA7D77F2A4AB76C00F25939;
+			packageReferences = (
+				2DA7D7C92A4CAB1300F25939 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
+			);
 			productRefGroup = 2DA7D7892A4AB76C00F25939 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -218,6 +243,7 @@
 				2DA7D7AC2A4ACB2200F25939 /* TabsContentView.swift in Sources */,
 				2DA7D7952A4AB76D00F25939 /* Persistence.swift in Sources */,
 				2DA7D7A82A4AC78100F25939 /* MainView.swift in Sources */,
+				2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */,
 				2DA7D7982A4AB76D00F25939 /* DimeDasher.xcdatamodeld in Sources */,
 				2DA7D7AA2A4AC89500F25939 /* ChartView.swift in Sources */,
 				2DA7D7A62A4AC75900F25939 /* CustomTabView.swift in Sources */,
@@ -227,7 +253,9 @@
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
 				2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */,
+				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
 				2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */,
+				2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */,
 				2DA7D7B02A4AD10500F25939 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +392,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -395,7 +422,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -433,6 +459,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2DA7D7C92A4CAB1300F25939 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2DA7D7CA2A4CAB1300F25939 /* CurrencyField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DA7D7C92A4CAB1300F25939 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
+			productName = CurrencyField;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2DA7D7962A4AB76D00F25939 /* DimeDasher.xcdatamodeld */ = {

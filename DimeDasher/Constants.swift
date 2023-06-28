@@ -30,6 +30,7 @@ struct Constants {
     static let arrowDownCircleFill = "arrow.down.circle.fill"
     static let personCircle = "person.circle"
     static let gear = "gearshape"
+    static let dismissButtonImage = "x.circle.fill"
     
     //MARK: - Expense Categories Images
     static let income = "dollarsign.circle.fill"
