@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HeaderView: View {
+    @EnvironmentObject var viewModel: MainViewModel
+    
     var body: some View {
         HStack {
             Image(systemName: Constants.personCircle)
@@ -18,9 +20,8 @@ struct HeaderView: View {
                 Text("Hello!")
                     .font(.custom(Constants.raleway, size: 17))
                     .opacity(0.5)
-                Text("John Doe")
+                Text(viewModel.username)
                     .font(.custom(Constants.ralewayBold, size: 20))
-                
             }
             
             Spacer()
@@ -45,5 +46,6 @@ struct HeaderView_Previews: PreviewProvider {
         HeaderView()
             .previewLayout(.sizeThatFits)
             .background(Color(Constants.beige))
+            .environmentObject(MainViewModel())
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var viewModel = MainViewModel()
+    
     var body: some View {
         ZStack {
             Color(Constants.beige)
@@ -20,11 +22,12 @@ struct MainView: View {
                 Spacer()
             } // vstack
         } // zstack
+        .environmentObject(viewModel)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(viewModel: MainViewModel(forPreview: true))
     }
 }

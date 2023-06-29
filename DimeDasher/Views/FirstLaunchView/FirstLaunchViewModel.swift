@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Collections
 
 @MainActor final class FirstLaunchViewModel: ObservableObject {
+    var currencies: OrderedDictionary = ["USD": "en_US", "EUR": "fr_FR", "GBP": "en_GB", "PLN": "pl"]
     
     func saveDefaults(name: String, balance: Double, currency: String) {
         UserDefaults.standard.set(false, forKey: "showOnboarding")

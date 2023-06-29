@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NewTransactionView: View {
+    @State private var transactionType: TransactionType = .income
+    @State private var addViewPresented: Bool = false
     @Binding var newTransactionPresented: Bool
     
     var body: some View {
@@ -56,6 +58,9 @@ struct NewTransactionView: View {
         .background(Color(.white))
         .cornerRadius(30)
         .shadow(radius: 20)
+        .sheet(isPresented: $addViewPresented) {
+            AddTransactionView(transactionType: transactionType)
+        }
     }
 }
 

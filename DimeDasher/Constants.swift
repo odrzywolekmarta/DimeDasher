@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct Constants {
-    
     //MARK: -  Custom Colors
     static let beige = "CustomBeige"
     static let lightPink = "CustomLightPink"
@@ -32,7 +31,8 @@ struct Constants {
     static let gear = "gearshape"
     static let dismissButtonImage = "x.circle.fill"
     
-    //MARK: - Expense Categories Images
+    //MARK: - Expense Categories Images]
+    enum categories { }
     static let income = "dollarsign.circle.fill"
     
     static let healthcare = "pill.circle.fill"

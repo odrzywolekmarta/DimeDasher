@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1940142A4DE33A00A45537 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940132A4DE33A00A45537 /* AddTransactionView.swift */; };
+		2D1940162A4DE58100A45537 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940152A4DE58100A45537 /* AddTransactionViewModel.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D78E2A4AB76C00F25939 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78D2A4AB76C00F25939 /* ContentView.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
@@ -27,11 +29,16 @@
 		2DA7D7C42A4B161200F25939 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C32A4B161200F25939 /* DataController.swift */; };
 		2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */; };
 		2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */; };
-		2DA7D7CB2A4CAB1300F25939 /* CurrencyField in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7CA2A4CAB1300F25939 /* CurrencyField */; };
 		2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */; };
+		2DA7D7D02A4CC45C00F25939 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CF2A4CC45C00F25939 /* MainViewModel.swift */; };
+		2DA7D7D32A4CCDAC00F25939 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7D22A4CCDAC00F25939 /* Collections */; };
+		2DA7D7D52A4CCDAC00F25939 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7D42A4CCDAC00F25939 /* DequeModule */; };
+		2DA7D7D72A4CCDAC00F25939 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7D62A4CCDAC00F25939 /* OrderedCollections */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D1940132A4DE33A00A45537 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		2D1940152A4DE58100A45537 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78D2A4AB76C00F25939 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +62,7 @@
 		2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
 		2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewModel.swift; sourceTree = "<group>"; };
+		2DA7D7CF2A4CC45C00F25939 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +70,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA7D7CB2A4CAB1300F25939 /* CurrencyField in Frameworks */,
+				2DA7D7D32A4CCDAC00F25939 /* Collections in Frameworks */,
+				2DA7D7D72A4CCDAC00F25939 /* OrderedCollections in Frameworks */,
+				2DA7D7D52A4CCDAC00F25939 /* DequeModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D1940172A4DE58F00A45537 /* AddTransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */,
+				2D1940152A4DE58100A45537 /* AddTransactionViewModel.swift */,
+				2D1940132A4DE33A00A45537 /* AddTransactionView.swift */,
+			);
+			path = AddTransactionView;
+			sourceTree = "<group>";
+		};
 		2DA7D77F2A4AB76C00F25939 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +137,8 @@
 				2DA7D7CC2A4CB65C00F25939 /* FirstLaunchView */,
 				2DA7D7AB2A4ACB2200F25939 /* TabsContentView.swift */,
 				2DA7D7A52A4AC75900F25939 /* CustomTabView.swift */,
-				2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */,
 				2DA7D7B12A4AE4EB00F25939 /* MainView */,
+				2D1940172A4DE58F00A45537 /* AddTransactionView */,
 				2DA7D7A92A4AC89500F25939 /* ChartView.swift */,
 			);
 			path = Views;
@@ -127,6 +147,7 @@
 		2DA7D7B12A4AE4EB00F25939 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				2DA7D7CF2A4CC45C00F25939 /* MainViewModel.swift */,
 				2DA7D7A72A4AC78100F25939 /* MainView.swift */,
 				2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */,
 				2DA7D7B22A4AE4FC00F25939 /* SummaryView.swift */,
@@ -179,7 +200,9 @@
 			);
 			name = DimeDasher;
 			packageProductDependencies = (
-				2DA7D7CA2A4CAB1300F25939 /* CurrencyField */,
+				2DA7D7D22A4CCDAC00F25939 /* Collections */,
+				2DA7D7D42A4CCDAC00F25939 /* DequeModule */,
+				2DA7D7D62A4CCDAC00F25939 /* OrderedCollections */,
 			);
 			productName = DimeDasher;
 			productReference = 2DA7D7882A4AB76C00F25939 /* DimeDasher.app */;
@@ -210,7 +233,7 @@
 			);
 			mainGroup = 2DA7D77F2A4AB76C00F25939;
 			packageReferences = (
-				2DA7D7C92A4CAB1300F25939 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */,
+				2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 2DA7D7892A4AB76C00F25939 /* Products */;
 			projectDirPath = "";
@@ -243,6 +266,8 @@
 				2DA7D7AC2A4ACB2200F25939 /* TabsContentView.swift in Sources */,
 				2DA7D7952A4AB76D00F25939 /* Persistence.swift in Sources */,
 				2DA7D7A82A4AC78100F25939 /* MainView.swift in Sources */,
+				2D1940162A4DE58100A45537 /* AddTransactionViewModel.swift in Sources */,
+				2D1940142A4DE33A00A45537 /* AddTransactionView.swift in Sources */,
 				2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */,
 				2DA7D7982A4AB76D00F25939 /* DimeDasher.xcdatamodeld in Sources */,
 				2DA7D7AA2A4AC89500F25939 /* ChartView.swift in Sources */,
@@ -257,6 +282,7 @@
 				2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */,
 				2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */,
 				2DA7D7B02A4AD10500F25939 /* Constants.swift in Sources */,
+				2DA7D7D02A4CC45C00F25939 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,9 +487,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2DA7D7C92A4CAB1300F25939 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */ = {
+		2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jtrinc/swiftui-currency-field.git";
+			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -472,10 +498,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2DA7D7CA2A4CAB1300F25939 /* CurrencyField */ = {
+		2DA7D7D22A4CCDAC00F25939 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2DA7D7C92A4CAB1300F25939 /* XCRemoteSwiftPackageReference "swiftui-currency-field" */;
-			productName = CurrencyField;
+			package = 2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		2DA7D7D42A4CCDAC00F25939 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		2DA7D7D62A4CCDAC00F25939 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
 

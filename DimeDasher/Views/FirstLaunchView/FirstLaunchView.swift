@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
-import CurrencyField
+import OrderedCollections
 
 struct FirstLaunchView: View {
     @StateObject private var viewModel = FirstLaunchViewModel()
     @State private var name: String = ""
     @State private var startingBalance: Double?
     @State private var chosenCurrency: String = "USD"
-    private let currencies = ["USD", "EUR", "GBP", "PLN"]
+    private var chosenLocale: String = ""
+    
+    private let currencies: OrderedDictionary = ["USD": "en_US", "EUR": "fr_FR", "GBP": "en_GB", "PLN": "pl"]
     
     private var formatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -27,7 +29,8 @@ struct FirstLaunchView: View {
             Color(Constants.lightPink)
                 .ignoresSafeArea()
             
-            VStack() {
+            VStack(spacing: 0) {
+                Image("launchImage")
                 Text("Hello!")
                     .font(.custom(Constants.ralewayBold, size: 40))
                 
@@ -51,8 +54,8 @@ struct FirstLaunchView: View {
                 .padding()
                 
                 Picker(selection: $chosenCurrency) {
-                    ForEach(currencies, id: \.self) { currency in
-                        Text("\(currency)")
+                    ForEach(currencies.keys, id: \.self) { key in
+                        Text("\(key)")
                     }
                 } label: {
                     //
@@ -68,7 +71,7 @@ struct FirstLaunchView: View {
                     Text("Start")
                         .font(.custom(Constants.raleway, size: 20))
                 }
-                .tint(Color(Constants.mediumPink))
+                .tint(Color(Constants.darkPink))
                 .buttonStyle(.borderedProminent)
                 .padding()
 

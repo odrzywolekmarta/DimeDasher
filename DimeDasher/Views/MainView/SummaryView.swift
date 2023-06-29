@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SummaryView: View {
+    @EnvironmentObject var viewModel: MainViewModel
+    
     var body: some View {
         RoundedRectangle(cornerRadius: 30)
             .fill(Constants.gradient)
@@ -19,7 +21,7 @@ struct SummaryView: View {
                     VStack {
                         Text("Total balance")
                             .font(.custom(Constants.ralewayBold, size: 20))
-                        Text("$10,000")
+                        Text(viewModel.balance)
                             .font(.custom(Constants.ralewayBold, size: 60))
                     } // vstack
                    
@@ -58,5 +60,6 @@ struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
         SummaryView()
             .previewLayout(.sizeThatFits)
+            .environmentObject(MainViewModel())
     }
 }
