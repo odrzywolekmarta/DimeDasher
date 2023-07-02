@@ -13,9 +13,12 @@ enum Tab {
 }
 
 struct TabsContentView: View {
+    @StateObject private var mainViewModel = MainViewModel()
+
     @State private var selectedTab: Tab = .main
     @State private var newTransactionPresented: Bool = false
     @State private var addViewPresented: Bool = false
+    @State private var transactionType: TransactionType = .expense
 
     var body: some View {
         ZStack {
@@ -24,6 +27,7 @@ struct TabsContentView: View {
                 case .main:
                     NavigationView {
                         MainView()
+                            .environmentObject(mainViewModel)
                     }
                 case .chart:
                     NavigationView {
@@ -31,20 +35,26 @@ struct TabsContentView: View {
                     }
                 } // switch
                 
-                CustomTabView(selectedTab: $selectedTab, newTransactionPresented: $newTransactionPresented)
+                CustomTabView(selectedTab: $selectedTab,
+                              newTransactionPresented: $newTransactionPresented)
             } // vstack
             .zIndex(0)
             
             if newTransactionPresented {
-                NewTransactionView(addViewPresented: $addViewPresented, newTransactionPresented: $newTransactionPresented)
+                NewTransactionView(transactionType: $transactionType,
+                                   addViewPresented: $addViewPresented,
+                                   newTransactionPresented: $newTransactionPresented)
                     .padding()
                     .zIndex(1)
             }
         } // zstack
         .edgesIgnoringSafeArea(.bottom)
-        .sheet(isPresented: $addViewPresented) {
-            AddTransactionView(transactionType: .expense)
-        }
+        .sheet(isPresented: $addViewPresented, onDismiss: {
+            mainViewModel.fetchExpenses()
+        }, content: {
+            AddTransactionView(transactionType: transactionType)
+        })
+
     }
 }
 

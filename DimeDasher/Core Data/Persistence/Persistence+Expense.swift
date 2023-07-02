@@ -26,6 +26,7 @@ extension PersistenceController {
         expense.amount = amount
         expense.type = type
         expense.expenseDescription = description
+        expense.expenseDate = Date()
         
         save()
     }

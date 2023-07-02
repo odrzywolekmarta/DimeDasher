@@ -14,6 +14,7 @@
 		2D19403C2A5188C400A45537 /* ExpenseEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19403B2A5188C400A45537 /* ExpenseEnum.swift */; };
 		2D19403E2A51958A00A45537 /* ExpensesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19403D2A51958A00A45537 /* ExpensesPicker.swift */; };
 		2D1940432A51B62200A45537 /* Persistence+Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940422A51B62200A45537 /* Persistence+Expense.swift */; };
+		2D1940462A51DDE200A45537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940452A51DDE200A45537 /* Extensions.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		2D19403B2A5188C400A45537 /* ExpenseEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEnum.swift; sourceTree = "<group>"; };
 		2D19403D2A51958A00A45537 /* ExpensesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPicker.swift; sourceTree = "<group>"; };
 		2D1940422A51B62200A45537 /* Persistence+Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Expense.swift"; sourceTree = "<group>"; };
+		2D1940452A51DDE200A45537 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,15 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		2D1940442A51DDCC00A45537 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2DA7D7AF2A4AD10500F25939 /* Constants.swift */,
+				2D1940452A51DDE200A45537 /* Extensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		2DA7D77F2A4AB76C00F25939 = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +156,7 @@
 			children = (
 				2DA7D7B92A4AE79C00F25939 /* Info.plist */,
 				2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */,
-				2DA7D7AF2A4AD10500F25939 /* Constants.swift */,
+				2D1940442A51DDCC00A45537 /* Utilities */,
 				2D1940392A51889C00A45537 /* Core Data */,
 				2DA7D79E2A4AC5AB00F25939 /* Views */,
 				2DA7D7B42A4AE72E00F25939 /* Fonts */,
@@ -307,6 +318,7 @@
 				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
 				2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */,
 				2D1940382A5184C400A45537 /* Expense+CoreDataProperties.swift in Sources */,
+				2D1940462A51DDE200A45537 /* Extensions.swift in Sources */,
 				2D19403C2A5188C400A45537 /* ExpenseEnum.swift in Sources */,
 				2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */,
 				2DA7D7B02A4AD10500F25939 /* Constants.swift in Sources */,

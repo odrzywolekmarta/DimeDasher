@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = MainViewModel()
+    @EnvironmentObject var viewModel: MainViewModel
     
     var body: some View {
         ZStack {
@@ -22,12 +22,11 @@ struct MainView: View {
                 Spacer()
             } // vstack
         } // zstack
-        .environmentObject(viewModel)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(viewModel: MainViewModel(forPreview: true))
+        MainView()
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TransactionListItem: View {
+    @EnvironmentObject var viewModel: MainViewModel
     var expense: Expense
     
     var body: some View {
@@ -25,9 +26,9 @@ struct TransactionListItem: View {
             Spacer()
             
             VStack(alignment: .center) {
-                Text(String(expense.amount))
+                Text(viewModel.moneyValue(amount: expense.amount))
                     .font(.custom(Constants.ralewayBold, size: 17))
-                Text("Today")
+                Text(expense.expenseDate.toString())
                     .font(.custom(Constants.raleway, size: 15))
             } // vstack
         } // hstack

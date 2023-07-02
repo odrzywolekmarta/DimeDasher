@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewTransactionView: View {
-    @State private var transactionType: TransactionType = .income
+    @Binding var transactionType: TransactionType
     @Binding var addViewPresented: Bool
     @Binding var newTransactionPresented: Bool
     
@@ -70,7 +70,7 @@ struct NewTransactionView: View {
 
 struct NewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTransactionView(addViewPresented: .constant(false), newTransactionPresented: .constant(true))
+        NewTransactionView(transactionType: .constant(.expense), addViewPresented: .constant(false), newTransactionPresented: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }

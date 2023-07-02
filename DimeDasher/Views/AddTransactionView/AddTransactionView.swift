@@ -15,6 +15,7 @@ struct AddTransactionView: View {
     @State private var amount: Double = 0.0
     @State private var transactionDescription: String = ""
     @State private var expenseType: ExpenseType = .housing
+    @State private var date: Date = Date()
     
     var transactionType: TransactionType
     
@@ -26,7 +27,11 @@ struct AddTransactionView: View {
                 Text("Add new \(transactionType.rawValue)")
                     .font(.custom(Constants.ralewayBold, size: 30))
                     .padding()
-                
+                DatePicker("", selection: $date, displayedComponents: .date)
+                .padding()
+                .labelsHidden()
+                .environment(\.locale, Locale(identifier: "en_UK"))
+
                 TextField(value: $amount, format: .number) {
                     
                 }
@@ -73,6 +78,6 @@ struct AddTransactionView: View {
 
 struct AddTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTransactionView(transactionType: .income)
+        AddTransactionView(transactionType: .expense)
     }
 }

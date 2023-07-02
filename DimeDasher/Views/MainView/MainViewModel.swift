@@ -23,6 +23,10 @@ import Foundation
     init() {
         getUserDataFromDefaults()
         calculateBalance()
+        fetchExpenses()
+    }
+    
+    func fetchExpenses() {
         expenses = persistenceController.fetchExpenses()
     }
     
@@ -31,21 +35,14 @@ import Foundation
     }
     
     func calculateBalance() {
-        let startingBalance = currencyFormatter.string(from: NSNumber(floatLiteral: UserDefaults.standard.double(forKey: "startingBalance")))
-//        let calculatedBalance = "" 
-        balance = stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "", balance: startingBalance ?? "")
+        var startingBalance = currencyFormatter.string(from: NSNumber(floatLiteral: UserDefaults.standard.double(forKey: "startingBalance")))
+//        let calculatedBalance = ""
+        balance = startingBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
     }
     
-    func stringWithCurrencySymbol(currency: String, balance: String) -> String {
-        var transformedBalance = balance
-        switch currency {
-        case "USD": transformedBalance.insert(contentsOf: "$", at: transformedBalance.startIndex)
-        case "GBP": transformedBalance.insert(contentsOf: "£", at: transformedBalance.startIndex)
-        case "EUR": transformedBalance.insert(contentsOf: "€", at: transformedBalance.startIndex)
-        case "PLN": transformedBalance.insert(contentsOf: " zł", at: transformedBalance.endIndex)
-        default:  transformedBalance.insert(contentsOf: "", at: transformedBalance.endIndex)
-        }
-        return transformedBalance
+    func moneyValue(amount: Double) -> String {
+        var amountString = String(amount.stringWithTwoDecimal())
+        return amountString.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
 }
 

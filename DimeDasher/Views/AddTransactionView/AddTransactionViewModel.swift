@@ -20,40 +20,16 @@ enum IncomeType: String {
     case financialMarket
 }
 
-
-
 @MainActor final class AddTransactionViewModel: ObservableObject {
-    private let context = PersistenceController.shared.viewContext
+    private let context = PersistenceController.shared
     @Published var expenses: [Expense] = []
     
     init() {
-        fetchExpenses()
-    }
-    
-    //MARK: - Data Base methods
-    func fetchExpenses() {
-        let request = NSFetchRequest<Expense>(entityName: "Expense")
-        do {
-            expenses = try context.fetch(request)
-            print(expenses[0])
-        } catch let error {
-            print("Error fetchin expenses data: \(error.localizedDescription)")
-        }
+        expenses = context.fetchExpenses()
     }
     
     func saveExpense(type: ExpenseType, amount: Double, description: String) {
-        let expense = Expense(context: context)
-        expense.id = UUID()
-        expense.amount = amount
-        expense.type = type
-        expense.expenseDescription = description
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error saving expense: \(error.localizedDescription)")
-        }
-        
+        context.saveExpense(type: type, amount: amount, description: description)
     }
 
 }

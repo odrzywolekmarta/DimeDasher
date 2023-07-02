@@ -6,3 +6,35 @@
 //
 
 import Foundation
+
+//MARK: - Date
+
+extension Date {
+    func toString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/YY"
+        return formatter.string(from: self)
+    }
+}
+
+extension Double {
+    func stringWithTwoDecimal() -> String {
+        let formatter = NumberFormatter()
+//        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(floatLiteral: self)) ?? ""
+    }
+}
+
+extension String {
+    mutating func stringWithCurrencySymbol(currency: String) -> String {
+        switch currency {
+        case "USD": self.insert(contentsOf: "$", at: self.startIndex)
+        case "GBP": self.insert(contentsOf: "£", at: self.startIndex)
+        case "EUR": self.insert(contentsOf: "€", at: self.startIndex)
+        case "PLN": self.insert(contentsOf: " zł", at: self.endIndex)
+        default:  self.insert(contentsOf: "", at: self.endIndex)
+        }
+        return self
+    }
+}
