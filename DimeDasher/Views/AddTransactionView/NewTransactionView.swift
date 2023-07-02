@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewTransactionView: View {
     @State private var transactionType: TransactionType = .income
-    @State private var addViewPresented: Bool = false
+    @Binding var addViewPresented: Bool
     @Binding var newTransactionPresented: Bool
     
     var body: some View {
@@ -17,7 +17,8 @@ struct NewTransactionView: View {
             Text("Add new")
                 .font(.custom(Constants.ralewayBold, size: 30))
             Button {
-                
+                addViewPresented.toggle()
+                newTransactionPresented.toggle()
             } label: {
                 Text("Income")
                     .font(.custom(Constants.raleway, size: 18))
@@ -30,7 +31,8 @@ struct NewTransactionView: View {
             .padding()
             
             Button {
-                
+                addViewPresented.toggle()
+                newTransactionPresented.toggle()
             } label: {
                 Text("Expense")
                     .font(.custom(Constants.raleway, size: 18))
@@ -44,7 +46,9 @@ struct NewTransactionView: View {
         } // vstack
         .overlay(alignment: .topTrailing, content: {
             Button {
-                newTransactionPresented.toggle()
+                withAnimation {
+                    newTransactionPresented.toggle()
+                }
             } label: {
                 Image(systemName: Constants.dismissButtonImage)
                     .resizable()
@@ -66,7 +70,7 @@ struct NewTransactionView: View {
 
 struct NewTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTransactionView(newTransactionPresented: .constant(true))
+        NewTransactionView(addViewPresented: .constant(false), newTransactionPresented: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }

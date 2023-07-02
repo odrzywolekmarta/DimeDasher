@@ -11,15 +11,23 @@ import CoreData
 
 
 extension Expense {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Expense> {
         return NSFetchRequest<Expense>(entityName: "Expense")
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var expenseType: ExpenseType
+    @NSManaged fileprivate var expenseType: ExpenseType
+    @NSManaged public var expenseDescription: String?
     @NSManaged public var amount: Double
 
+    var type: ExpenseType {
+            get {
+                return ExpenseType(rawValue: expenseType.rawValue) ?? .education
+            }
+            set {
+                self.expenseType = newValue
+            }
+        }
 }
 
 extension Expense : Identifiable {

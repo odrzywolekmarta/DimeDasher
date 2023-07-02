@@ -8,8 +8,10 @@
 import Foundation
 
 @MainActor final class MainViewModel: ObservableObject {
+    private let persistenceController = PersistenceController.shared
     @Published var username: String = ""
     @Published var balance: String = ""
+    @Published var expenses: [Expense] = []
     
     let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -21,6 +23,7 @@ import Foundation
     init() {
         getUserDataFromDefaults()
         calculateBalance()
+        expenses = persistenceController.fetchExpenses()
     }
     
     func getUserDataFromDefaults() {

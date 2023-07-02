@@ -15,6 +15,7 @@ enum Tab {
 struct TabsContentView: View {
     @State private var selectedTab: Tab = .main
     @State private var newTransactionPresented: Bool = false
+    @State private var addViewPresented: Bool = false
 
     var body: some View {
         ZStack {
@@ -35,13 +36,15 @@ struct TabsContentView: View {
             .zIndex(0)
             
             if newTransactionPresented {
-                NewTransactionView(newTransactionPresented: $newTransactionPresented)
+                NewTransactionView(addViewPresented: $addViewPresented, newTransactionPresented: $newTransactionPresented)
                     .padding()
                     .zIndex(1)
             }
-            
         } // zstack
         .edgesIgnoringSafeArea(.bottom)
+        .sheet(isPresented: $addViewPresented) {
+            AddTransactionView(transactionType: .expense)
+        }
     }
 }
 

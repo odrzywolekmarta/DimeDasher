@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct TransactionListItem: View {
+    var expense: Expense
+    
     var body: some View {
         HStack {
             Group {
-                Image(systemName: Constants.groceries)
+                Image(systemName: expense.type.imageName)
                     .resizable()
                     .scaledToFit()
                     .opacity(0.6)
                     .frame(width: 40)
-                Text("Groceries")
+                Text(expense.type.rawValue)
                     .font(.custom(Constants.raleway, size: 17))
             } // group
             
             Spacer()
             
             VStack(alignment: .center) {
-                Text("-$45")
+                Text(String(expense.amount))
                     .font(.custom(Constants.ralewayBold, size: 17))
                 Text("Today")
                     .font(.custom(Constants.raleway, size: 15))
@@ -41,7 +43,7 @@ struct TransactionListItem: View {
 
 struct TransactionListItem_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListItem()
+        TransactionListItem(expense: Expense())
             .background(Color(Constants.beige))
             .previewLayout(.sizeThatFits)
     }

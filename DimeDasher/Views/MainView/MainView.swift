@@ -18,7 +18,7 @@ struct MainView: View {
             VStack(spacing: 0) {
             HeaderView()
             SummaryView()
-                TransactionList()
+            TransactionList()
                 Spacer()
             } // vstack
         } // zstack

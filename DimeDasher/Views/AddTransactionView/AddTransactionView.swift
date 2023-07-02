@@ -9,36 +9,65 @@ import SwiftUI
 
 
 struct AddTransactionView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    @StateObject private var viewModel = AddTransactionViewModel()
     @State private var amount: Double = 0.0
     @State private var transactionDescription: String = ""
+    @State private var expenseType: ExpenseType = .housing
+    
     var transactionType: TransactionType
     
     var body: some View {
-        VStack(spacing: 0) {
-            Text("Add new \(transactionType.rawValue)")
-                .font(.custom(Constants.ralewayBold, size: 30))
-                .padding()
-            
-            TextField(value: $amount, format: .number) {
+        ZStack {
+            Color(Constants.beige)
+                .ignoresSafeArea()
+            VStack(spacing: 0) {
+                Text("Add new \(transactionType.rawValue)")
+                    .font(.custom(Constants.ralewayBold, size: 30))
+                    .padding()
                 
-            }
-            .keyboardType(.decimalPad)
-            .padding()
-            .font(.custom(Constants.raleway, size: 20))
-            .background(
-                Color.white
-                    .cornerRadius(10))
-            .padding()
-            
-            TextField("Note..", text: $transactionDescription)
+                TextField(value: $amount, format: .number) {
+                    
+                }
+                .keyboardType(.decimalPad)
                 .padding()
                 .font(.custom(Constants.raleway, size: 20))
-                
+                .background(
+                    Color.white
+                        .cornerRadius(10))
                 .padding()
-        } // vstack
-        .background(
-            Color(Constants.beige)
-        )
+                
+                switch transactionType {
+                case .income:
+                    ExpensesPicker(expense: $expenseType)
+                case .expense:
+                    ExpensesPicker(expense: $expenseType)
+                }
+                
+                TextField("Note..", text: $transactionDescription, axis: .vertical)
+                    .padding()
+                    .font(.custom(Constants.raleway, size: 20))
+                    .padding()
+
+                Button {
+                    viewModel.saveExpense(type: expenseType, amount: amount, description: transactionDescription)
+                    dismiss()
+                } label: {
+                    Text("Save")
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .background(
+                    Color(Constants.mediumPink)
+                        .cornerRadius(10)
+                )
+                .buttonStyle(.borderless)
+                .padding()
+
+            } // vstack
+        }
     }
 }
 

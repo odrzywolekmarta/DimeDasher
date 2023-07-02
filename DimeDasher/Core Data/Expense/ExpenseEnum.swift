@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc public enum ExpenseType: Int32 {
+@objc public enum ExpenseType: Int32, CaseIterable {
     case healthcare
     case travel
     case housing
@@ -73,6 +73,29 @@ import Foundation
         case .subscriptions: return "subscriptions"
         case .specialOcasions: return "special ocasions"
         case .education: return "education"
+        }
+    }
+    
+    public var imageName: String {
+        switch self {
+        case .healthcare: return Constants.healthcare
+        case .travel: return Constants.travel
+        case .housing: return Constants.housing
+        case .utilities: return Constants.utilities
+        case .groceries: return Constants.groceries
+        case .takeout: return Constants.takeout
+        case .clothes: return Constants.clothes
+        case .books: return Constants.books
+        case .fitness: return Constants.fitness
+        case .car: return Constants.car
+        case .gas: return Constants.gas
+        case .pets: return Constants.pets
+        case .entertainment: return Constants.entertainment
+        case .transportation: return Constants.transportation
+        case .selfcare: return Constants.selfcare
+        case .subscriptions: return Constants.subscriptions
+        case .specialOcasions: return Constants.specialOcasions
+        case .education: return Constants.education
         }
     }
 }

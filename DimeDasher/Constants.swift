@@ -31,11 +31,12 @@ struct Constants {
     static let gear = "gearshape"
     static let dismissButtonImage = "x.circle.fill"
     
-    //MARK: - Expense Categories Images]
+    //MARK: - Expense Categories Images
+    
     static let income = "dollarsign.circle.fill"
     
     static let healthcare = "pill.circle.fill"
-    static let tavel = "airplane.circle.fill"
+    static let travel = "airplane.circle.fill"
     static let housing = "house.circle.fill"
     static let utilities = "lightbulb.circle.fill"
     static let groceries = "cart.circle.fill"

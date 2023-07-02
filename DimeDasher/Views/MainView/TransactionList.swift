@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TransactionList: View {
+    @EnvironmentObject var viewModel: MainViewModel
+    
     var body: some View {
         
         VStack(spacing: 10) {
@@ -30,8 +32,8 @@ struct TransactionList: View {
             .background(Color.clear)
 
             ScrollView {
-                ForEach(1..<5) { _ in
-                    TransactionListItem()
+                ForEach(viewModel.expenses) { expense in
+                    TransactionListItem(expense: expense)
                 } // loop
             }
         } // scroll view
@@ -41,5 +43,6 @@ struct TransactionList: View {
 struct TransactionList_Previews: PreviewProvider {
     static var previews: some View {
         TransactionList()
+            .environmentObject(MainViewModel())
     }
 }
