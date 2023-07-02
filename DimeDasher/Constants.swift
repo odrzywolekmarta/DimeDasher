@@ -32,7 +32,6 @@ struct Constants {
     static let dismissButtonImage = "x.circle.fill"
     
     //MARK: - Expense Categories Images]
-    enum categories { }
     static let income = "dollarsign.circle.fill"
     
     static let healthcare = "pill.circle.fill"
@@ -49,7 +48,7 @@ struct Constants {
     static let pets = "pawprint.circle.fill"
     static let entertainment = "popcorn.circle.fill"
     static let transportation = "tram.circle.fill"
-    static let selfCare = "heart.circle.fill"
+    static let selfcare = "heart.circle.fill"
     static let subscriptions = "film.circle.fill"
     static let specialOcasions = "gift.circle.fill"
     static let education = "graduationcap.circle.fill"

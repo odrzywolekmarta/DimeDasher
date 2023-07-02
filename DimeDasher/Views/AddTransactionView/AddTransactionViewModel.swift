@@ -12,6 +12,15 @@ enum TransactionType: StringLiteralType {
     case expense
 }
 
+enum IncomeType: String {
+    case work
+    case gift
+    case crypto
+    case financialMarket
+}
+
+
+
 @MainActor final class AddTransactionViewModel: ObservableObject {
     
 }
