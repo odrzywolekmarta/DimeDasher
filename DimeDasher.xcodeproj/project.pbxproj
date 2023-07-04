@@ -23,6 +23,7 @@
 		2D1940542A5433A600A45537 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2D1940532A5433A600A45537 /* DequeModule */; };
 		2D1940562A5433A600A45537 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2D1940552A5433A600A45537 /* OrderedCollections */; };
 		2D1940582A5433D100A45537 /* Persistence+Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940572A5433D100A45537 /* Persistence+Income.swift */; };
+		2D19405A2A548FD800A45537 /* TransactionListIncomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940592A548FD800A45537 /* TransactionListIncomeItem.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -38,7 +39,7 @@
 		2DA7D7BB2A4AE92D00F25939 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BA2A4AE92D00F25939 /* Raleway-Regular.ttf */; };
 		2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */; };
 		2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */; };
-		2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */; };
+		2DA7D7C12A4AF1C900F25939 /* TransactionListExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C02A4AF1C900F25939 /* TransactionListExpenseItem.swift */; };
 		2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */; };
 		2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */; };
 		2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */; };
@@ -59,6 +60,7 @@
 		2D19404B2A54313800A45537 /* Income+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2D19404C2A54313800A45537 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2D1940572A5433D100A45537 /* Persistence+Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Income.swift"; sourceTree = "<group>"; };
+		2D1940592A548FD800A45537 /* TransactionListIncomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListIncomeItem.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 		2DA7D7BA2A4AE92D00F25939 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
-		2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListItem.swift; sourceTree = "<group>"; };
+		2DA7D7C02A4AF1C900F25939 /* TransactionListExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListExpenseItem.swift; sourceTree = "<group>"; };
 		2DA7D7C52A4B3BD600F25939 /* NewTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionView.swift; sourceTree = "<group>"; };
 		2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewModel.swift; sourceTree = "<group>"; };
@@ -219,7 +221,8 @@
 				2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */,
 				2DA7D7B22A4AE4FC00F25939 /* SummaryView.swift */,
 				2DA7D7BE2A4AF1BB00F25939 /* TransactionList.swift */,
-				2DA7D7C02A4AF1C900F25939 /* TransactionListItem.swift */,
+				2DA7D7C02A4AF1C900F25939 /* TransactionListExpenseItem.swift */,
+				2D1940592A548FD800A45537 /* TransactionListIncomeItem.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				2DA7D7A82A4AC78100F25939 /* MainView.swift in Sources */,
 				2D1940162A4DE58100A45537 /* AddTransactionViewModel.swift in Sources */,
 				2D1940482A5358B900A45537 /* IncomePickerView.swift in Sources */,
+				2D19405A2A548FD800A45537 /* TransactionListIncomeItem.swift in Sources */,
 				2D1940142A4DE33A00A45537 /* AddTransactionView.swift in Sources */,
 				2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */,
 				2DA7D7982A4AB76D00F25939 /* DimeDasher.xcdatamodeld in Sources */,
@@ -344,7 +348,7 @@
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
 				2DA7D7BF2A4AF1BB00F25939 /* TransactionList.swift in Sources */,
 				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
-				2DA7D7C12A4AF1C900F25939 /* TransactionListItem.swift in Sources */,
+				2DA7D7C12A4AF1C900F25939 /* TransactionListExpenseItem.swift in Sources */,
 				2D1940382A5184C400A45537 /* Expense+CoreDataProperties.swift in Sources */,
 				2D1940462A51DDE200A45537 /* Extensions.swift in Sources */,
 				2D19403C2A5188C400A45537 /* ExpenseEnum.swift in Sources */,

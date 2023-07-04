@@ -12,6 +12,9 @@ import Foundation
     @Published var username: String = ""
     @Published var balance: String = ""
     @Published var expenses: [Expense] = []
+    @Published var income: [Income] = []
+    @Published var shortExpenses: [Expense] = []
+    @Published var shortIncome: [Income] = []
     
     let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -24,10 +27,17 @@ import Foundation
         getUserDataFromDefaults()
         calculateBalance()
         fetchExpenses()
+        fetchIncome()
     }
     
     func fetchExpenses() {
         expenses = persistenceController.fetchExpenses()
+        shortExpenses = Array(expenses.prefix(10))
+    }
+    
+    func fetchIncome() {
+        income = persistenceController.fetchIncome()
+        shortIncome = Array(income.prefix(10))
     }
     
     func getUserDataFromDefaults() {

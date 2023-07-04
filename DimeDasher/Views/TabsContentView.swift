@@ -14,7 +14,6 @@ enum Tab {
 
 struct TabsContentView: View {
     @StateObject private var mainViewModel = MainViewModel()
-
     @State private var selectedTab: Tab = .main
     @State private var newTransactionPresented: Bool = false
     @State private var addViewPresented: Bool = false
@@ -51,6 +50,7 @@ struct TabsContentView: View {
         .edgesIgnoringSafeArea(.bottom)
         .sheet(isPresented: $addViewPresented, onDismiss: {
             mainViewModel.fetchExpenses()
+            mainViewModel.fetchIncome()
         }, content: {
             AddTransactionView(transactionType: transactionType)
         })

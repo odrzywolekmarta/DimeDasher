@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TransactionListItem: View {
+struct TransactionListExpenseItem: View {
     @EnvironmentObject var viewModel: MainViewModel
     var expense: Expense
     
@@ -42,9 +42,9 @@ struct TransactionListItem: View {
     }
 }
 
-struct TransactionListItem_Previews: PreviewProvider {
+struct TransactionListExpenseItem_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListItem(expense: Expense())
+        TransactionListExpenseItem(expense: Expense())
             .background(Color(Constants.beige))
             .previewLayout(.sizeThatFits)
     }

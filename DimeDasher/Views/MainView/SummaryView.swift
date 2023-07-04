@@ -17,7 +17,7 @@ struct SummaryView: View {
             .shadow(radius: 20)
             .padding()
             .overlay {
-                VStack(alignment: .center, spacing: 30) {
+                VStack(alignment: .center, spacing: 20) {
                     VStack {
                         Text("Total balance")
                             .font(.custom(Constants.ralewayBold, size: 20))
@@ -28,7 +28,7 @@ struct SummaryView: View {
                     HStack(spacing: 70) {
                         VStack {
                             Text("Income")
-                                .font(.custom(Constants.raleway, size: 18))
+                                .font(.custom(Constants.ralewayBold, size: 18))
                             Text("this month")
                                 .font(.custom(Constants.raleway, size: 14))
                             HStack {
@@ -41,7 +41,7 @@ struct SummaryView: View {
                         
                         VStack {
                             Text("Expenses")
-                                .font(.custom(Constants.raleway, size: 18))
+                                .font(.custom(Constants.ralewayBold, size: 18))
                             Text("this month")
                                 .font(.custom(Constants.raleway, size: 14))
                             HStack {

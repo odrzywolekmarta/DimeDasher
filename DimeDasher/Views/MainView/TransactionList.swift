@@ -9,9 +9,19 @@ import SwiftUI
 
 struct TransactionList: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @State private var transactionType: TransactionType = .income
+    
+    init() {
+        UISegmentedControl.appearance().setTitleTextAttributes(
+            [.font: UIFont(name: Constants.ralewayBold, size: 18) ?? UIFont.systemFont(ofSize: 18)],
+            for: .selected)
+        
+        UISegmentedControl.appearance().setTitleTextAttributes(
+            [.font: UIFont(name: Constants.raleway, size: 18) ?? UIFont.systemFont(ofSize: 18)],
+            for: .normal)
+    }
     
     var body: some View {
-        
         VStack(spacing: 0) {
             HStack {
                 Text("Transactions")
@@ -28,17 +38,43 @@ struct TransactionList: View {
             .padding()
             .background(Color.clear)
             
-            List($viewModel.expenses, id: \.id, editActions: .delete) { $expense in
-//                ForEach(viewModel.expenses) { expense in
-                    TransactionListItem(expense: expense)
+            Picker("", selection: $transactionType) {
+                ForEach(TransactionType.allCases, id: \.self) { transaction in
+                    Text(transaction.rawValue)
+                }
+            }
+            .font(.custom(Constants.raleway, size: 17))
+            .pickerStyle(.segmented)
+            .colorMultiply(Color(Constants.lightPink))
+            //            .background(Color(Constants.lightPink))
+            .cornerRadius(4)
+            .padding(.horizontal )
+            
+            
+            switch transactionType {
+            case .income:
+                List($viewModel.shortIncome, id: \.id,
+                     editActions: .delete) { $income in
+                    TransactionListIncomeItem(income: income)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .background(Color(Constants.beige))
-//                } // loop
-            } // list
-            .listStyle(PlainListStyle())
-            .background(Color(Constants.beige))
-            .scrollContentBackground(.hidden)
+                } // list
+                .listStyle(PlainListStyle())
+                .background(Color(Constants.beige))
+                .scrollContentBackground(.hidden)
+            case .expense:
+                List($viewModel.shortExpenses, id: \.self,
+                     editActions: .delete) { $expense in
+                    TransactionListExpenseItem(expense: expense)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .background(Color(Constants.beige))
+                } // list
+                .listStyle(PlainListStyle())
+                .background(Color(Constants.beige))
+                .scrollContentBackground(.hidden)
+            }
         }
     }
 }

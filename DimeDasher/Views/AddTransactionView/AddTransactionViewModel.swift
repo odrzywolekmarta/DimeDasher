@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-enum TransactionType: StringLiteralType {
+enum TransactionType: StringLiteralType, CaseIterable {
     case income
     case expense
 }
