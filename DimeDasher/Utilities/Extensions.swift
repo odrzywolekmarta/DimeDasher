@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 //MARK: - Date
 
@@ -17,6 +18,7 @@ extension Date {
     }
 }
 
+//MARK: - Double
 extension Double {
     func stringWithTwoDecimal() -> String {
         let formatter = NumberFormatter()
@@ -25,7 +27,7 @@ extension Double {
         return formatter.string(from: NSNumber(floatLiteral: self)) ?? ""
     }
 }
-
+//MARK: - String
 extension String {
     mutating func stringWithCurrencySymbol(currency: String) -> String {
         switch currency {
@@ -37,4 +39,12 @@ extension String {
         }
         return self
     }
+}
+
+//MARK: - View
+extension View {
+  func endTextEditing() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil)
+  }
 }

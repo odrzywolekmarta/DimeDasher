@@ -37,11 +37,6 @@ struct AddTransactionView: View {
                 TextField(value: $amount, format: .number) {
                     Text("$100..")
                 }
-                .onChange(of: amount, perform: { newValue in
-                    if newValue ?? 0 > 0 {
-                        saveButtonDisabled = false
-                    }
-                })
                 .keyboardType(.decimalPad)
                 .padding()
                 .font(.custom(Constants.raleway, size: 20))
@@ -77,14 +72,16 @@ struct AddTransactionView: View {
                 }
                 .padding()
                 .background(
-                    Color(saveButtonDisabled ? Constants.lightPink : Constants.mediumPink)
+                    Color(self.amount == nil ? Constants.lightPink : Constants.mediumPink)
                         .cornerRadius(10)
                 )
                 .buttonStyle(.borderless)
-                .disabled(saveButtonDisabled)
+                .disabled(self.amount == nil)
                 .padding()
-
             } // vstack
+        }
+        .onTapGesture {
+            self.endTextEditing()
         }
     }
 }
