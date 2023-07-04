@@ -12,11 +12,12 @@ struct AddTransactionView: View {
     @Environment(\.dismiss) var dismiss
     
     @StateObject private var viewModel = AddTransactionViewModel()
-    @State private var amount: Double = 0.0
+    @State private var amount: Double?
     @State private var transactionDescription: String = ""
     @State private var expenseType: ExpenseType = .housing
     @State private var incomeType: IncomeType = .work
     @State private var date: Date = Date()
+    @State private var saveButtonDisabled: Bool = true
     
     var transactionType: TransactionType
     
@@ -34,8 +35,13 @@ struct AddTransactionView: View {
                 .environment(\.locale, Locale(identifier: "en_UK"))
 
                 TextField(value: $amount, format: .number) {
-                    
+                    Text("$100..")
                 }
+                .onChange(of: amount, perform: { newValue in
+                    if newValue ?? 0 > 0 {
+                        saveButtonDisabled = false
+                    }
+                })
                 .keyboardType(.decimalPad)
                 .padding()
                 .font(.custom(Constants.raleway, size: 20))
@@ -59,9 +65,9 @@ struct AddTransactionView: View {
                 Button {
                     switch transactionType {
                     case .income:
-                        viewModel.saveIncome(type: incomeType, amount: amount, description: transactionDescription, date: date)
+                        viewModel.saveIncome(type: incomeType, amount: amount ?? 0, description: transactionDescription, date: date)
                     case .expense:
-                        viewModel.saveExpense(type: expenseType, amount: amount, description: transactionDescription, date: date)
+                        viewModel.saveExpense(type: expenseType, amount: amount ?? 0, description: transactionDescription, date: date)
                     }
                     dismiss()
                 } label: {
@@ -71,10 +77,11 @@ struct AddTransactionView: View {
                 }
                 .padding()
                 .background(
-                    Color(Constants.mediumPink)
+                    Color(saveButtonDisabled ? Constants.lightPink : Constants.mediumPink)
                         .cornerRadius(10)
                 )
                 .buttonStyle(.borderless)
+                .disabled(saveButtonDisabled)
                 .padding()
 
             } // vstack
