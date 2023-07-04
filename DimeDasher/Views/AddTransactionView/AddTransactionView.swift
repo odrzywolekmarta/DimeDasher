@@ -15,6 +15,7 @@ struct AddTransactionView: View {
     @State private var amount: Double = 0.0
     @State private var transactionDescription: String = ""
     @State private var expenseType: ExpenseType = .housing
+    @State private var incomeType: IncomeType = .work
     @State private var date: Date = Date()
     
     var transactionType: TransactionType
@@ -45,7 +46,7 @@ struct AddTransactionView: View {
                 
                 switch transactionType {
                 case .income:
-                    ExpensesPicker(expense: $expenseType)
+                    IncomePickerView(income: $incomeType)
                 case .expense:
                     ExpensesPicker(expense: $expenseType)
                 }
@@ -56,7 +57,12 @@ struct AddTransactionView: View {
                     .padding()
 
                 Button {
-                    viewModel.saveExpense(type: expenseType, amount: amount, description: transactionDescription)
+                    switch transactionType {
+                    case .income:
+                        viewModel.saveIncome(type: incomeType, amount: amount, description: transactionDescription, date: date)
+                    case .expense:
+                        viewModel.saveExpense(type: expenseType, amount: amount, description: transactionDescription, date: date)
+                    }
                     dismiss()
                 } label: {
                     Text("Save")

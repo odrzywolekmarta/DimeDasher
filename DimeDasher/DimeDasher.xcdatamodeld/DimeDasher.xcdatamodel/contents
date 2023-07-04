@@ -7,4 +7,11 @@
         <attribute name="expenseType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
+    <entity name="Income" representedClassName=".Income" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="incomeDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="incomeDescription" optional="YES" attributeType="String"/>
+        <attribute name="incomeType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
 </model>

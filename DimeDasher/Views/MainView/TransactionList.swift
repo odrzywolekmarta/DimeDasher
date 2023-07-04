@@ -12,13 +12,11 @@ struct TransactionList: View {
     
     var body: some View {
         
-        VStack(spacing: 10) {
+        VStack(spacing: 0) {
             HStack {
                 Text("Transactions")
                     .font(.custom(Constants.ralewayBold, size: 20))
-                
                 Spacer()
-                
                 Button {
                     
                 } label: {
@@ -26,17 +24,22 @@ struct TransactionList: View {
                         .font(.custom(Constants.raleway, size: 17))
                         .foregroundColor(Color(Constants.darkPink))
                 }
-
-            }
+            } // hstack
             .padding()
             .background(Color.clear)
-
-            ScrollView {
-                ForEach(viewModel.expenses) { expense in
+            
+            List($viewModel.expenses, id: \.id, editActions: .delete) { $expense in
+//                ForEach(viewModel.expenses) { expense in
                     TransactionListItem(expense: expense)
-                } // loop
-            }
-        } // scroll view
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .background(Color(Constants.beige))
+//                } // loop
+            } // list
+            .listStyle(PlainListStyle())
+            .background(Color(Constants.beige))
+            .scrollContentBackground(.hidden)
+        }
     }
 }
 

@@ -29,6 +29,8 @@ struct SummaryView: View {
                         VStack {
                             Text("Income")
                                 .font(.custom(Constants.raleway, size: 18))
+                            Text("this month")
+                                .font(.custom(Constants.raleway, size: 14))
                             HStack {
                                 Image(systemName: Constants.arrowUpCircleFill)
                                     .opacity(0.6)
@@ -40,6 +42,8 @@ struct SummaryView: View {
                         VStack {
                             Text("Expenses")
                                 .font(.custom(Constants.raleway, size: 18))
+                            Text("this month")
+                                .font(.custom(Constants.raleway, size: 14))
                             HStack {
                                 Image(systemName: Constants.arrowDownCircleFill)
                                     .opacity(0.6)

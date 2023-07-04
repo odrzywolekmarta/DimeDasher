@@ -11,6 +11,7 @@ import CoreData
 extension PersistenceController {
     func fetchExpenses() -> [Expense] {
         let request = NSFetchRequest<Expense>(entityName: "Expense")
+        
         do {
             let expenses = try viewContext.fetch(request)
             return expenses
@@ -20,13 +21,13 @@ extension PersistenceController {
         }
     }
     
-    func saveExpense(type: ExpenseType, amount: Double, description: String) {
+    func saveExpense(type: ExpenseType, amount: Double, description: String, date: Date) {
         let expense = Expense(context: viewContext)
         expense.id = UUID()
         expense.amount = amount
         expense.type = type
         expense.expenseDescription = description
-        expense.expenseDate = Date()
+        expense.expenseDate = date
         
         save()
     }

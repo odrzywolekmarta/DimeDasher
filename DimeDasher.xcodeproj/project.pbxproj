@@ -15,6 +15,14 @@
 		2D19403E2A51958A00A45537 /* ExpensesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19403D2A51958A00A45537 /* ExpensesPicker.swift */; };
 		2D1940432A51B62200A45537 /* Persistence+Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940422A51B62200A45537 /* Persistence+Expense.swift */; };
 		2D1940462A51DDE200A45537 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940452A51DDE200A45537 /* Extensions.swift */; };
+		2D1940482A5358B900A45537 /* IncomePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940472A5358B900A45537 /* IncomePickerView.swift */; };
+		2D19404A2A53593200A45537 /* IncomeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940492A53593200A45537 /* IncomeEnum.swift */; };
+		2D19404D2A54313800A45537 /* Income+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19404B2A54313800A45537 /* Income+CoreDataClass.swift */; };
+		2D19404E2A54313800A45537 /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19404C2A54313800A45537 /* Income+CoreDataProperties.swift */; };
+		2D1940522A5433A600A45537 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 2D1940512A5433A600A45537 /* Collections */; };
+		2D1940542A5433A600A45537 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2D1940532A5433A600A45537 /* DequeModule */; };
+		2D1940562A5433A600A45537 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2D1940552A5433A600A45537 /* OrderedCollections */; };
+		2D1940582A5433D100A45537 /* Persistence+Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940572A5433D100A45537 /* Persistence+Income.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -35,9 +43,6 @@
 		2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */; };
 		2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */; };
 		2DA7D7D02A4CC45C00F25939 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CF2A4CC45C00F25939 /* MainViewModel.swift */; };
-		2DA7D7D32A4CCDAC00F25939 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7D22A4CCDAC00F25939 /* Collections */; };
-		2DA7D7D52A4CCDAC00F25939 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7D42A4CCDAC00F25939 /* DequeModule */; };
-		2DA7D7D72A4CCDAC00F25939 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA7D7D62A4CCDAC00F25939 /* OrderedCollections */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +54,11 @@
 		2D19403D2A51958A00A45537 /* ExpensesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPicker.swift; sourceTree = "<group>"; };
 		2D1940422A51B62200A45537 /* Persistence+Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Expense.swift"; sourceTree = "<group>"; };
 		2D1940452A51DDE200A45537 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2D1940472A5358B900A45537 /* IncomePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomePickerView.swift; sourceTree = "<group>"; };
+		2D1940492A53593200A45537 /* IncomeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeEnum.swift; sourceTree = "<group>"; };
+		2D19404B2A54313800A45537 /* Income+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2D19404C2A54313800A45537 /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2D1940572A5433D100A45537 /* Persistence+Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Income.swift"; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,9 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA7D7D32A4CCDAC00F25939 /* Collections in Frameworks */,
-				2DA7D7D72A4CCDAC00F25939 /* OrderedCollections in Frameworks */,
-				2DA7D7D52A4CCDAC00F25939 /* DequeModule in Frameworks */,
+				2D1940522A5433A600A45537 /* Collections in Frameworks */,
+				2D1940542A5433A600A45537 /* DequeModule in Frameworks */,
+				2D1940562A5433A600A45537 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +104,7 @@
 				2D1940152A4DE58100A45537 /* AddTransactionViewModel.swift */,
 				2D1940132A4DE33A00A45537 /* AddTransactionView.swift */,
 				2D19403D2A51958A00A45537 /* ExpensesPicker.swift */,
+				2D1940472A5358B900A45537 /* IncomePickerView.swift */,
 			);
 			path = AddTransactionView;
 			sourceTree = "<group>";
@@ -102,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2D19403F2A51B49800A45537 /* Persistence */,
+				2D19404F2A54314F00A45537 /* Income */,
 				2D19403A2A5188AC00A45537 /* Expense */,
 			);
 			path = "Core Data";
@@ -121,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				2DA7D7942A4AB76D00F25939 /* Persistence.swift */,
+				2D1940572A5433D100A45537 /* Persistence+Income.swift */,
 				2D1940422A51B62200A45537 /* Persistence+Expense.swift */,
 			);
 			path = Persistence;
@@ -133,6 +146,16 @@
 				2D1940452A51DDE200A45537 /* Extensions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2D19404F2A54314F00A45537 /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				2D1940492A53593200A45537 /* IncomeEnum.swift */,
+				2D19404B2A54313800A45537 /* Income+CoreDataClass.swift */,
+				2D19404C2A54313800A45537 /* Income+CoreDataProperties.swift */,
+			);
+			path = Income;
 			sourceTree = "<group>";
 		};
 		2DA7D77F2A4AB76C00F25939 = {
@@ -236,9 +259,9 @@
 			);
 			name = DimeDasher;
 			packageProductDependencies = (
-				2DA7D7D22A4CCDAC00F25939 /* Collections */,
-				2DA7D7D42A4CCDAC00F25939 /* DequeModule */,
-				2DA7D7D62A4CCDAC00F25939 /* OrderedCollections */,
+				2D1940512A5433A600A45537 /* Collections */,
+				2D1940532A5433A600A45537 /* DequeModule */,
+				2D1940552A5433A600A45537 /* OrderedCollections */,
 			);
 			productName = DimeDasher;
 			productReference = 2DA7D7882A4AB76C00F25939 /* DimeDasher.app */;
@@ -269,7 +292,7 @@
 			);
 			mainGroup = 2DA7D77F2A4AB76C00F25939;
 			packageReferences = (
-				2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				2D1940502A5433A600A45537 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 2DA7D7892A4AB76C00F25939 /* Products */;
 			projectDirPath = "";
@@ -300,15 +323,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DA7D7AC2A4ACB2200F25939 /* TabsContentView.swift in Sources */,
+				2D19404D2A54313800A45537 /* Income+CoreDataClass.swift in Sources */,
 				2DA7D7952A4AB76D00F25939 /* Persistence.swift in Sources */,
 				2DA7D7A82A4AC78100F25939 /* MainView.swift in Sources */,
 				2D1940162A4DE58100A45537 /* AddTransactionViewModel.swift in Sources */,
+				2D1940482A5358B900A45537 /* IncomePickerView.swift in Sources */,
 				2D1940142A4DE33A00A45537 /* AddTransactionView.swift in Sources */,
 				2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */,
 				2DA7D7982A4AB76D00F25939 /* DimeDasher.xcdatamodeld in Sources */,
 				2D1940372A5184C400A45537 /* Expense+CoreDataClass.swift in Sources */,
 				2D19403E2A51958A00A45537 /* ExpensesPicker.swift in Sources */,
 				2DA7D7AA2A4AC89500F25939 /* ChartView.swift in Sources */,
+				2D19404E2A54313800A45537 /* Income+CoreDataProperties.swift in Sources */,
+				2D1940582A5433D100A45537 /* Persistence+Income.swift in Sources */,
+				2D19404A2A53593200A45537 /* IncomeEnum.swift in Sources */,
 				2DA7D7A62A4AC75900F25939 /* CustomTabView.swift in Sources */,
 				2D1940432A51B62200A45537 /* Persistence+Expense.swift in Sources */,
 				2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */,
@@ -527,7 +555,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+		2D1940502A5433A600A45537 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
@@ -538,19 +566,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2DA7D7D22A4CCDAC00F25939 /* Collections */ = {
+		2D1940512A5433A600A45537 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			package = 2D1940502A5433A600A45537 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = Collections;
 		};
-		2DA7D7D42A4CCDAC00F25939 /* DequeModule */ = {
+		2D1940532A5433A600A45537 /* DequeModule */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			package = 2D1940502A5433A600A45537 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = DequeModule;
 		};
-		2DA7D7D62A4CCDAC00F25939 /* OrderedCollections */ = {
+		2D1940552A5433A600A45537 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2DA7D7D12A4CCDAC00F25939 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			package = 2D1940502A5433A600A45537 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */

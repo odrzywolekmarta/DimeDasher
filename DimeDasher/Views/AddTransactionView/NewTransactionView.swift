@@ -17,6 +17,7 @@ struct NewTransactionView: View {
             Text("Add new")
                 .font(.custom(Constants.ralewayBold, size: 30))
             Button {
+                transactionType = .income
                 addViewPresented.toggle()
                 newTransactionPresented.toggle()
             } label: {
@@ -31,6 +32,7 @@ struct NewTransactionView: View {
             .padding()
             
             Button {
+                transactionType = .expense
                 addViewPresented.toggle()
                 newTransactionPresented.toggle()
             } label: {
