@@ -1,14 +1,14 @@
 //
-//  TransactionListItem.swift
+//  ExpenseListItem.swift
 //  DimeDasher
 //
-//  Created by Majka on 27/06/2023.
+//  Created by Majka on 05/07/2023.
 //
 
 import SwiftUI
 
-struct TransactionListExpenseItem: View {
-    @EnvironmentObject var viewModel: MainViewModel
+struct ExpenseListItem: View {
+    @EnvironmentObject var viewModel: TransactionsListViewModel
     var expense: Expense
     
     var body: some View {
@@ -26,7 +26,7 @@ struct TransactionListExpenseItem: View {
             Spacer()
             
             VStack(alignment: .center) {
-                Text(viewModel.moneyValue(amount: expense.amount))
+                Text(expense.amount.moneyValue())
                     .font(.custom(Constants.ralewayBold, size: 17))
                 Text(expense.expenseDate.toString())
                     .font(.custom(Constants.raleway, size: 15))
@@ -42,10 +42,9 @@ struct TransactionListExpenseItem: View {
     }
 }
 
-struct TransactionListExpenseItem_Previews: PreviewProvider {
+struct ExpenseListItem_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListExpenseItem(expense: Expense())
-            .background(Color(Constants.beige))
-            .previewLayout(.sizeThatFits)
+        ExpenseListItem(expense: Expense())
+            .environmentObject(TransactionsListViewModel())
     }
 }

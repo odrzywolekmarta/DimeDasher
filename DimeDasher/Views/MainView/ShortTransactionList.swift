@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TransactionList: View {
+struct ShortTransactionList: View {
     @EnvironmentObject var viewModel: MainViewModel
     @State private var transactionType: TransactionType = .income
     
@@ -27,8 +27,8 @@ struct TransactionList: View {
                 Text("Transactions")
                     .font(.custom(Constants.ralewayBold, size: 20))
                 Spacer()
-                Button {
-                    
+                NavigationLink {
+                    TransactionsListView()
                 } label: {
                     Text("See all")
                         .font(.custom(Constants.raleway, size: 17))
@@ -46,10 +46,8 @@ struct TransactionList: View {
             .font(.custom(Constants.raleway, size: 17))
             .pickerStyle(.segmented)
             .colorMultiply(Color(Constants.lightPink))
-            //            .background(Color(Constants.lightPink))
             .cornerRadius(4)
             .padding(.horizontal )
-            
             
             switch transactionType {
             case .income:
@@ -81,7 +79,7 @@ struct TransactionList: View {
 
 struct TransactionList_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionList()
-            .environmentObject(MainViewModel())
+        ShortTransactionList()
+            .environmentObject(MainViewModel(forPreview: true))
     }
 }

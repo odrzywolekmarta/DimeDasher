@@ -26,6 +26,11 @@ extension Double {
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(floatLiteral: self)) ?? ""
     }
+    
+    func moneyValue() -> String {
+        var amountString = String(self.stringWithTwoDecimal())
+        return amountString.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+    }
 }
 //MARK: - String
 extension String {

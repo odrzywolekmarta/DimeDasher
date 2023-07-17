@@ -49,11 +49,6 @@ import Foundation
 //        let calculatedBalance = ""
         balance = startingBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
     }
-    
-    func moneyValue(amount: Double) -> String {
-        var amountString = String(amount.stringWithTwoDecimal())
-        return amountString.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
-    }
 }
 
 extension MainViewModel {
@@ -61,5 +56,21 @@ extension MainViewModel {
         self.init()
         username = "John Doe"
         balance = "10000"
+        let expense = Expense(context: persistenceController.viewContext)
+        expense.id = UUID()
+        expense.amount = 200
+        expense.expenseDescription = "test"
+        expense.type = .books
+        expense.expenseDate = Date()
+        expenses = [expense, expense, expense, expense, expense, expense]
+        let inc = Income(context: persistenceController.viewContext)
+        inc.id = UUID()
+        inc.amount = 1000
+        inc.incomeDate = Date()
+        inc.type = .work
+        inc.incomeDescription = "salary"
+        income = [inc, inc, inc, inc, inc, inc, inc, inc]
+        shortIncome = [inc, inc, inc]
+        shortExpenses = [expense, expense, expense]
     }
 }

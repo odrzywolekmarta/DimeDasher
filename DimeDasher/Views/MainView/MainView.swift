@@ -18,7 +18,7 @@ struct MainView: View {
             VStack(spacing: 0) {
             HeaderView()
             SummaryView()
-            TransactionList()
+            ShortTransactionList()
                 Spacer()
             } // vstack
         } // zstack
@@ -28,6 +28,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(MainViewModel())
+            .environmentObject(MainViewModel(forPreview: true))
     }
 }

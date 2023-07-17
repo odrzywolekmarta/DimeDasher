@@ -30,6 +30,7 @@ struct Constants {
     static let personCircle = "person.circle"
     static let gear = "gearshape"
     static let dismissButtonImage = "x.circle.fill"
+    static let filter = "slider.horizontal.3"
     
     //MARK: - Expense Categories Images
     

@@ -46,6 +46,6 @@ struct HeaderView_Previews: PreviewProvider {
         HeaderView()
             .previewLayout(.sizeThatFits)
             .background(Color(Constants.beige))
-            .environmentObject(MainViewModel())
+            .environmentObject(MainViewModel(forPreview: true))
     }
 }

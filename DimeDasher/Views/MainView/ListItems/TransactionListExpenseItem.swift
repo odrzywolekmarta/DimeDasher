@@ -1,34 +1,34 @@
 //
-//  TransactionListIncomeItem.swift
+//  TransactionListItem.swift
 //  DimeDasher
 //
-//  Created by Majka on 04/07/2023.
+//  Created by Majka on 27/06/2023.
 //
 
 import SwiftUI
 
-struct TransactionListIncomeItem: View {
+struct TransactionListExpenseItem: View {
     @EnvironmentObject var viewModel: MainViewModel
-    var income: Income
+    var expense: Expense
     
     var body: some View {
         HStack {
             Group {
-                Image(systemName: Constants.income)
+                Image(systemName: expense.type.imageName)
                     .resizable()
                     .scaledToFit()
                     .opacity(0.6)
                     .frame(width: 40)
-                Text(income.type.rawValue)
+                Text(expense.type.rawValue)
                     .font(.custom(Constants.raleway, size: 17))
             } // group
             
             Spacer()
             
             VStack(alignment: .center) {
-                Text(viewModel.moneyValue(amount: income.amount))
+                Text(expense.amount.moneyValue())
                     .font(.custom(Constants.ralewayBold, size: 17))
-                Text(income.incomeDate?.toString() ?? "")
+                Text(expense.expenseDate.toString())
                     .font(.custom(Constants.raleway, size: 15))
             } // vstack
         } // hstack
@@ -42,9 +42,9 @@ struct TransactionListIncomeItem: View {
     }
 }
 
-struct TransactionListIncomeItem_Previews: PreviewProvider {
+struct TransactionListExpenseItem_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListIncomeItem(income: Income())
+        TransactionListExpenseItem(expense: Expense())
             .background(Color(Constants.beige))
             .previewLayout(.sizeThatFits)
     }
