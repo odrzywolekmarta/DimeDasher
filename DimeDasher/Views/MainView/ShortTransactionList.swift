@@ -49,6 +49,7 @@ struct ShortTransactionList: View {
             .cornerRadius(4)
             .padding(.horizontal )
             
+
             switch transactionType {
             case .income:
                 List($viewModel.shortIncome, id: \.id,

@@ -28,7 +28,7 @@
 		2D19405F2A55386800A45537 /* TransactionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */; };
 		2D1940652A55503700A45537 /* IncomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940642A55503600A45537 /* IncomeListItem.swift */; };
 		2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940662A56008F00A45537 /* ExpenseListItem.swift */; };
-		2D1940692A5601AA00A45537 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940682A5601AA00A45537 /* SideMenuView.swift */; };
+		2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -70,7 +70,7 @@
 		2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewModel.swift; sourceTree = "<group>"; };
 		2D1940642A55503600A45537 /* IncomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListItem.swift; sourceTree = "<group>"; };
 		2D1940662A56008F00A45537 /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
-		2D1940682A5601AA00A45537 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListFilterView.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,7 +176,6 @@
 				2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */,
 				2D19405C2A55380E00A45537 /* TransactionsListView.swift */,
 				2D1940632A554FD400A45537 /* ListItems */,
-				2D1940682A5601AA00A45537 /* SideMenuView.swift */,
 			);
 			path = TransactionsListView;
 			sourceTree = "<group>";
@@ -195,6 +194,7 @@
 			children = (
 				2D1940642A55503600A45537 /* IncomeListItem.swift */,
 				2D1940662A56008F00A45537 /* ExpenseListItem.swift */,
+				2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */,
 			);
 			path = ListItems;
 			sourceTree = "<group>";
@@ -386,9 +386,9 @@
 				2D1940432A51B62200A45537 /* Persistence+Expense.swift in Sources */,
 				2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */,
 				2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */,
-				2D1940692A5601AA00A45537 /* SideMenuView.swift in Sources */,
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
+				2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */,
 				2DA7D7BF2A4AF1BB00F25939 /* ShortTransactionList.swift in Sources */,
 				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
 				2DA7D7C12A4AF1C900F25939 /* TransactionListExpenseItem.swift in Sources */,

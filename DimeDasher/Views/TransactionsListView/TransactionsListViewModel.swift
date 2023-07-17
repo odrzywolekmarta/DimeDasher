@@ -11,6 +11,7 @@ import Foundation
     private let persistenceController = PersistenceController.shared
     @Published var expenses: [Expense] = []
     @Published var income: [Income] = []
+    let sideMenuItems: [String: String] = ["Sort": Constants.sort, "Category": Constants.category, "Filter": Constants.filter]
     
     init() {
         fetchExpenses()

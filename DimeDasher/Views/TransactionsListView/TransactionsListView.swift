@@ -10,8 +10,8 @@ import SwiftUI
 struct TransactionsListView: View {
     @StateObject var viewModel = TransactionsListViewModel()
     @State private var transactionType: TransactionType = .income
-    @State private var presentSideMenu: Bool = false
-    
+    @State private var filtersPresented: Bool = false
+
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont(name: Constants.ralewayBold, size: 18) ?? UIFont.systemFont(ofSize: 18)],
@@ -24,6 +24,10 @@ struct TransactionsListView: View {
     
     var body: some View {
         ZStack {
+            if filtersPresented {
+                TransactionsListFilterView()
+            }
+            
             Color(Constants.beige)
                 .ignoresSafeArea()
             VStack {
@@ -33,7 +37,7 @@ struct TransactionsListView: View {
                     
                     Spacer()
                     Button {
-                        presentSideMenu.toggle()
+
                     } label: {
                         Image(systemName: Constants.filter)
                             .resizable()
@@ -83,11 +87,13 @@ struct TransactionsListView: View {
                 }
             } // vstack
         } // ztacks
+        .environmentObject(TransactionsListViewModel())
     }
 }
 
 struct TransactionsListView_Previews: PreviewProvider {
     static var previews: some View {
         TransactionsListView()
+            .environmentObject(TransactionsListViewModel())
     }
 }

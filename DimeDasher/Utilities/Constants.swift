@@ -31,7 +31,9 @@ struct Constants {
     static let gear = "gearshape"
     static let dismissButtonImage = "x.circle.fill"
     static let filter = "slider.horizontal.3"
-    
+    static let category = "folder.fill"
+    static let date = "calendar"
+    static let sort = "arrow.up.arrow.down"
     //MARK: - Expense Categories Images
     
     static let income = "dollarsign.circle.fill"
