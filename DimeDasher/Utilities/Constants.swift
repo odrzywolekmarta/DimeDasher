@@ -10,19 +10,23 @@ import SwiftUI
 
 struct Constants {
     //MARK: -  Custom Colors
-    static let beige = "CustomBeige"
-    static let lightPink = "CustomLightPink"
-    static let mediumPink = "CustomMediumPink"
-    static let darkPink = "CustomDarkPink"
+    struct Colors {
+        static let beige = "CustomBeige"
+        static let lightPink = "CustomLightPink"
+        static let mediumPink = "CustomMediumPink"
+        static let darkPink = "CustomDarkPink"
+    }
     
     //MARK: - UI
     static var gradient: LinearGradient {
-        return LinearGradient(gradient: Gradient(colors: [Color(Constants.lightPink), Color(Constants.mediumPink), Color(Constants.darkPink)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        return LinearGradient(gradient: Gradient(colors: [Color(Constants.Colors.lightPink), Color(Constants.Colors.mediumPink), Color(Constants.Colors.darkPink)]), startPoint: .topLeading, endPoint: .bottomTrailing)
     }
     
     //MARK: - Fonts
-    static let raleway = "Raleway-Regular"
-    static let ralewayBold = "Raleway-Bold"
+    struct Fonts {
+        static let raleway = "Raleway-Regular"
+        static let ralewayBold = "Raleway-Bold"
+    }
     
     //MARK: - Images
     static let arrowUpCircleFill = "arrow.up.circle.fill"

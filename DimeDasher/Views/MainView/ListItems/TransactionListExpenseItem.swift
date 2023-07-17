@@ -20,16 +20,16 @@ struct TransactionListExpenseItem: View {
                     .opacity(0.6)
                     .frame(width: 40)
                 Text(expense.type.rawValue)
-                    .font(.custom(Constants.raleway, size: 17))
+                    .font(.custom(Constants.Fonts.raleway, size: 17))
             } // group
             
             Spacer()
             
             VStack(alignment: .center) {
                 Text(expense.amount.moneyValue())
-                    .font(.custom(Constants.ralewayBold, size: 17))
+                    .font(.custom(Constants.Fonts.ralewayBold, size: 17))
                 Text(expense.expenseDate.toString())
-                    .font(.custom(Constants.raleway, size: 15))
+                    .font(.custom(Constants.Fonts.raleway, size: 15))
             } // vstack
         } // hstack
         .padding()
@@ -45,7 +45,7 @@ struct TransactionListExpenseItem: View {
 struct TransactionListExpenseItem_Previews: PreviewProvider {
     static var previews: some View {
         TransactionListExpenseItem(expense: Expense())
-            .background(Color(Constants.beige))
+            .background(Color(Constants.Colors.beige))
             .previewLayout(.sizeThatFits)
     }
 }

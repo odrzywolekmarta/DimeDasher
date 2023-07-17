@@ -15,19 +15,19 @@ struct NewTransactionView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text("Add new")
-                .font(.custom(Constants.ralewayBold, size: 30))
+                .font(.custom(Constants.Fonts.ralewayBold, size: 30))
             Button {
                 transactionType = .income
                 addViewPresented.toggle()
                 newTransactionPresented.toggle()
             } label: {
                 Text("Income")
-                    .font(.custom(Constants.raleway, size: 18))
+                    .font(.custom(Constants.Fonts.raleway, size: 18))
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
             } // button
-            .tint(Color(Constants.mediumPink))
+            .tint(Color(Constants.Colors.mediumPink))
             .buttonStyle(.borderedProminent)
             .padding()
             
@@ -37,12 +37,12 @@ struct NewTransactionView: View {
                 newTransactionPresented.toggle()
             } label: {
                 Text("Expense")
-                    .font(.custom(Constants.raleway, size: 18))
+                    .font(.custom(Constants.Fonts.raleway, size: 18))
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
             } // button
-            .tint(Color(Constants.mediumPink))
+            .tint(Color(Constants.Colors.mediumPink))
             .buttonStyle(.borderedProminent)
             .padding()
         } // vstack
@@ -56,7 +56,7 @@ struct NewTransactionView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20)
-                    .foregroundColor(Color(Constants.lightPink))
+                    .foregroundColor(Color(Constants.Colors.lightPink))
             }
             
         })

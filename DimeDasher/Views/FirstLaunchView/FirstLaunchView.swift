@@ -26,19 +26,19 @@ struct FirstLaunchView: View {
     
     var body: some View {
         ZStack {
-            Color(Constants.lightPink)
+            Color(Constants.Colors.lightPink)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
                 Image("launchImage")
                 Text("Hello!")
-                    .font(.custom(Constants.ralewayBold, size: 40))
+                    .font(.custom(Constants.Fonts.ralewayBold, size: 40))
                 
                 TextField("Enter your name", text: $name)
                     .padding()
-                    .font(.custom(Constants.raleway, size: 20))
+                    .font(.custom(Constants.Fonts.raleway, size: 20))
                     .background(
-                        Color(Constants.beige)
+                        Color(Constants.Colors.beige)
                             .cornerRadius(10))
                     .padding()
                 
@@ -47,9 +47,9 @@ struct FirstLaunchView: View {
                 }
                 .keyboardType(.decimalPad)
                 .padding()
-                .font(.custom(Constants.raleway, size: 20))
+                .font(.custom(Constants.Fonts.raleway, size: 20))
                 .background(
-                    Color(Constants.beige)
+                    Color(Constants.Colors.beige)
                         .cornerRadius(10))
                 .padding()
                 
@@ -61,7 +61,7 @@ struct FirstLaunchView: View {
                     //
                 } // picker
                 .background(
-                    Color(Constants.beige)             .cornerRadius(10))
+                    Color(Constants.Colors.beige)             .cornerRadius(10))
                 .tint(.black)
                 .padding()
                 
@@ -69,9 +69,9 @@ struct FirstLaunchView: View {
                     viewModel.saveDefaults(name: name, balance: startingBalance ?? 0, currency: chosenCurrency)
                 } label: {
                     Text("Start")
-                        .font(.custom(Constants.raleway, size: 20))
+                        .font(.custom(Constants.Fonts.raleway, size: 20))
                 }
-                .tint(Color(Constants.darkPink))
+                .tint(Color(Constants.Colors.darkPink))
                 .buttonStyle(.borderedProminent)
                 .padding()
 

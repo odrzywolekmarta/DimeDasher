@@ -6,12 +6,26 @@
 //
 
 import Foundation
+import Collections
+
+enum FilterType {
+    case sort
+    case categories
+    case dates
+}
+
+enum SortType {
+    case highest
+    case lowest
+    case newest
+    case oldest
+}
 
 @MainActor final class TransactionsListViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
     @Published var expenses: [Expense] = []
     @Published var income: [Income] = []
-    let sideMenuItems: [String: String] = ["Sort": Constants.sort, "Category": Constants.category, "Filter": Constants.filter]
+    let sideMenuItems: OrderedDictionary = ["Sort": Constants.sort, "Category": Constants.category, "Filter": Constants.filter]
     
     init() {
         fetchExpenses()

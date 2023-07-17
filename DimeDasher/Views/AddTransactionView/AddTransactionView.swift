@@ -23,11 +23,11 @@ struct AddTransactionView: View {
     
     var body: some View {
         ZStack {
-            Color(Constants.beige)
+            Color(Constants.Colors.beige)
                 .ignoresSafeArea()
             VStack(spacing: 0) {
                 Text("Add new \(transactionType.rawValue)")
-                    .font(.custom(Constants.ralewayBold, size: 30))
+                    .font(.custom(Constants.Fonts.ralewayBold, size: 30))
                     .padding()
                 DatePicker("", selection: $date, displayedComponents: .date)
                 .padding()
@@ -39,7 +39,7 @@ struct AddTransactionView: View {
                 }
                 .keyboardType(.decimalPad)
                 .padding()
-                .font(.custom(Constants.raleway, size: 20))
+                .font(.custom(Constants.Fonts.raleway, size: 20))
                 .background(
                     Color.white
                         .cornerRadius(10))
@@ -54,7 +54,7 @@ struct AddTransactionView: View {
                 
                 TextField("Note..", text: $transactionDescription, axis: .vertical)
                     .padding()
-                    .font(.custom(Constants.raleway, size: 20))
+                    .font(.custom(Constants.Fonts.raleway, size: 20))
                     .padding()
 
                 Button {
@@ -72,7 +72,7 @@ struct AddTransactionView: View {
                 }
                 .padding()
                 .background(
-                    Color(self.amount == nil ? Constants.lightPink : Constants.mediumPink)
+                    Color(self.amount == nil ? Constants.Colors.lightPink : Constants.Colors.mediumPink)
                         .cornerRadius(10)
                 )
                 .buttonStyle(.borderless)

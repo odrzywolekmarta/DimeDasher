@@ -13,11 +13,11 @@ struct ShortTransactionList: View {
     
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
-            [.font: UIFont(name: Constants.ralewayBold, size: 18) ?? UIFont.systemFont(ofSize: 18)],
+            [.font: UIFont(name: Constants.Fonts.ralewayBold, size: 18) ?? UIFont.systemFont(ofSize: 18)],
             for: .selected)
         
         UISegmentedControl.appearance().setTitleTextAttributes(
-            [.font: UIFont(name: Constants.raleway, size: 18) ?? UIFont.systemFont(ofSize: 18)],
+            [.font: UIFont(name: Constants.Fonts.raleway, size: 18) ?? UIFont.systemFont(ofSize: 18)],
             for: .normal)
     }
     
@@ -25,14 +25,14 @@ struct ShortTransactionList: View {
         VStack(spacing: 0) {
             HStack {
                 Text("Transactions")
-                    .font(.custom(Constants.ralewayBold, size: 20))
+                    .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                 Spacer()
                 NavigationLink {
                     TransactionsListView()
                 } label: {
                     Text("See all")
-                        .font(.custom(Constants.raleway, size: 17))
-                        .foregroundColor(Color(Constants.darkPink))
+                        .font(.custom(Constants.Fonts.raleway, size: 17))
+                        .foregroundColor(Color(Constants.Colors.darkPink))
                 }
             } // hstack
             .padding()
@@ -43,9 +43,9 @@ struct ShortTransactionList: View {
                     Text(transaction.rawValue)
                 }
             }
-            .font(.custom(Constants.raleway, size: 17))
+            .font(.custom(Constants.Fonts.raleway, size: 17))
             .pickerStyle(.segmented)
-            .colorMultiply(Color(Constants.lightPink))
+            .colorMultiply(Color(Constants.Colors.lightPink))
             .cornerRadius(4)
             .padding(.horizontal )
             
@@ -57,10 +57,10 @@ struct ShortTransactionList: View {
                     TransactionListIncomeItem(income: income)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .background(Color(Constants.beige))
+                        .background(Color(Constants.Colors.beige))
                 } // list
                 .listStyle(PlainListStyle())
-                .background(Color(Constants.beige))
+                .background(Color(Constants.Colors.beige))
                 .scrollContentBackground(.hidden)
             case .expense:
                 List($viewModel.shortExpenses, id: \.self,
@@ -68,10 +68,10 @@ struct ShortTransactionList: View {
                     TransactionListExpenseItem(expense: expense)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .background(Color(Constants.beige))
+                        .background(Color(Constants.Colors.beige))
                 } // list
                 .listStyle(PlainListStyle())
-                .background(Color(Constants.beige))
+                .background(Color(Constants.Colors.beige))
                 .scrollContentBackground(.hidden)
             }
         }

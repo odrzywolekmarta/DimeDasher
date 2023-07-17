@@ -20,16 +20,16 @@ struct IncomeListItem: View {
                     .opacity(0.6)
                     .frame(width: 40)
                 Text(income.type.rawValue)
-                    .font(.custom(Constants.raleway, size: 17))
+                    .font(.custom(Constants.Fonts.raleway, size: 17))
             } // group
             
             Spacer()
             
             VStack(alignment: .center) {
                 Text(income.amount.moneyValue())
-                    .font(.custom(Constants.ralewayBold, size: 17))
+                    .font(.custom(Constants.Fonts.ralewayBold, size: 17))
                 Text(income.incomeDate?.toString() ?? "")
-                    .font(.custom(Constants.raleway, size: 15))
+                    .font(.custom(Constants.Fonts.raleway, size: 15))
             } // vstack
         } // hstack
         .padding()

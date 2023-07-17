@@ -20,35 +20,35 @@ struct SummaryView: View {
                 VStack(alignment: .center, spacing: 20) {
                     VStack {
                         Text("Total balance")
-                            .font(.custom(Constants.ralewayBold, size: 20))
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                         Text(viewModel.balance)
-                            .font(.custom(Constants.ralewayBold, size: 60))
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 60))
                     } // vstack
                    
                     HStack(spacing: 70) {
                         VStack {
                             Text("Income")
-                                .font(.custom(Constants.ralewayBold, size: 18))
+                                .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                             Text("this month")
-                                .font(.custom(Constants.raleway, size: 14))
+                                .font(.custom(Constants.Fonts.raleway, size: 14))
                             HStack {
                                 Image(systemName: Constants.arrowUpCircleFill)
                                     .opacity(0.6)
                                 Text("$3000")
-                                    .font(.custom(Constants.ralewayBold, size: 18))
+                                    .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                             } // hstacl
                         }// vstack
                         
                         VStack {
                             Text("Expenses")
-                                .font(.custom(Constants.ralewayBold, size: 18))
+                                .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                             Text("this month")
-                                .font(.custom(Constants.raleway, size: 14))
+                                .font(.custom(Constants.Fonts.raleway, size: 14))
                             HStack {
                                 Image(systemName: Constants.arrowDownCircleFill)
                                     .opacity(0.6)
                                 Text("$1790")
-                                    .font(.custom(Constants.ralewayBold, size: 18))
+                                    .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                             } // hstack
                         }// vstack
                         

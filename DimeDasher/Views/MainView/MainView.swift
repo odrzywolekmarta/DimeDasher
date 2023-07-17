@@ -12,7 +12,7 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            Color(Constants.beige)
+            Color(Constants.Colors.beige)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {

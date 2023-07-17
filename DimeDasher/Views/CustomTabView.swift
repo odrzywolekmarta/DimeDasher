@@ -22,7 +22,7 @@ struct CustomTabView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30)
-                    .foregroundColor(selectedTab == .main ? Color(Constants.darkPink) : Color(Constants.lightPink))
+                    .foregroundColor(selectedTab == .main ? Color(Constants.Colors.darkPink) : Color(Constants.Colors.lightPink))
             } // button
 
             Spacer()
@@ -35,12 +35,12 @@ struct CustomTabView: View {
                 ZStack {
                     Circle()
                         .frame(width: 80)
-                        .foregroundColor(Color(Constants.lightPink))
+                        .foregroundColor(Color(Constants.Colors.lightPink))
                     Image(systemName: "plus.circle.fill")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70)
-                        .foregroundColor(Color(Constants.darkPink))
+                        .foregroundColor(Color(Constants.Colors.darkPink))
                         
                 }
                 
@@ -56,7 +56,7 @@ struct CustomTabView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30)
-                    .foregroundColor(selectedTab == .chart ? Color(Constants.darkPink) : Color(Constants.lightPink)).foregroundColor(selectedTab == .main ? Color(Constants.darkPink) : Color(Constants.lightPink))
+                    .foregroundColor(selectedTab == .chart ? Color(Constants.Colors.darkPink) : Color(Constants.Colors.lightPink)).foregroundColor(selectedTab == .main ? Color(Constants.Colors.darkPink) : Color(Constants.Colors.lightPink))
             }
             
             Spacer()

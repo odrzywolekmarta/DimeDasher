@@ -29,6 +29,8 @@
 		2D1940652A55503700A45537 /* IncomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940642A55503600A45537 /* IncomeListItem.swift */; };
 		2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940662A56008F00A45537 /* ExpenseListItem.swift */; };
 		2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */; };
+		2D3721A72A6513970038FBCB /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721A62A6513970038FBCB /* SideMenuView.swift */; };
+		2D3721A92A652B100038FBCB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721A82A652B100038FBCB /* FilterView.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		2D1940642A55503600A45537 /* IncomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListItem.swift; sourceTree = "<group>"; };
 		2D1940662A56008F00A45537 /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
 		2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListFilterView.swift; sourceTree = "<group>"; };
+		2D3721A62A6513970038FBCB /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		2D3721A82A652B100038FBCB /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */,
 				2D19405C2A55380E00A45537 /* TransactionsListView.swift */,
 				2D1940632A554FD400A45537 /* ListItems */,
+				2D3721A62A6513970038FBCB /* SideMenuView.swift */,
+				2D3721A82A652B100038FBCB /* FilterView.swift */,
 			);
 			path = TransactionsListView;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 				2DA7D7A82A4AC78100F25939 /* MainView.swift in Sources */,
 				2D1940162A4DE58100A45537 /* AddTransactionViewModel.swift in Sources */,
 				2D1940482A5358B900A45537 /* IncomePickerView.swift in Sources */,
+				2D3721A72A6513970038FBCB /* SideMenuView.swift in Sources */,
 				2D19405A2A548FD800A45537 /* TransactionListIncomeItem.swift in Sources */,
 				2D1940142A4DE33A00A45537 /* AddTransactionView.swift in Sources */,
 				2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */,
@@ -399,6 +406,7 @@
 				2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */,
 				2DA7D7B02A4AD10500F25939 /* Constants.swift in Sources */,
 				2DA7D7D02A4CC45C00F25939 /* MainViewModel.swift in Sources */,
+				2D3721A92A652B100038FBCB /* FilterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

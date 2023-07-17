@@ -18,10 +18,10 @@ struct HeaderView: View {
                 .frame(height: 50)
             VStack(alignment: .leading) {
                 Text("Hello!")
-                    .font(.custom(Constants.raleway, size: 17))
+                    .font(.custom(Constants.Fonts.raleway, size: 17))
                     .opacity(0.5)
                 Text(viewModel.username)
-                    .font(.custom(Constants.ralewayBold, size: 20))
+                    .font(.custom(Constants.Fonts.ralewayBold, size: 20))
             }
             
             Spacer()
@@ -33,7 +33,7 @@ struct HeaderView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 30)
-                    .foregroundColor(Color(Constants.darkPink))
+                    .foregroundColor(Color(Constants.Colors.darkPink))
             }
 
         } // vstack
@@ -45,7 +45,7 @@ struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
         HeaderView()
             .previewLayout(.sizeThatFits)
-            .background(Color(Constants.beige))
+            .background(Color(Constants.Colors.beige))
             .environmentObject(MainViewModel(forPreview: true))
     }
 }
