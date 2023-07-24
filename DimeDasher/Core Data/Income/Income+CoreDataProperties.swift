@@ -18,7 +18,7 @@ extension Income {
 
     @NSManaged public var id: UUID?
     @NSManaged public var amount: Double
-    @NSManaged public var incomeDate: Date?
+    @NSManaged public var incomeDate: Date
     @NSManaged public var incomeDescription: String?
     @NSManaged public var incomeType: IncomeType
     

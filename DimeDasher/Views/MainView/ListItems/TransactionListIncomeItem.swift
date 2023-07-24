@@ -28,7 +28,7 @@ struct TransactionListIncomeItem: View {
             VStack(alignment: .center) {
                 Text(income.amount.moneyValue())
                     .font(.custom(Constants.Fonts.ralewayBold, size: 17))
-                Text(income.incomeDate?.toString() ?? "")
+                Text(income.incomeDate.toString())
                     .font(.custom(Constants.Fonts.raleway, size: 15))
             } // vstack
         } // hstack
