@@ -33,18 +33,7 @@ struct TransactionsListView: View {
                         .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                     
                     Spacer()
-                    
-                    Button {
-                        withAnimation {
-                            sideBarVisible.toggle()
-                        }
-                    } label: {
-                        Image(systemName: Constants.filter)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 20)
-                            .foregroundColor(Color(Constants.Colors.darkPink))
-                    }
+                  
                 } // hstack
                 .padding()
                 
@@ -87,15 +76,42 @@ struct TransactionsListView: View {
                          .scrollContentBackground(.hidden)
                 }
             } // vstack
-           
         } // ztacks
         .overlay(content: {
-            if sideBarVisible {
-                SideMenuView(sideBarVisible: $sideBarVisible, filtersVisible: $filtersVisible)
-                    .transition(.move(edge: .leading))
-            }
+                SideMenuView(sideBarVisible: $sideBarVisible)
+                    .hidden(!sideBarVisible)
         })
         .environmentObject(viewModel)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(Color(Constants.Colors.darkPink))
+                        Text("Back")
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 18))
+                        .foregroundColor(Color(Constants.Colors.darkPink))
+                    }
+                }
+
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    withAnimation {
+                        sideBarVisible.toggle()
+                    }
+                } label: {
+                    Image(systemName: Constants.filter)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 20)
+                        .foregroundColor(Color(Constants.Colors.darkPink))
+                }
+            }
+        } // toolbar
     }
 }
 

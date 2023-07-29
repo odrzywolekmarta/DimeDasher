@@ -26,7 +26,7 @@ extension Date {
 extension Double {
     func stringWithTwoDecimal() -> String {
         let formatter = NumberFormatter()
-//        formatter.minimumFractionDigits = 2
+        //        formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(floatLiteral: self)) ?? ""
     }
@@ -52,8 +52,22 @@ extension String {
 
 //MARK: - View
 extension View {
-  func endTextEditing() {
-    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                    to: nil, from: nil, for: nil)
-  }
+    func endTextEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil, from: nil, for: nil)
+    }
+    
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+        if hidden {
+            if !remove {
+                self.hidden()
+            }
+        } else {
+            self
+        }
+    }
+    
+    func hidden(_ shouldHide: Bool) -> some View {
+           opacity(shouldHide ? 0 : 1)
+       }
 }

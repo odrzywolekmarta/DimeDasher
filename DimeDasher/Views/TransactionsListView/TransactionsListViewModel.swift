@@ -55,11 +55,15 @@ enum DateSelection: String, CaseIterable {
     }
     
     func fetchExpenses() {
-        expenses = persistenceController.fetchExpenses()
+        expenses = persistenceController.fetchExpenses().sorted {
+            $0.expenseDate > $1.expenseDate
+        }
     }
     
     func fetchIncome() {
-        income = persistenceController.fetchIncome()
+        income = persistenceController.fetchIncome().sorted {
+            $0.incomeDate > $1.incomeDate
+        }
     }
     
     func applyFilers(fromDate: Date? = nil, toDate: Date? = nil, dates: Set<DateComponents>? = nil, categories: [String], sort: SortType) {

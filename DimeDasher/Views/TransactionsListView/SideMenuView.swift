@@ -18,7 +18,6 @@ struct SideMenuView: View {
     @State private var isSelectingFromDate: Bool = false
     @State private var isSelectingToDate: Bool = false
     @Binding var sideBarVisible: Bool
-    @Binding var filtersVisible: Bool
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
     
     func setDatesOnPickers() {
@@ -148,11 +147,11 @@ struct SideMenuView: View {
                             }
                             .buttonStyle(.bordered)
                             Button {
-//                                selectedToDate = nil
-//                                selectedFromDate = nil
                                 selectedCategories = []
                                 selectedDates = []
                                 selectedSorting = .newest
+                                viewModel.fetchExpenses()
+                                viewModel.fetchIncome()
                             } label: {
                                 Text("Clear")
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 20))
@@ -179,7 +178,7 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(sideBarVisible: .constant(true), filtersVisible: .constant(true))
+        SideMenuView(sideBarVisible: .constant(true))
             .environmentObject(TransactionsListViewModel())
     }
 }
