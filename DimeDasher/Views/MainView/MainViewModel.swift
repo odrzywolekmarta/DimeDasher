@@ -12,9 +12,9 @@ import Foundation
     @Published var username: String = ""
     @Published var balance: String = ""
     @Published var expenses: [ExpenseModel] = []
-    @Published var income: [Income] = []
+    @Published var income: [IncomeModel] = []
     @Published var shortExpenses: [ExpenseModel] = []
-    @Published var shortIncome: [Income] = []
+    @Published var shortIncome: [IncomeModel] = []
     
     let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -73,8 +73,8 @@ extension MainViewModel {
         inc.incomeDate = Date()
         inc.type = .work
         inc.incomeDescription = "salary"
-        income = [inc, inc, inc, inc, inc, inc, inc, inc]
-        shortIncome = [inc, inc, inc]
+//        income = [inc, inc, inc, inc, inc, inc, inc, inc]
+//        shortIncome = [inc, inc, inc]
 //        shortExpenses = [expense, expense, expense]
     }
 }

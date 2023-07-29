@@ -11,33 +11,35 @@ struct HeaderView: View {
     @EnvironmentObject var viewModel: MainViewModel
     
     var body: some View {
-        HStack {
-            Image(systemName: Constants.personCircle)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 50)
-            VStack(alignment: .leading) {
-                Text("Hello!")
-                    .font(.custom(Constants.Fonts.raleway, size: 17))
-                    .opacity(0.5)
-                Text(viewModel.username)
-                    .font(.custom(Constants.Fonts.ralewayBold, size: 20))
-            }
-            
-            Spacer()
-            
-            Button {
-                
-            } label: {
-                Image(systemName: Constants.gear)
+            HStack {
+                Image(systemName: Constants.personCircle)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 30)
-                    .foregroundColor(Color(Constants.Colors.darkPink))
-            }
-
-        } // vstack
-        .padding()
+                    .frame(height: 50)
+                VStack(alignment: .leading) {
+                    Text("Hello!")
+                        .font(.custom(Constants.Fonts.raleway, size: 17))
+                        .opacity(0.5)
+                    Text(viewModel.username)
+                        .font(.custom(Constants.Fonts.ralewayBold, size: 20))
+                }
+                
+                Spacer()
+                
+                NavigationLink {
+                    SettingsView {
+                        viewModel.fetchIncome()
+                        viewModel.fetchExpenses()
+                    }
+                } label: {
+                    Image(systemName: Constants.gear)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .foregroundColor(Color(Constants.Colors.darkPink))
+                } // navigation link
+            } // vstack
+            .padding()
     }
 }
 

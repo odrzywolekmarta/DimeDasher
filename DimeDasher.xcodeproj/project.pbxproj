@@ -33,6 +33,13 @@
 		2D3721A92A652B100038FBCB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721A82A652B100038FBCB /* FilterView.swift */; };
 		2D3721AE2A72657E0038FBCB /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */; };
 		2D3721B02A7587CE0038FBCB /* NilDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */; };
+		2D3721B42A75ACA40038FBCB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721B32A75ACA40038FBCB /* SettingsView.swift */; };
+		2D3721B72A75AE990038FBCB /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721B62A75AE990038FBCB /* SettingsSectionHeaderView.swift */; };
+		2D3721B92A75B0500038FBCB /* WhiteGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721B82A75B0500038FBCB /* WhiteGroupBox.swift */; };
+		2D3721BD2A75B9620038FBCB /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721BC2A75B9620038FBCB /* SettingsRowView.swift */; };
+		2D3721BF2A75C1340038FBCB /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721BE2A75C1340038FBCB /* GeneralSettingsView.swift */; };
+		2D3721C12A75C3A30038FBCB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C02A75C3A30038FBCB /* SettingsViewModel.swift */; };
+		2D3721C32A75CC4A0038FBCB /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -79,6 +86,13 @@
 		2D3721A82A652B100038FBCB /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilDatePicker.swift; sourceTree = "<group>"; };
+		2D3721B32A75ACA40038FBCB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2D3721B62A75AE990038FBCB /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
+		2D3721B82A75B0500038FBCB /* WhiteGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteGroupBox.swift; sourceTree = "<group>"; };
+		2D3721BC2A75B9620038FBCB /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		2D3721BE2A75C1340038FBCB /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		2D3721C02A75C3A30038FBCB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,14 +143,14 @@
 			path = AddTransactionView;
 			sourceTree = "<group>";
 		};
-		2D1940392A51889C00A45537 /* Core Data */ = {
+		2D1940392A51889C00A45537 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
 				2D19403F2A51B49800A45537 /* Persistence */,
 				2D19404F2A54314F00A45537 /* Income */,
 				2D19403A2A5188AC00A45537 /* Expense */,
 			);
-			path = "Core Data";
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		2D19403A2A5188AC00A45537 /* Expense */ = {
@@ -165,6 +179,7 @@
 				2DA7D7AF2A4AD10500F25939 /* Constants.swift */,
 				2D1940452A51DDE200A45537 /* Extensions.swift */,
 				2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */,
+				2D3721B82A75B0500038FBCB /* WhiteGroupBox.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -214,8 +229,21 @@
 			isa = PBXGroup;
 			children = (
 				2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */,
+				2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2D3721B52A75AE6D0038FBCB /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				2D3721C02A75C3A30038FBCB /* SettingsViewModel.swift */,
+				2D3721B32A75ACA40038FBCB /* SettingsView.swift */,
+				2D3721B62A75AE990038FBCB /* SettingsSectionHeaderView.swift */,
+				2D3721BC2A75B9620038FBCB /* SettingsRowView.swift */,
+				2D3721BE2A75C1340038FBCB /* GeneralSettingsView.swift */,
+			);
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		2DA7D77F2A4AB76C00F25939 = {
@@ -240,7 +268,7 @@
 				2DA7D7B92A4AE79C00F25939 /* Info.plist */,
 				2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */,
 				2D1940442A51DDCC00A45537 /* Utilities */,
-				2D1940392A51889C00A45537 /* Core Data */,
+				2D1940392A51889C00A45537 /* DataBase */,
 				2DA7D79E2A4AC5AB00F25939 /* Views */,
 				2D3721AA2A6DBABA0038FBCB /* Models */,
 				2DA7D7B42A4AE72E00F25939 /* Fonts */,
@@ -281,6 +309,7 @@
 				2DA7D7BC2A4AEECA00F25939 /* HeaderView.swift */,
 				2DA7D7B22A4AE4FC00F25939 /* SummaryView.swift */,
 				2DA7D7BE2A4AF1BB00F25939 /* ShortTransactionList.swift */,
+				2D3721B52A75AE6D0038FBCB /* SettingsView */,
 				2D1940622A554F9B00A45537 /* ListItems */,
 			);
 			path = MainView;
@@ -385,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DA7D7AC2A4ACB2200F25939 /* TabsContentView.swift in Sources */,
+				2D3721BD2A75B9620038FBCB /* SettingsRowView.swift in Sources */,
 				2D19404D2A54313800A45537 /* Income+CoreDataClass.swift in Sources */,
 				2DA7D7952A4AB76D00F25939 /* Persistence.swift in Sources */,
 				2D3721B02A7587CE0038FBCB /* NilDatePicker.swift in Sources */,
@@ -409,12 +439,18 @@
 				2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */,
 				2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */,
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
+				2D3721BF2A75C1340038FBCB /* GeneralSettingsView.swift in Sources */,
+				2D3721B42A75ACA40038FBCB /* SettingsView.swift in Sources */,
 				2D3721AE2A72657E0038FBCB /* ExpenseModel.swift in Sources */,
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
+				2D3721C32A75CC4A0038FBCB /* IncomeModel.swift in Sources */,
+				2D3721B72A75AE990038FBCB /* SettingsSectionHeaderView.swift in Sources */,
 				2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */,
 				2DA7D7BF2A4AF1BB00F25939 /* ShortTransactionList.swift in Sources */,
 				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
 				2DA7D7C12A4AF1C900F25939 /* TransactionListExpenseItem.swift in Sources */,
+				2D3721C12A75C3A30038FBCB /* SettingsViewModel.swift in Sources */,
+				2D3721B92A75B0500038FBCB /* WhiteGroupBox.swift in Sources */,
 				2D1940382A5184C400A45537 /* Expense+CoreDataProperties.swift in Sources */,
 				2D1940462A51DDE200A45537 /* Extensions.swift in Sources */,
 				2D19405F2A55386800A45537 /* TransactionsListViewModel.swift in Sources */,

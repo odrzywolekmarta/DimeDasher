@@ -9,19 +9,20 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @State private var isNavigationBarHidden: Bool = true
     
     var body: some View {
-        ZStack {
-            Color(Constants.Colors.beige)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-            HeaderView()
-            SummaryView()
-            ShortTransactionList()
-                Spacer()
-            } // vstack
-        } // zstack
+            ZStack {
+                Color(Constants.Colors.beige)
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    HeaderView()
+                    SummaryView()
+                    ShortTransactionList()
+                    Spacer()
+                } // vstack
+            } // zstack
     }
 }
 

@@ -47,7 +47,7 @@ enum DateSelection: String, CaseIterable {
 @MainActor final class TransactionsListViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
     @Published var expenses: [ExpenseModel] = [] 
-    @Published var income: [Income] = []
+    @Published var income: [IncomeModel] = []
     
     init() {
         fetchExpenses()

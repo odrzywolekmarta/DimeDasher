@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct SettingsSectionHeaderView: View {
+    var title: String
+    var icon: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text(title)
+                .font(.custom(Constants.Fonts.ralewayBold, size: 17))
+            Spacer()
+            Image(systemName: icon)
+                .foregroundColor(Color(Constants.Colors.darkPink))
+        } // hstack
     }
 }
 
 struct SettingsSectionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsSectionHeaderView()
+        SettingsSectionHeaderView(title: "Application", icon: "info.circle")
     }
 }

@@ -9,19 +9,17 @@ import SwiftUI
 
 struct TransactionListIncomeItem: View {
     @EnvironmentObject var viewModel: MainViewModel
-    var income: Income
+    var income: IncomeModel
     
     var body: some View {
         HStack {
-            Group {
                 Image(systemName: Constants.income)
                     .resizable()
                     .scaledToFit()
                     .opacity(0.6)
                     .frame(width: 40)
-                Text(income.type.rawValue)
+                Text(income.incomeType.rawValue)
                     .font(.custom(Constants.Fonts.raleway, size: 17))
-            } // group
             
             Spacer()
             
@@ -44,7 +42,7 @@ struct TransactionListIncomeItem: View {
 
 struct TransactionListIncomeItem_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListIncomeItem(income: Income())
+        TransactionListIncomeItem(income: IncomeModel.init(incomeType: .gift, incomeDescription: "gift", amount: 200, incomeDate: Date()))
             .background(Color(Constants.Colors.beige))
             .previewLayout(.sizeThatFits)
     }
