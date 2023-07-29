@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TransactionsListView: View {
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = TransactionsListViewModel()
     @State private var transactionType: TransactionType = .income
     @State private var sideBarVisible: Bool = false
@@ -86,7 +87,7 @@ struct TransactionsListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    
+                    dismiss()
                 } label: {
                     HStack {
                         Image(systemName: "chevron.left")
@@ -96,7 +97,7 @@ struct TransactionsListView: View {
                         .foregroundColor(Color(Constants.Colors.darkPink))
                     }
                 }
-
+                .hidden(sideBarVisible)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
@@ -112,6 +113,7 @@ struct TransactionsListView: View {
                 }
             }
         } // toolbar
+        .toolbarBackground(.hidden, for: .navigationBar)
     }
 }
 

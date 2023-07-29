@@ -165,11 +165,10 @@ struct SideMenuView: View {
                 } // list
                 .tint(Color(Constants.Colors.darkPink))
                 .background(Color(Constants.Colors.lightPink))
-                
                 .listStyle(.plain)
                 .frame(width: sideBarWidth)
                 .offset(x: sideBarVisible ? 0 : -sideBarWidth)
-                
+        
                 Spacer()
             } // hstack
         } // zstack

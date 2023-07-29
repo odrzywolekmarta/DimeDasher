@@ -31,12 +31,16 @@ import Foundation
     }
     
     func fetchExpenses() {
-        expenses = persistenceController.fetchExpenses()
+        expenses = persistenceController.fetchExpenses().sorted {
+            $0.expenseDate > $1.expenseDate
+        }
         shortExpenses = Array(expenses.prefix(10))
     }
     
     func fetchIncome() {
-        income = persistenceController.fetchIncome()
+        income = persistenceController.fetchIncome().sorted {
+                $0.incomeDate > $1.incomeDate
+            }
         shortIncome = Array(income.prefix(10))
     }
     
