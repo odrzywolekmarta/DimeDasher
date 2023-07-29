@@ -46,7 +46,7 @@ enum DateSelection: String, CaseIterable {
 
 @MainActor final class TransactionsListViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
-    @Published var expenses: [Expense] = []
+    @Published var expenses: [ExpenseModel] = [] 
     @Published var income: [Income] = []
     
     init() {
@@ -62,41 +62,67 @@ enum DateSelection: String, CaseIterable {
         income = persistenceController.fetchIncome()
     }
     
-    func sort(_ type: SortType) {
-        switch type {
+    func applyFilers(fromDate: Date? = nil, toDate: Date? = nil, dates: Set<DateComponents>? = nil, categories: [String], sort: SortType) {
+        print(expenses)
+        if let dates = dates {
+            expenses = expenses.filter { expense in
+                let components = Calendar.current.dateComponents([.day, .month, .year], from: expense.expenseDate)
+                return dates.contains(components)
+            }
+        }
+        
+        if let from = fromDate,
+           let to = toDate {
+            expenses = expenses.filter { expense in
+                (from...to).contains(expense.expenseDate)
+            }
+        } else if let from = fromDate {
+            expenses = expenses.filter { expense in
+                (from...).contains(expense.expenseDate)
+            }
+        } else if let to = toDate {
+            expenses = expenses.filter { expense in
+                (...to).contains(expense.expenseDate)
+            }
+        }
+        
+        if categories.count > 0 {
+            expenses = expenses.filter { expense in
+                categories.contains(expense.expenseType.rawValue)
+            }
+        }
+        
+        switch sort {
         case .highest:
-            expenses.sort {
+            expenses = expenses.sorted {
                 $0.amount > $1.amount
             }
             income.sort {
                 $0.amount > $1.amount
             }
         case .lowest:
-            expenses.sort {
+            expenses = expenses.sorted {
                 $0.amount < $1.amount
             }
             income.sort {
                 $0.amount < $1.amount
             }
         case .newest:
-            expenses.sort {
-                $0.expenseDate < $1.expenseDate
-            }
-            income.sort {
-                $0.incomeDate < $1.incomeDate
-            }
-        case .oldest:
-            expenses.sort {
+            expenses = expenses.sorted {
                 $0.expenseDate > $1.expenseDate
             }
             income.sort {
                 $0.incomeDate > $1.incomeDate
             }
+        case .oldest:
+            expenses = expenses.sorted {
+                $0.expenseDate < $1.expenseDate
+            }
+            income.sort {
+                $0.incomeDate < $1.incomeDate
+            }
         }
-    }
-    
-    func filterCategories(selectedCategories: [String]) {
-        
+        print(expenses)
     }
 }
 

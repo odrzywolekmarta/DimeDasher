@@ -11,9 +11,9 @@ import Foundation
     private let persistenceController = PersistenceController.shared
     @Published var username: String = ""
     @Published var balance: String = ""
-    @Published var expenses: [Expense] = []
+    @Published var expenses: [ExpenseModel] = []
     @Published var income: [Income] = []
-    @Published var shortExpenses: [Expense] = []
+    @Published var shortExpenses: [ExpenseModel] = []
     @Published var shortIncome: [Income] = []
     
     let currencyFormatter: NumberFormatter = {
@@ -62,7 +62,7 @@ extension MainViewModel {
         expense.expenseDescription = "test"
         expense.type = .books
         expense.expenseDate = Date()
-        expenses = [expense, expense, expense, expense, expense, expense]
+//        expenses = [expense, expense, expense, expense, expense, expense]
         let inc = Income(context: persistenceController.viewContext)
         inc.id = UUID()
         inc.amount = 1000
@@ -71,6 +71,6 @@ extension MainViewModel {
         inc.incomeDescription = "salary"
         income = [inc, inc, inc, inc, inc, inc, inc, inc]
         shortIncome = [inc, inc, inc]
-        shortExpenses = [expense, expense, expense]
+//        shortExpenses = [expense, expense, expense]
     }
 }

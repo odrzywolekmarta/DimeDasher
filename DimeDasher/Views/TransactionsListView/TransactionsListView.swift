@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TransactionsListView: View {
-    @StateObject var viewModel = TransactionsListViewModel()
+    @ObservedObject var viewModel = TransactionsListViewModel()
     @State private var transactionType: TransactionType = .income
     @State private var sideBarVisible: Bool = false
     @State private var filtersVisible: Bool = false
@@ -74,12 +74,13 @@ struct TransactionsListView: View {
                          .background(Color(Constants.Colors.beige))
                          .scrollContentBackground(.hidden)
                 case .expense:
-                    List($viewModel.expenses, id: \.self,
-                         editActions: .delete) { $expense in
-                        TransactionListExpenseItem(expense: expense)
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            .background(Color(Constants.Colors.beige))
+                    List {
+                        ForEach($viewModel.expenses, id: \.id) { $expense in
+                            TransactionListExpenseItem(expense: expense)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .background(Color(Constants.Colors.beige))
+                        } // foreach
                     } // list
                          .listStyle(PlainListStyle())
                          .background(Color(Constants.Colors.beige))
@@ -94,7 +95,7 @@ struct TransactionsListView: View {
                     .transition(.move(edge: .leading))
             }
         })
-        .environmentObject(TransactionsListViewModel())
+        .environmentObject(viewModel)
     }
 }
 

@@ -47,6 +47,7 @@ struct TabsContentView: View {
                     .zIndex(1)
             }
         } // zstack
+
         .edgesIgnoringSafeArea(.bottom)
         .sheet(isPresented: $addViewPresented, onDismiss: {
             mainViewModel.fetchExpenses()

@@ -9,12 +9,16 @@ import Foundation
 import CoreData
 
 extension PersistenceController {
-    func fetchExpenses() -> [Expense] {
+    func fetchExpenses() -> [ExpenseModel] {
         let request = NSFetchRequest<Expense>(entityName: "Expense")
-        
+        var expensesArray: [ExpenseModel] = []
         do {
             let expenses = try viewContext.fetch(request)
-            return expenses
+            for expense in expenses {
+                let exp = ExpenseModel(expenseType: expense.type, expenseDescription: expense.expenseDescription ?? "", amount: expense.amount, expenseDate: expense.expenseDate)
+                expensesArray.append(exp)
+            }
+            return expensesArray
         } catch let error {
             print("Error fetchin expenses data: \(error.localizedDescription)")
             return []

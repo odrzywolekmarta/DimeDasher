@@ -9,19 +9,18 @@ import SwiftUI
 
 struct ExpenseListItem: View {
     @EnvironmentObject var viewModel: TransactionsListViewModel
-    var expense: Expense
+    var expense: ExpenseModel
     
     var body: some View {
         HStack {
-            Group {
-                Image(systemName: expense.type.imageName)
+            
+                Image(systemName: expense.expenseType.imageName)
                     .resizable()
                     .scaledToFit()
                     .opacity(0.6)
                     .frame(width: 40)
-                Text(expense.type.rawValue)
+                Text(expense.expenseType.rawValue)
                     .font(.custom(Constants.Fonts.raleway, size: 17))
-            } // group
             
             Spacer()
             
@@ -44,7 +43,7 @@ struct ExpenseListItem: View {
 
 struct ExpenseListItem_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenseListItem(expense: Expense())
+        ExpenseListItem(expense: ExpenseModel(expenseType: .books, expenseDescription: "harry potter", amount: 30, expenseDate: Date()))
             .environmentObject(TransactionsListViewModel())
     }
 }
