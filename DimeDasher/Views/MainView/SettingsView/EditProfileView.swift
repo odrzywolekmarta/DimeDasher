@@ -21,11 +21,15 @@ struct EditProfileView: View {
                     .padding()
                 ZStack {
                     if let image = viewModel.selectedPhoto {
+                        Circle()
+                            .fill(Color(Constants.Colors.lightPink))
+                            .frame(height: 160)
+                            .shadow(radius: 10)
                         Image(uiImage: image)
                             .resizable()
-                            .scaledToFit()
+                            .aspectRatio(1.0, contentMode: .fit)
                             .clipShape(Circle())
-                            .frame(height: 100)
+                            .frame(height: 150)
                     } else {
                         Image(systemName: Constants.personCircle)
                             .resizable()
@@ -36,9 +40,19 @@ struct EditProfileView: View {
                 }
                 .overlay(alignment: .bottomTrailing) {
                     PhotosPicker(selection: $viewModel.photoSelection, matching: .images) {
-                       
-                            Label("", systemImage: "camera.fill")
+                        Label {
+                            Text("")
+                        } icon: {
+                            Image(systemName: "camera.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40)
                                 .foregroundColor(Color(Constants.Colors.darkPink))
+                        }
+
+//                            Label("", systemImage: "camera.fill")
+//                                .foregroundColor(Color(Constants.Colors.darkPink))
+                                
                     }
                 }
                
