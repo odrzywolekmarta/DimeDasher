@@ -11,6 +11,8 @@ struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = SettingsViewModel()
     @State private var darkMode: Bool = false
+    @State private var editProfilePresented: Bool = false
+
     var refresh: (() -> Void)
 
     init(refresh: @escaping (() -> Void)) {
@@ -36,7 +38,7 @@ struct SettingsView: View {
                 .groupBoxStyle(WhiteGroupBox())
              
                 GroupBox {
-                    GeneralSettingsView()
+                    GeneralSettingsView(editProfilePresented: $editProfilePresented)
                 } label: {
                     SettingsSectionHeaderView(title: "GENERAL", icon: "gearshape.fill")
                     Divider()
@@ -64,6 +66,10 @@ struct SettingsView: View {
         .environmentObject(viewModel)
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Settings")
+        .sheet(isPresented: $editProfilePresented, content: {
+            EditProfileView()
+                .environmentObject(viewModel)
+        })
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {

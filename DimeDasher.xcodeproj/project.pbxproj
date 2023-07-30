@@ -30,7 +30,6 @@
 		2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940662A56008F00A45537 /* ExpenseListItem.swift */; };
 		2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */; };
 		2D3721A72A6513970038FBCB /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721A62A6513970038FBCB /* SideMenuView.swift */; };
-		2D3721A92A652B100038FBCB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721A82A652B100038FBCB /* FilterView.swift */; };
 		2D3721AE2A72657E0038FBCB /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */; };
 		2D3721B02A7587CE0038FBCB /* NilDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */; };
 		2D3721B42A75ACA40038FBCB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721B32A75ACA40038FBCB /* SettingsView.swift */; };
@@ -40,6 +39,7 @@
 		2D3721BF2A75C1340038FBCB /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721BE2A75C1340038FBCB /* GeneralSettingsView.swift */; };
 		2D3721C12A75C3A30038FBCB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C02A75C3A30038FBCB /* SettingsViewModel.swift */; };
 		2D3721C32A75CC4A0038FBCB /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */; };
+		2D3721C52A7650C80038FBCB /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C42A7650C80038FBCB /* EditProfileView.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -83,7 +83,6 @@
 		2D1940662A56008F00A45537 /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
 		2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListFilterView.swift; sourceTree = "<group>"; };
 		2D3721A62A6513970038FBCB /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		2D3721A82A652B100038FBCB /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilDatePicker.swift; sourceTree = "<group>"; };
 		2D3721B32A75ACA40038FBCB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		2D3721BE2A75C1340038FBCB /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		2D3721C02A75C3A30038FBCB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
+		2D3721C42A7650C80038FBCB /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,7 +201,6 @@
 				2D19405C2A55380E00A45537 /* TransactionsListView.swift */,
 				2D1940632A554FD400A45537 /* ListItems */,
 				2D3721A62A6513970038FBCB /* SideMenuView.swift */,
-				2D3721A82A652B100038FBCB /* FilterView.swift */,
 			);
 			path = TransactionsListView;
 			sourceTree = "<group>";
@@ -242,6 +241,7 @@
 				2D3721B62A75AE990038FBCB /* SettingsSectionHeaderView.swift */,
 				2D3721BC2A75B9620038FBCB /* SettingsRowView.swift */,
 				2D3721BE2A75C1340038FBCB /* GeneralSettingsView.swift */,
+				2D3721C42A7650C80038FBCB /* EditProfileView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -431,6 +431,7 @@
 				2D19403E2A51958A00A45537 /* ExpensesPicker.swift in Sources */,
 				2DA7D7AA2A4AC89500F25939 /* ChartView.swift in Sources */,
 				2D19404E2A54313800A45537 /* Income+CoreDataProperties.swift in Sources */,
+				2D3721C52A7650C80038FBCB /* EditProfileView.swift in Sources */,
 				2D1940582A5433D100A45537 /* Persistence+Income.swift in Sources */,
 				2D19404A2A53593200A45537 /* IncomeEnum.swift in Sources */,
 				2D1940652A55503700A45537 /* IncomeListItem.swift in Sources */,
@@ -458,7 +459,6 @@
 				2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */,
 				2DA7D7B02A4AD10500F25939 /* Constants.swift in Sources */,
 				2DA7D7D02A4CC45C00F25939 /* MainViewModel.swift in Sources */,
-				2D3721A92A652B100038FBCB /* FilterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,8 +594,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,8 +624,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

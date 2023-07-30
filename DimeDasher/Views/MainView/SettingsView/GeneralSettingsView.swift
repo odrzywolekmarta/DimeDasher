@@ -10,7 +10,9 @@ import SwiftUI
 struct GeneralSettingsView: View {
     @EnvironmentObject var viewModel: SettingsViewModel
     @State private var isDarkMode: Bool = false
-    @State private var isShowingAlert: Bool = false
+    @State private var isShowingDeleteAlert: Bool = false
+    @State private var isShowingResultAlert: Bool = false
+    @Binding var editProfilePresented: Bool
     
     var body: some View {
         VStack(spacing: 15) {
@@ -19,7 +21,7 @@ struct GeneralSettingsView: View {
                 Text("Edit Profile")
                 Spacer()
                 Button {
-                    // edit profile view
+                    editProfilePresented.toggle()
                 } label: {
                     Image(systemName: "pencil.line")
                         .foregroundColor(Color(Constants.Colors.darkPink))
@@ -32,18 +34,27 @@ struct GeneralSettingsView: View {
                 Text("Clear Data")
                 Spacer()
                 Button {
-                    isShowingAlert.toggle()
+                    isShowingDeleteAlert.toggle()
                 } label: {
                     Image(systemName: "trash")
                         .foregroundColor(Color(Constants.Colors.darkPink))
                 }
                 .padding(.trailing, 10)
-                .alert("Your data will be deleted completely. Do you want to continue?", isPresented: $isShowingAlert) {
+                .alert("Your data will be deleted completely. Do you want to continue?", isPresented: $isShowingDeleteAlert) {
                     Button("Ok", role: .none) {
-                        viewModel.clearData()
+                        viewModel.clearData {
+                            Task {
+                                isShowingResultAlert.toggle()
+                            }
+                        }
                     }
                     Button("Cancel", role: .cancel) {
                         
+                    }
+                }
+                .alert(viewModel.clearSuccess == .success ? "Your data has been deleted succesfully." : "Oops, something went wrong :(", isPresented: $isShowingResultAlert) {
+                    Button("Ok", role: .cancel) {
+                        isShowingResultAlert.toggle()
                     }
                 }
             }
@@ -66,7 +77,8 @@ struct GeneralSettingsView: View {
 
 struct GeneralSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneralSettingsView()
+        GeneralSettingsView(editProfilePresented: .constant(false))
             .previewLayout(.sizeThatFits)
+            .environmentObject(SettingsViewModel())
     }
 }

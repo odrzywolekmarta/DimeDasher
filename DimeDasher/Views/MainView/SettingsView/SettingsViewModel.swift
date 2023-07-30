@@ -7,11 +7,97 @@
 
 import Foundation
 import CoreData
+import _PhotosUI_SwiftUI
+
+enum DataClearStatus {
+    case success
+    case failure
+}
 
 @MainActor final class SettingsViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
-
-    func clearData() {
+    @Published var clearSuccess: DataClearStatus = .failure
+    @Published private(set) var selectedPhoto: UIImage? = nil
+    @Published var photoSelection: PhotosPickerItem? = nil {
+        didSet {
+            setImage(from: photoSelection)
+        }
+    }
+    
+    init() {
+        selectedPhoto = loadImage()
+    }
+    
+    func setImage(from selection: PhotosPickerItem?) {
+        guard let selection else { return }
+        
+        Task {
+            do {
+                let data = try await selection.loadTransferable(type: Data.self)
+                
+                guard let data,
+                      let uiImage = UIImage(data: data) else {
+                    throw URLError(.badServerResponse)
+                }
+                
+                selectedPhoto = uiImage
+                saveImage(image: uiImage)
+            } catch {
+                print("Error setting image: \(error)")
+            }
+        }
+    }
+    
+    func saveImage(image: UIImage) {
+        createFoderIfNeeded(folderName: "profilePicture")
+           
+        guard let data = selectedPhoto?.pngData(),
+              let url = getUrlForImage(imageName: "photo", folderName: "profilePicture") else { return }
+        
+        do {
+            try data.write(to: url)
+        } catch let error {
+            print("Error saving image \(error)")
+        }
+    }
+    
+    func loadImage() -> UIImage? {
+        guard let url = getUrlForImage(imageName: "photo", folderName: "profilePicture"),
+              FileManager.default.fileExists(atPath: url.path) else {
+            return nil
+        }
+        return UIImage(contentsOfFile: url.path())
+    }
+    
+    func getUrlForFolder(folderName: String) -> URL? {
+        guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        
+        return url.appending(path: folderName)
+    }
+    
+    func getUrlForImage(imageName: String, folderName: String) -> URL? {
+        guard let folderUrl = getUrlForFolder(folderName: folderName) else {
+            return nil
+        }
+        
+        return folderUrl.appending(path: imageName + ".png")
+    }
+    
+    func createFoderIfNeeded(folderName: String) {
+        guard let url = getUrlForFolder(folderName: folderName) else { return }
+        
+        if !FileManager.default.fileExists(atPath: url.path()) {
+            do {
+                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+            } catch {
+                print("Error creating directory. Folder name \(folderName), \(error)")
+            }
+        }
+    }
+    
+    func clearData(closure: @escaping () -> Void) {
         let expenseRequest = NSFetchRequest<Expense>(entityName: "Expense")
             do {
                 let expenses = try persistenceController.viewContext.fetch(expenseRequest)
@@ -34,8 +120,10 @@ import CoreData
         
         do {
             try persistenceController.viewContext.save()
+            clearSuccess = .success
         } catch {
             print("Error saving context \(error)")
+            clearSuccess = .failure
         }
     }
     
