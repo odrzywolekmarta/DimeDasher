@@ -13,7 +13,7 @@ enum Tab {
 }
 
 struct TabsContentView: View {
-    @StateObject private var mainViewModel = MainViewModel()
+    @StateObject private var mainViewModel = MainViewModel(fileManager: LocalFileManager())
     @State private var selectedTab: Tab = .main
     @State private var newTransactionPresented: Bool = false
     @State private var addViewPresented: Bool = false
@@ -52,6 +52,7 @@ struct TabsContentView: View {
         .sheet(isPresented: $addViewPresented, onDismiss: {
             mainViewModel.fetchExpenses()
             mainViewModel.fetchIncome()
+            mainViewModel.calculateBalance()
         }, content: {
             AddTransactionView(transactionType: transactionType)
         })

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var viewModel = SettingsViewModel()
+    @StateObject private var viewModel = SettingsViewModel(fileManager: LocalFileManager())
     @State private var darkMode: Bool = false
     @State private var editProfilePresented: Bool = false
 

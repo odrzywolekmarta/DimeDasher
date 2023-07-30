@@ -6,15 +6,20 @@
 //
 
 import Foundation
+import UIKit
 
 @MainActor final class MainViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
+    private let fileManager: LocalFileManager
     @Published var username: String = ""
     @Published var balance: String = ""
+    @Published var expensesThisMonth: String = ""
+    @Published var incomeThisMonth: String = ""
     @Published var expenses: [ExpenseModel] = []
     @Published var income: [IncomeModel] = []
     @Published var shortExpenses: [ExpenseModel] = []
     @Published var shortIncome: [IncomeModel] = []
+    @Published var profilePic: UIImage?
     
     let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -23,11 +28,13 @@ import Foundation
         return formatter
     } ()
     
-    init() {
+    init(fileManager: LocalFileManager) {
+        self.fileManager = fileManager
         getUserDataFromDefaults()
-        calculateBalance()
         fetchExpenses()
         fetchIncome()
+        calculateBalance()
+        profilePic = fileManager.loadImage(imageName: "photo", folderName: "profilePicture")
     }
     
     func fetchExpenses() {
@@ -49,32 +56,51 @@ import Foundation
     }
     
     func calculateBalance() {
-        var startingBalance = currencyFormatter.string(from: NSNumber(floatLiteral: UserDefaults.standard.double(forKey: "startingBalance")))
-//        let calculatedBalance = ""
-        balance = startingBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
+//        var startingBalance = currencyFormatter.string(from: NSNumber(floatLiteral: UserDefaults.standard.double(forKey: "startingBalance")))
+        let startingBalance = UserDefaults.standard.double(forKey: "startingBalance")
+        var totalIncome: Double = 0.0
+        var totalExpenses: Double = 0.0
+        
+        for expense in expenses {
+            totalExpenses += expense.amount
+        }
+        
+        for income in income {
+            totalIncome += income.amount
+        }
+        
+        let totalBalance = startingBalance + totalIncome - totalExpenses
+        var stringBalance = currencyFormatter.string(from: NSNumber(floatLiteral: totalBalance))
+        
+        balance = stringBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
     }
+    
+    func getProfilePicture() {
+        profilePic = fileManager.loadImage(imageName: "photo", folderName: "profilePicture")
+    }
+
 }
 
 extension MainViewModel {
-    convenience init(forPreview: Bool = true) {
-        self.init()
-        username = "John Doe"
-        balance = "10000"
-        let expense = Expense(context: persistenceController.viewContext)
-        expense.id = UUID()
-        expense.amount = 200
-        expense.expenseDescription = "test"
-        expense.type = .books
-        expense.expenseDate = Date()
-//        expenses = [expense, expense, expense, expense, expense, expense]
-        let inc = Income(context: persistenceController.viewContext)
-        inc.id = UUID()
-        inc.amount = 1000
-        inc.incomeDate = Date()
-        inc.type = .work
-        inc.incomeDescription = "salary"
+//    convenience init(forPreview: Bool = true) {
+//        self.init()
+//        username = "John Doe"
+//        balance = "10000"
+//        let expense = Expense(context: persistenceController.viewContext)
+//        expense.id = UUID()
+//        expense.amount = 200
+//        expense.expenseDescription = "test"
+//        expense.type = .books
+//        expense.expenseDate = Date()
+////        expenses = [expense, expense, expense, expense, expense, expense]
+//        let inc = Income(context: persistenceController.viewContext)
+//        inc.id = UUID()
+//        inc.amount = 1000
+//        inc.incomeDate = Date()
+//        inc.type = .work
+//        inc.incomeDescription = "salary"
 //        income = [inc, inc, inc, inc, inc, inc, inc, inc]
 //        shortIncome = [inc, inc, inc]
 //        shortExpenses = [expense, expense, expense]
-    }
+//    }
 }

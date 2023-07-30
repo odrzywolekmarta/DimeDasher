@@ -65,6 +65,6 @@ struct EditProfileView: View {
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
         EditProfileView()
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModel(fileManager: LocalFileManager()))
     }
 }

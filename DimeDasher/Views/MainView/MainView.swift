@@ -29,6 +29,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(MainViewModel(forPreview: true))
+            .environmentObject(MainViewModel(fileManager: LocalFileManager()))
     }
 }

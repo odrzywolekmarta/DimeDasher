@@ -12,10 +12,19 @@ struct HeaderView: View {
     
     var body: some View {
             HStack {
-                Image(systemName: Constants.personCircle)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 50)
+                if let pic = viewModel.profilePic{
+                    Image(uiImage: pic)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75)
+                        .clipShape(Circle())
+                } else {
+                    Image(systemName: Constants.personCircle)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 75)
+                }
+               
                 VStack(alignment: .leading) {
                     Text("Hello!")
                         .font(.custom(Constants.Fonts.raleway, size: 17))
@@ -30,6 +39,7 @@ struct HeaderView: View {
                     SettingsView {
                         viewModel.fetchIncome()
                         viewModel.fetchExpenses()
+                        viewModel.getProfilePicture()
                     }
                 } label: {
                     Image(systemName: Constants.gear)
@@ -48,6 +58,6 @@ struct HeaderView_Previews: PreviewProvider {
         HeaderView()
             .previewLayout(.sizeThatFits)
             .background(Color(Constants.Colors.beige))
-            .environmentObject(MainViewModel(forPreview: true))
+            .environmentObject(MainViewModel(fileManager: LocalFileManager()))
     }
 }

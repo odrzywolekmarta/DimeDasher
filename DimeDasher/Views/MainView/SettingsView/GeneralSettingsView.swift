@@ -79,6 +79,6 @@ struct GeneralSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         GeneralSettingsView(editProfilePresented: .constant(false))
             .previewLayout(.sizeThatFits)
-            .environmentObject(SettingsViewModel())
+            .environmentObject(SettingsViewModel(fileManager: LocalFileManager()))
     }
 }

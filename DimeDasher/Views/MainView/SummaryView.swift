@@ -64,6 +64,6 @@ struct SummaryView_Previews: PreviewProvider {
     static var previews: some View {
         SummaryView()
             .previewLayout(.sizeThatFits)
-            .environmentObject(MainViewModel())
+            .environmentObject(MainViewModel(fileManager: LocalFileManager()))
     }
 }

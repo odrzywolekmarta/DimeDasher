@@ -81,6 +81,6 @@ struct ShortTransactionList: View {
 struct TransactionList_Previews: PreviewProvider {
     static var previews: some View {
         ShortTransactionList()
-            .environmentObject(MainViewModel(forPreview: true))
+            .environmentObject(MainViewModel(fileManager: LocalFileManager()))
     }
 }
