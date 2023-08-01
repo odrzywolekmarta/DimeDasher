@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShortTransactionList: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var listViewModel: TransactionsListViewModel
     @State private var transactionType: TransactionType = .income
     
     init() {
@@ -29,6 +30,7 @@ struct ShortTransactionList: View {
                 Spacer()
                 NavigationLink {
                     TransactionsListView()
+                        .environmentObject(listViewModel)
                 } label: {
                     Text("See all")
                         .font(.custom(Constants.Fonts.raleway, size: 17))

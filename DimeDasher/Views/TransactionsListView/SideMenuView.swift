@@ -152,6 +152,7 @@ struct SideMenuView: View {
                                 selectedSorting = .newest
                                 viewModel.fetchExpenses()
                                 viewModel.fetchIncome()
+                                viewModel.cleanFilters()
                             } label: {
                                 Text("Clear")
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 20))

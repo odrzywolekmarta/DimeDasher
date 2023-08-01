@@ -16,13 +16,8 @@ enum TransactionType: StringLiteralType, CaseIterable {
 
 @MainActor final class AddTransactionViewModel: ObservableObject {
     private let context = PersistenceController.shared
-    @Published var expenses: [ExpenseModel] = []
-    @Published var income: [IncomeModel] = []
-    
-    init() {
-        expenses = context.fetchExpenses()
-        income = context.fetchIncome()
-    }
+
+    init() { }
     
     func saveExpense(type: ExpenseType, amount: Double, description: String, date: Date) {
         context.saveExpense(type: type, amount: amount, description: description, date: date)

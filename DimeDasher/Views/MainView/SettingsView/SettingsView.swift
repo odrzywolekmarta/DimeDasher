@@ -86,6 +86,7 @@ struct SettingsView: View {
                 }
             } // toolbar item
         } // toolbar
+        .toolbarBackground(.hidden, for: .navigationBar)
     }
 }
 

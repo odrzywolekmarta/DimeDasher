@@ -8,8 +8,19 @@
 import Foundation
 import SwiftUI
 
-//MARK: - Date
+extension Sequence where Iterator.Element == DateComponents {
+    func dateArray() -> [Date] {
+        var dateArray = [Date]()
+        for element in self {
+            if let date = NSCalendar.current.date(from: element) {
+                dateArray.append(date)
+            }
+        }
+        return dateArray
+    }
+}
 
+//MARK: - Date
 extension Date {
     func toString() -> String {
         let formatter = DateFormatter()
@@ -17,8 +28,13 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func isBetween(_ date1: Date, and date2: Date) -> Bool {
-        return (min(date1, date2) ... max(date1, date2)).contains(self)
+    var onlyDate: Date? {
+        get { 
+            let calender = Calendar.current
+            var dateComponents = calender.dateComponents([.year, .month, .day], from: self)
+//            dateComponents.timeZone = NSTimeZone.system
+            return calender.date(from: dateComponents)
+        }
     }
 }
 
@@ -58,6 +74,6 @@ extension View {
     }
     
     func hidden(_ shouldHide: Bool) -> some View {
-           opacity(shouldHide ? 0 : 1)
-       }
+        opacity(shouldHide ? 0 : 1)
+    }
 }

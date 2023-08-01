@@ -46,12 +46,15 @@ enum DateSelection: String, CaseIterable {
 
 @MainActor final class TransactionsListViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
-    @Published var expenses: [ExpenseModel] = [] 
+    @Published var expenses: [ExpenseModel] = []
+    @Published var filteredExpenses: [ExpenseModel] = []
     @Published var income: [IncomeModel] = []
+    @Published var filteredIncome: [IncomeModel] = []
     
     init() {
         fetchExpenses()
         fetchIncome()
+        print("view model init")
     }
     
     func fetchExpenses() {
@@ -66,67 +69,109 @@ enum DateSelection: String, CaseIterable {
         }
     }
     
+    func cleanFilters() {
+        filteredIncome = []
+        filteredExpenses = []
+    }
+    
     func applyFilers(fromDate: Date? = nil, toDate: Date? = nil, dates: Set<DateComponents>? = nil, categories: [String], sort: SortType) {
-        print(expenses)
+        var filteredExpenses = [ExpenseModel]()
+        var filteredIncome = [IncomeModel]()
+
+        // filter multiple dates selection
         if let dates = dates {
-            expenses = expenses.filter { expense in
-                let components = Calendar.current.dateComponents([.day, .month, .year], from: expense.expenseDate)
-                return dates.contains(components)
+            let datesArray = dates.dateArray()
+            for expense in expenses {
+                for date in datesArray {
+                    if Calendar.current.isDate(date, equalTo: expense.expenseDate, toGranularity: .day) {
+                        filteredExpenses.append(expense)
+                    }
+                }
+            }
+            
+            for income in income {
+                for date in datesArray {
+                    if Calendar.current.isDate(date, equalTo: income.incomeDate, toGranularity: .day) {
+                        filteredIncome.append(income)
+                    }
+                }
             }
         }
         
+        // filter section
         if let from = fromDate,
            let to = toDate {
-            expenses = expenses.filter { expense in
-                (from...to).contains(expense.expenseDate)
+            filteredExpenses = expenses.filter { expense in
+                (from.onlyDate!...to.onlyDate!).contains(expense.expenseDate.onlyDate!)
+            }
+            filteredIncome = income.filter { income in
+                (from...to).contains(income.incomeDate)
             }
         } else if let from = fromDate {
-            expenses = expenses.filter { expense in
-                (from...).contains(expense.expenseDate)
+            filteredExpenses = expenses.filter { expense in
+                (from.onlyDate!...).contains(expense.expenseDate)
+            }
+            filteredIncome = income.filter { income in
+                (from...).contains(income.incomeDate)
             }
         } else if let to = toDate {
-            expenses = expenses.filter { expense in
+            filteredExpenses = expenses.filter { expense in
                 (...to).contains(expense.expenseDate)
             }
+            filteredIncome = income.filter { income in
+                (...to).contains(income.incomeDate)
+            }
+        }
+        
+        if filteredExpenses.isEmpty {
+            filteredExpenses = expenses
+        }
+        
+        if filteredIncome.isEmpty {
+            filteredIncome = income
         }
         
         if categories.count > 0 {
-            expenses = expenses.filter { expense in
+            filteredExpenses = filteredExpenses.filter { expense in
                 categories.contains(expense.expenseType.rawValue)
+            }
+            filteredIncome = filteredIncome.filter { income in
+                categories.contains(income.incomeType.rawValue)
             }
         }
         
         switch sort {
         case .highest:
-            expenses = expenses.sorted {
+            filteredExpenses.sort {
                 $0.amount > $1.amount
             }
-            income.sort {
+            filteredIncome.sort {
                 $0.amount > $1.amount
             }
         case .lowest:
-            expenses = expenses.sorted {
+            filteredExpenses.sort {
                 $0.amount < $1.amount
             }
-            income.sort {
+            filteredIncome.sort {
                 $0.amount < $1.amount
             }
         case .newest:
-            expenses = expenses.sorted {
+            filteredExpenses.sort {
                 $0.expenseDate > $1.expenseDate
             }
-            income.sort {
+            filteredIncome.sort {
                 $0.incomeDate > $1.incomeDate
             }
         case .oldest:
-            expenses = expenses.sorted {
+            filteredExpenses.sort {
                 $0.expenseDate < $1.expenseDate
             }
-            income.sort {
+            filteredIncome.sort {
                 $0.incomeDate < $1.incomeDate
             }
         }
-        print(expenses)
+        self.filteredExpenses = filteredExpenses
+        self.filteredIncome = filteredIncome
     }
 }
 

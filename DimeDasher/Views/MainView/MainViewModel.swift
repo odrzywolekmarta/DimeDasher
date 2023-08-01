@@ -56,7 +56,6 @@ import UIKit
     }
     
     func calculateBalance() {
-//        var startingBalance = currencyFormatter.string(from: NSNumber(floatLiteral: UserDefaults.standard.double(forKey: "startingBalance")))
         let startingBalance = UserDefaults.standard.double(forKey: "startingBalance")
         var totalIncome: Double = 0.0
         var totalExpenses: Double = 0.0

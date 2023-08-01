@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct DimeDasherApp: App {
     @AppStorage("showOnboarding") var showOnboarding: Bool = true
-
+   
     var body: some Scene {
         WindowGroup {
             if showOnboarding {

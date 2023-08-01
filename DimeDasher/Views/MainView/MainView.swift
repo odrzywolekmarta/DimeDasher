@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var mainViewModel: MainViewModel
     @State private var isNavigationBarHidden: Bool = true
     
     var body: some View {
