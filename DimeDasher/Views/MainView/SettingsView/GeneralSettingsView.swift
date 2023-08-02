@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GeneralSettingsView: View {
+    @AppStorage("isDarkMode") private var isDarkMode = false
     @EnvironmentObject var viewModel: SettingsViewModel
-    @State private var isDarkMode: Bool = false
     @State private var isShowingDeleteAlert: Bool = false
     @State private var isShowingResultAlert: Bool = false
     @Binding var editProfilePresented: Bool
