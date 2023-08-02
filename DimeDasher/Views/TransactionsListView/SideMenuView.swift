@@ -13,6 +13,8 @@ struct SideMenuView: View {
     @State private var selectedCategories = [String]()
     @State private var selectedFromDate: Date?
     @State private var selectedToDate: Date?
+    @State private var showFromDate: Bool = false
+    @State private var showToDate: Bool = false
     @State private var dateSelectionStyle: DateSelection = .range
     @State private var selectedDates: Set<DateComponents> = []
     @State private var isSelectingFromDate: Bool = false
@@ -140,7 +142,9 @@ struct SideMenuView: View {
                                 case .multipleDates:
                                     viewModel.applyFilers(dates: selectedDates, categories: selectedCategories, sort: selectedSorting)
                                 }
-                                sideBarVisible.toggle()
+                                withAnimation {
+                                    sideBarVisible.toggle()
+                                }
                             } label: {
                                 Text("Apply filters")
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 20))
@@ -149,10 +153,15 @@ struct SideMenuView: View {
                             Button {
                                 selectedCategories = []
                                 selectedDates = []
+                                selectedFromDate = nil
+                                selectedToDate = nil
                                 selectedSorting = .newest
                                 viewModel.fetchExpenses()
                                 viewModel.fetchIncome()
                                 viewModel.cleanFilters()
+                                withAnimation {
+                                    sideBarVisible.toggle()
+                                }
                             } label: {
                                 Text("Clear")
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 20))

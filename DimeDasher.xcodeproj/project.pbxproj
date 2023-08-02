@@ -41,6 +41,7 @@
 		2D3721C32A75CC4A0038FBCB /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */; };
 		2D3721C52A7650C80038FBCB /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C42A7650C80038FBCB /* EditProfileView.swift */; };
 		2D3721C92A76FE440038FBCB /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721C82A76FE440038FBCB /* LocalFileManager.swift */; };
+		2D6193582A7AEC0600FA564D /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6193572A7AEC0600FA564D /* VisualEffectView.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
 		2D3721C42A7650C80038FBCB /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		2D3721C82A76FE440038FBCB /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		2D6193572A7AEC0600FA564D /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */,
 				2D3721B82A75B0500038FBCB /* WhiteGroupBox.swift */,
+				2D6193572A7AEC0600FA564D /* VisualEffectView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */,
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
 				2D3721BF2A75C1340038FBCB /* GeneralSettingsView.swift in Sources */,
+				2D6193582A7AEC0600FA564D /* VisualEffectView.swift in Sources */,
 				2D3721B42A75ACA40038FBCB /* SettingsView.swift in Sources */,
 				2D3721AE2A72657E0038FBCB /* ExpenseModel.swift in Sources */,
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,

@@ -79,8 +79,17 @@ struct TransactionsListView: View {
             } // vstack
         } // ztacks
         .overlay(content: {
+            ZStack {
+                VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+                    .edgesIgnoringSafeArea([.top, .horizontal])
+                    .onTapGesture {
+                        withAnimation {
+                            sideBarVisible.toggle()
+                        }
+                    }
                 SideMenuView(sideBarVisible: $sideBarVisible)
-                    .hidden(!sideBarVisible)
+            }
+            .hidden(!sideBarVisible)
         })
         .environmentObject(viewModel)
         .navigationBarBackButtonHidden(true)
