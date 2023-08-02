@@ -10,16 +10,15 @@ import _PhotosUI_SwiftUI
 
 final class LocalFileManager {
     
-    init () { }
+    init() { }
     
     func saveImage(image: UIImage, imageName: String, folderName: String) {
         createFoderIfNeeded(folderName: folderName)
            
-        guard let data = image.pngData(),
-              let url = getUrlForImage(imageName: imageName, folderName: folderName) else { return }
+        guard let url = getUrlForImage(imageName: imageName, folderName: folderName) else { return }
         
         do {
-            try data.write(to: url)
+            try image.jpegData(compressionQuality: 1.0)?.write(to: url, options: .atomic)
         } catch let error {
             print("Error saving image \(error)")
         }
@@ -46,7 +45,7 @@ final class LocalFileManager {
             return nil
         }
         
-        return folderUrl.appending(path: imageName + ".png")
+        return folderUrl.appending(path: imageName + ".jpg")
     }
     
     func createFoderIfNeeded(folderName: String) {

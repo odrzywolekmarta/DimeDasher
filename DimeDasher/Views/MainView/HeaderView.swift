@@ -13,11 +13,16 @@ struct HeaderView: View {
     var body: some View {
             HStack {
                 if let pic = viewModel.profilePic {
-                    Image(uiImage: pic)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 75)
-                        .clipShape(Circle())
+                    ZStack {
+                        Circle()
+                            .fill(Color(Constants.Colors.lightPink))
+                            .frame(height: 80)
+                        Image(uiImage: pic)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 75, height: 75)
+                            .clipShape(Circle())
+                    }
                 } else {
                     Image(systemName: Constants.personCircle)
                         .resizable()
