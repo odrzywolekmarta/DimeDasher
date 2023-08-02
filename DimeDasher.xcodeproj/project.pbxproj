@@ -203,8 +203,8 @@
 			children = (
 				2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */,
 				2D19405C2A55380E00A45537 /* TransactionsListView.swift */,
-				2D1940632A554FD400A45537 /* ListItems */,
 				2D3721A62A6513970038FBCB /* SideMenuView.swift */,
+				2D1940632A554FD400A45537 /* ListItems */,
 			);
 			path = TransactionsListView;
 			sourceTree = "<group>";

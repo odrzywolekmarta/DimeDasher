@@ -101,25 +101,38 @@ enum DateSelection: String, CaseIterable {
         // filter section
         if let from = fromDate,
            let to = toDate {
-            filteredExpenses = expenses.filter { expense in
-                (from.onlyDate!...to.onlyDate!).contains(expense.expenseDate.onlyDate!)
+            for expense in expenses {
+                if (from...to).contains(expense.expenseDate) {
+                    filteredExpenses.append(expense)
+                }
             }
-            filteredIncome = income.filter { income in
-                (from...to).contains(income.incomeDate)
+
+            for income in income {
+                if (from...to).contains(income.incomeDate) {
+                    filteredIncome.append(income)
+                }
             }
         } else if let from = fromDate {
-            filteredExpenses = expenses.filter { expense in
-                (from.onlyDate!...).contains(expense.expenseDate)
+            for expense in expenses {
+                if (from...).contains(expense.expenseDate) {
+                    filteredExpenses.append(expense)
+                }
             }
-            filteredIncome = income.filter { income in
-                (from...).contains(income.incomeDate)
+            for income in income {
+                if (from...).contains(income.incomeDate) {
+                    filteredIncome.append(income)
+                }
             }
         } else if let to = toDate {
-            filteredExpenses = expenses.filter { expense in
-                (...to).contains(expense.expenseDate)
+            for expense in expenses {
+                if (...to).contains(expense.expenseDate) {
+                    filteredExpenses.append(expense)
+                }
             }
-            filteredIncome = income.filter { income in
-                (...to).contains(income.incomeDate)
+            for income in income {
+                if (...to).contains(income.incomeDate) {
+                    filteredIncome.append(income)
+                }
             }
         }
         
