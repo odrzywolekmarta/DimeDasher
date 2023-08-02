@@ -99,8 +99,8 @@ enum DateSelection: String, CaseIterable {
         }
         
         // filter section
-        if let from = fromDate,
-           let to = toDate {
+        if let from = fromDate?.onlyDate,
+           let to = toDate?.onlyDate {
             for expense in expenses {
                 if (from...to).contains(expense.expenseDate) {
                     filteredExpenses.append(expense)
@@ -112,7 +112,7 @@ enum DateSelection: String, CaseIterable {
                     filteredIncome.append(income)
                 }
             }
-        } else if let from = fromDate {
+        } else if let from = fromDate?.onlyDate {
             for expense in expenses {
                 if (from...).contains(expense.expenseDate) {
                     filteredExpenses.append(expense)
@@ -123,7 +123,7 @@ enum DateSelection: String, CaseIterable {
                     filteredIncome.append(income)
                 }
             }
-        } else if let to = toDate {
+        } else if let to = toDate?.onlyDate {
             for expense in expenses {
                 if (...to).contains(expense.expenseDate) {
                     filteredExpenses.append(expense)
