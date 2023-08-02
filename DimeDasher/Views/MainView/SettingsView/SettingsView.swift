@@ -69,6 +69,7 @@ struct SettingsView: View {
         .sheet(isPresented: $editProfilePresented, content: {
             EditProfileView()
                 .environmentObject(viewModel)
+                .presentationDetents([.medium])
         })
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

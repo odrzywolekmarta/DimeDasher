@@ -24,10 +24,14 @@ enum DataClearStatus {
             setImage(from: photoSelection)
         }
     }
+    @Published var username: String = ""
+    @Published var currency: String = ""
     
     init(fileManager: LocalFileManager) {
         self.fileManager = fileManager
         selectedPhoto = fileManager.loadImage(imageName: "photo", folderName: "profilePicture")
+        username = UserDefaults.standard.string(forKey: "username") ?? ""
+        currency = UserDefaults.standard.string(forKey: "currency") ?? ""
     }
     
     func setImage(from selection: PhotosPickerItem?) {
@@ -51,6 +55,7 @@ enum DataClearStatus {
     }
 
     func clearData(closure: @escaping () -> Void) {
+        UserDefaults.standard.set(0, forKey: "startingBalance")
         let expenseRequest = NSFetchRequest<Expense>(entityName: "Expense")
             do {
                 let expenses = try persistenceController.viewContext.fetch(expenseRequest)
@@ -78,6 +83,16 @@ enum DataClearStatus {
             print("Error saving context \(error)")
             clearSuccess = .failure
         }
+    }
+    
+    func setUsername(_ username: String) {
+        UserDefaults.standard.set(username, forKey: "username")
+        self.username = UserDefaults.standard.string(forKey: "username") ?? ""
+    }
+    
+    func setCurrency( _ currency: String) {
+        UserDefaults.standard.set(currency, forKey: "currency")
+        self.currency = UserDefaults.standard.string(forKey: "currency") ?? ""
     }
     
 }

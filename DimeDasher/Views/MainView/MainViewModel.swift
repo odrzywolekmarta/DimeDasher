@@ -11,7 +11,6 @@ import UIKit
 @MainActor final class MainViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
     private let fileManager: LocalFileManager
-    @Published var username: String = ""
     @Published var balance: String = ""
     @Published var expensesThisMonth: String = ""
     @Published var incomeThisMonth: String = ""
@@ -30,7 +29,6 @@ import UIKit
     
     init(fileManager: LocalFileManager) {
         self.fileManager = fileManager
-        getUserDataFromDefaults()
         fetchExpenses()
         fetchIncome()
         calculateBalance()
@@ -50,11 +48,7 @@ import UIKit
             }
         shortIncome = Array(income.prefix(10))
     }
-    
-    func getUserDataFromDefaults() {
-        username = UserDefaults.standard.string(forKey: "username") ?? ""
-    }
-    
+
     func calculateBalance() {
         let startingBalance = UserDefaults.standard.double(forKey: "startingBalance")
         

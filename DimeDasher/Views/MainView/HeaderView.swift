@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HeaderView: View {
     @EnvironmentObject var viewModel: MainViewModel
-    
+    @AppStorage("username") var username: String = ""
+
     var body: some View {
             HStack {
                 if let pic = viewModel.profilePic {
@@ -34,7 +35,7 @@ struct HeaderView: View {
                     Text("Hello!")
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .opacity(0.5)
-                    Text(viewModel.username)
+                    Text(username)
                         .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                 }
                 

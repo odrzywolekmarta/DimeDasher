@@ -7,8 +7,11 @@
 
 import Foundation
 import SwiftUI
+import Collections
 
 struct Constants {
+    
+    static let currencies: OrderedDictionary = ["USD": "en_US", "EUR": "fr_FR", "GBP": "en_GB", "PLN": "pl"]
     //MARK: -  Custom Colors
     struct Colors {
         static let beige = "CustomBeige"
