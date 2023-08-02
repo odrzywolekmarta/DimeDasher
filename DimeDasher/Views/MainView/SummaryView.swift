@@ -34,7 +34,7 @@ struct SummaryView: View {
                             HStack {
                                 Image(systemName: Constants.arrowUpCircleFill)
                                     .opacity(0.6)
-                                Text("$3000")
+                                Text(viewModel.incomeThisMonth)
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                             } // hstacl
                         }// vstack
@@ -47,7 +47,7 @@ struct SummaryView: View {
                             HStack {
                                 Image(systemName: Constants.arrowDownCircleFill)
                                     .opacity(0.6)
-                                Text("$1790")
+                                Text(viewModel.expensesThisMonth)
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                             } // hstack
                         }// vstack

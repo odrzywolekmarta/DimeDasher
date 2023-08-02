@@ -57,21 +57,42 @@ import UIKit
     
     func calculateBalance() {
         let startingBalance = UserDefaults.standard.double(forKey: "startingBalance")
+        
+        // total balance
         var totalIncome: Double = 0.0
         var totalExpenses: Double = 0.0
-        
         for expense in expenses {
             totalExpenses += expense.amount
         }
-        
         for income in income {
             totalIncome += income.amount
         }
-        
         let totalBalance = startingBalance + totalIncome - totalExpenses
         var stringBalance = currencyFormatter.string(from: NSNumber(floatLiteral: totalBalance))
         
+        // income balance
+        let incomeThisMonth = income.filter { income in
+            Calendar.current.isDate(Date(), equalTo: income.incomeDate, toGranularity: .month)
+        }
+        var incomeBalanceThisMonth: Double = 0
+        for income in incomeThisMonth {
+            incomeBalanceThisMonth += income.amount
+        }
+        var stringIncome = currencyFormatter.string(from: NSNumber(floatLiteral: incomeBalanceThisMonth))
+        
+        // expense balance
+        let expenseThisMonth = expenses.filter { expense in
+            Calendar.current.isDate(Date(), equalTo: expense.expenseDate, toGranularity: .month)
+        }
+        var expenseBalanceThisMonth: Double = 0
+        for expense in expenseThisMonth {
+            expenseBalanceThisMonth += expense.amount
+        }
+        var stringExpense = currencyFormatter.string(from: NSNumber(floatLiteral: expenseBalanceThisMonth))
+        
         balance = stringBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
+        self.incomeThisMonth = stringIncome?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
+        self.expensesThisMonth = stringExpense?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
     }
     
     func getProfilePicture() {

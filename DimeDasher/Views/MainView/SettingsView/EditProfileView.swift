@@ -27,9 +27,10 @@ struct EditProfileView: View {
                             .shadow(radius: 10)
                         Image(uiImage: image)
                             .resizable()
-                            .aspectRatio(1.0, contentMode: .fit)
+                            .scaledToFit()
                             .clipShape(Circle())
-                            .frame(height: 150)
+                            .frame(width: 150)
+
                     } else {
                         Image(systemName: Constants.personCircle)
                             .resizable()
@@ -49,10 +50,6 @@ struct EditProfileView: View {
                                 .frame(width: 40)
                                 .foregroundColor(Color(Constants.Colors.darkPink))
                         }
-
-//                            Label("", systemImage: "camera.fill")
-//                                .foregroundColor(Color(Constants.Colors.darkPink))
-                                
                     }
                 }
                

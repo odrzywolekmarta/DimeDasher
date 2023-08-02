@@ -12,7 +12,7 @@ struct HeaderView: View {
     
     var body: some View {
             HStack {
-                if let pic = viewModel.profilePic{
+                if let pic = viewModel.profilePic {
                     Image(uiImage: pic)
                         .resizable()
                         .scaledToFit()
