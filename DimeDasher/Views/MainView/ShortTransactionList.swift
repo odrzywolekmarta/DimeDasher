@@ -32,7 +32,7 @@ struct ShortTransactionList: View {
                     TransactionsListView()
                         .environmentObject(listViewModel)
                 } label: {
-                    Text("See all")
+                    Text("View all")
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .foregroundColor(Color(Constants.Colors.darkPink))
                 }

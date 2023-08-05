@@ -17,12 +17,12 @@ struct SummaryView: View {
             .shadow(radius: 20)
             .padding()
             .overlay {
-                VStack(alignment: .center, spacing: 20) {
+                VStack(alignment: .center) {
                     VStack {
                         Text("Total balance")
-                            .font(.custom(Constants.Fonts.ralewayBold, size: 20))
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                         Text(viewModel.balance)
-                            .font(.custom(Constants.Fonts.ralewayBold, size: 60))
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 55))
                     } // vstack
                    
                     HStack(spacing: 70) {

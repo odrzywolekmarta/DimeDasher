@@ -17,18 +17,18 @@ struct HeaderView: View {
                     ZStack {
                         Circle()
                             .fill(Color(Constants.Colors.lightPink))
-                            .frame(height: 80)
+                            .frame(height: 70)
                         Image(uiImage: pic)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 75, height: 75)
+                            .frame(width: 65, height: 65)
                             .clipShape(Circle())
                     }
                 } else {
                     Image(systemName: Constants.personCircle)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 75)
+                        .frame(height: 70)
                 }
                
                 VStack(alignment: .leading) {

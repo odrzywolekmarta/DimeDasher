@@ -31,8 +31,7 @@ extension Date {
     var onlyDate: Date? {
         get { 
             let calender = Calendar.current
-            var dateComponents = calender.dateComponents([.year, .month, .day], from: self)
-//            dateComponents.timeZone = NSTimeZone.system
+            let dateComponents = calender.dateComponents([.year, .month, .day], from: self)
             return calender.date(from: dateComponents)
         }
     }
@@ -42,7 +41,6 @@ extension Date {
 extension Double {
     func stringWithTwoDecimal() -> String {
         let formatter = NumberFormatter()
-        //        formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(floatLiteral: self)) ?? ""
     }
