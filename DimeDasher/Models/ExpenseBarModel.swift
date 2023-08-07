@@ -11,4 +11,5 @@ struct ExpenseBarModel: Hashable, Identifiable {
     let id = UUID()
     let amount: Double
     let time: String
+    var animate: Bool = false
 }

@@ -16,10 +16,28 @@ enum TimePeriodType: String, CaseIterable {
 
 @MainActor final class ChartViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
-    private var expenses = [ExpenseModel]()
-    @Published var weekExpenses = [ExpenseBarModel]()
-    @Published var montExpenses = [ExpenseBarModel]()
-    @Published var yearExpenses = [ExpenseBarModel]()
+    private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
+    private var calendar: Calendar = {
+        var calendar = Calendar.current
+        calendar.firstWeekday = 2
+        return calendar
+    }()
+    
+    @Published var filteredExpensesForPeriod = [ExpenseModel]() // for transactions list
+    @Published var filteredExpensesForSelection = [ExpenseModel]() // for transactions list when bar selected on chart
+    @Published var barExpenses = [ExpenseBarModel]() // for bar graph
+    @Published var expensesDictionary = OrderedDictionary<String, Double>() // for bar graph
+    
+    @Published var summaryLabelText: String = ""
+    @Published var labelText: String = ""
+    
+    private let currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = true
+        return formatter
+    } ()
+    
 
     init() {
         fetchExpenses()
@@ -27,11 +45,18 @@ enum TimePeriodType: String, CaseIterable {
     
     func fetchExpenses() {
         expenses = persistenceController.fetchExpenses()
-        filterWeek(forDay: Date())
+        filterWeek(date: Date())
         // set 3 published properties
     }
     
-    func filterWeek(forDay day: Date) {
+    func clearData() {
+        barExpenses = []
+        filteredExpensesForPeriod = []
+        filteredExpensesForSelection = []
+    }
+    
+    func filterWeek(date: Date) {
+        clearData()
         var weekDays = Calendar.current.shortWeekdaySymbols
         weekDays = weekDays.dropFirst() + [weekDays[0]]
         
@@ -41,29 +66,88 @@ enum TimePeriodType: String, CaseIterable {
         }
         
         // use reduce(into)?
-        if let start = Calendar.current.weekBoundary(for: day)?.startOfWeek,
-           let end = Calendar.current.weekBoundary(for: day)?.endOfWeek {
+        if let start = calendar.weekBoundary(for: date)?.startOfWeek,
+           let end = calendar.weekBoundary(for: date)?.endOfWeek {
+            labelText = "\(start.labelText()) - \(end.labelText())"
             for expense in expenses {
                 if (start...end).contains(expense.expenseDate) {
-                    let components = Calendar.current.dateComponents([.day], from: expense.expenseDate)
-                    if let date = Calendar.current.date(from: components)?.shortWeekDay(), weekExpenses.keys.contains(date) {
+                    filteredExpensesForPeriod.append(expense)
+//                    let components = calendar.dateComponents([.day], from: expense.expenseDate)
+                    let date = expense.expenseDate.shortWeekDay()
+                    if weekExpenses.keys.contains(date) {
                         weekExpenses[date] = (weekExpenses[date] ?? 0) + expense.amount
                     }
                 }
             }
         }
-       
-        for (day, expense) in weekExpenses {
-            self.weekExpenses.append(ExpenseBarModel(amount: expense, time: day))
+        
+        expensesDictionary = weekExpenses
+        filteredExpensesForPeriod.sort {
+            $0.expenseDate < $1.expenseDate
         }
+       
+        var weekSummary: Double = 0.0
+        for (day, expense) in weekExpenses {
+            self.barExpenses.append(ExpenseBarModel(amount: expense, time: day))
+            weekSummary += expense
+        }
+
+        var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: weekSummary)) ?? "")
+        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
     
-    func filterMonth() {
+    func filterMonth(date: Date) {
+        clearData()
+        var months = calendar.shortMonthSymbols
         
+        var monthExpenses: OrderedDictionary<String, Double> = [:]
+        months.forEach { month in
+            monthExpenses[month] = 0.0
+        }
+        
+        // use reduce(into)?
+        labelText = "\(date.formatted(Date.FormatStyle().month(.wide)))"
+            for expense in expenses {
+                if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .month) {
+                    filteredExpensesForPeriod.append(expense)
+                    let components = calendar.dateComponents([.month], from: expense.expenseDate)
+                    if let date = calendar.date(from: components)?.shortMonth(), monthExpenses.keys.contains(date) {
+                        monthExpenses[date] = (monthExpenses[date] ?? 0) + expense.amount
+                    }
+                }
+            }
+        
+        expensesDictionary = monthExpenses
+        filteredExpensesForPeriod.sort {
+            $0.expenseDate < $1.expenseDate
+        }
+
+        var monthSummary: Double = 0.0
+        for (month, expense) in monthExpenses {
+            self.barExpenses.append(ExpenseBarModel(amount: expense, time: month))
+            monthSummary += expense
+        }
+
+        var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
+        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
     
     func filterYear() {
         
+    }
+    
+    func getDaySummary(time: String) -> String {
+        guard let amount = expensesDictionary[time] else { return "" }
+        return String(amount)
+    }
+    
+    func filterExpenses(for selection: String) {
+        filteredExpensesForSelection = []
+        for expense in filteredExpensesForPeriod {
+            if expense.expenseDate.shortMonth() == selection || expense.expenseDate.shortWeekDay() == selection {
+                filteredExpensesForSelection.append(expense)
+            }
+        }
     }
     
 }

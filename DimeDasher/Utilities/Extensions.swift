@@ -36,8 +36,18 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func labelText() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM"
+        return formatter.string(from: self)
+    }
+    
     func shortWeekDay() -> String {
         self.formatted(Date.FormatStyle().weekday(.abbreviated))
+    }
+    
+    func shortMonth() -> String {
+        self.formatted(Date.FormatStyle().month(.abbreviated))
     }
 }
 

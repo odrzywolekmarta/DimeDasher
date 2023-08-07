@@ -36,20 +36,40 @@ struct ChartView: View {
                 .colorMultiply(Color(Constants.Colors.lightPink))
                 .cornerRadius(4)
                 .padding(.horizontal)
+                .onChange(of: timeSelected) { _ in
+                    switch timeSelected {
+                    case .week:
+                        viewModel.filterWeek(date: Date())
+                    case .month:
+                        viewModel.filterMonth(date: Date())
+                    case .year:
+                        viewModel.filterYear()
+                    }
+                }
                 
-                switch timeSelected {
-                case .week:
-                    BarGraphView(data: viewModel.weekExpenses)
-                case .month:
-                    BarGraphView(data: viewModel.montExpenses)
-                case .year:
-                    BarGraphView(data: viewModel.yearExpenses)
-
-                } // switch
+                BarGraphView()
                 
+                HStack {
+                    Text("Transactions")
+                        .padding(.horizontal)
+                        .font(.custom(Constants.Fonts.ralewayBold, size: 20))
+                    Spacer()
+                }
                 
+                List(viewModel.filteredExpensesForSelection.isEmpty ? $viewModel.filteredExpensesForPeriod : $viewModel.filteredExpensesForSelection, id: \.id,
+                     editActions: .delete) { $expense in
+                    TransactionListExpenseItem(expense: expense)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .background(Color(Constants.Colors.beige))
+                } // list
+                     .listStyle(PlainListStyle())
+                     .background(Color(Constants.Colors.beige))
+                     .scrollContentBackground(.hidden)
+                Spacer()
             } // vstack
         } // zstack
+        .environmentObject(viewModel)
     }
 }
 
