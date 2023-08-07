@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChartView: View {
+    @StateObject var viewModel = ChartViewModel()
     @State private var timeSelected: TimePeriodType = .week
     
     init() {
@@ -36,9 +37,19 @@ struct ChartView: View {
                 .cornerRadius(4)
                 .padding(.horizontal)
                 
+                switch timeSelected {
+                case .week:
+                    BarGraphView(data: viewModel.weekExpenses)
+                case .month:
+                    BarGraphView(data: viewModel.montExpenses)
+                case .year:
+                    BarGraphView(data: viewModel.yearExpenses)
+
+                } // switch
                 
-            }
-        } // vstack
+                
+            } // vstack
+        } // zstack
     }
 }
 

@@ -22,18 +22,48 @@ extension Sequence where Iterator.Element == DateComponents {
 
 //MARK: - Date
 extension Date {
+    var onlyDate: Date? {
+        get {
+            let calender = Calendar.current
+            let dateComponents = calender.dateComponents([.year, .month, .day], from: self)
+            return calender.date(from: dateComponents)
+        }
+    }
+    
     func toString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/YY"
         return formatter.string(from: self)
     }
     
-    var onlyDate: Date? {
-        get { 
-            let calender = Calendar.current
-            let dateComponents = calender.dateComponents([.year, .month, .day], from: self)
-            return calender.date(from: dateComponents)
+    func shortWeekDay() -> String {
+        self.formatted(Date.FormatStyle().weekday(.abbreviated))
+    }
+}
+
+//MARK: - Calendar
+extension Calendar {
+    typealias WeekBoundary = (startOfWeek: Date?, endOfWeek: Date?)
+    
+    func currentWeekBoundary() -> WeekBoundary? {
+        return weekBoundary(for: Date())
+    }
+    
+    func weekBoundary(for date: Date) -> WeekBoundary? {
+        let components = dateComponents([.yearForWeekOfYear, .weekOfYear], from: date)
+        
+        guard let startOfWeek = self.date(from: components) else {
+            return nil
         }
+        
+        let endOfWeekOffset = weekdaySymbols.count - 1
+        let endOfWeekComponents = DateComponents(day: endOfWeekOffset, hour: 23, minute: 59, second: 59)
+        
+        guard let endOfWeek = self.date(byAdding: endOfWeekComponents, to: startOfWeek) else {
+            return nil
+        }
+        
+        return (startOfWeek, endOfWeek)
     }
 }
 
@@ -67,8 +97,7 @@ extension String {
 //MARK: - View
 extension View {
     func endTextEditing() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                        to: nil, from: nil, for: nil)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     func hidden(_ shouldHide: Bool) -> some View {

@@ -44,6 +44,8 @@
 		2D6193582A7AEC0600FA564D /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6193572A7AEC0600FA564D /* VisualEffectView.swift */; };
 		2D61935A2A7AFDCF00FA564D /* TransactionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6193592A7AFDCF00FA564D /* TransactionDetailsView.swift */; };
 		2D61935D2A7EE22C00FA564D /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61935C2A7EE22C00FA564D /* ChartViewModel.swift */; };
+		2D61935F2A7EE47000FA564D /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61935E2A7EE47000FA564D /* BarGraphView.swift */; };
+		2D6193612A7EE82C00FA564D /* ExpenseBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6193602A7EE82C00FA564D /* ExpenseBarModel.swift */; };
 		2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */; };
 		2DA7D7902A4AB76D00F25939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */; };
 		2DA7D7932A4AB76D00F25939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA7D7922A4AB76D00F25939 /* Preview Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		2D6193572A7AEC0600FA564D /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		2D6193592A7AFDCF00FA564D /* TransactionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsView.swift; sourceTree = "<group>"; };
 		2D61935C2A7EE22C00FA564D /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		2D61935E2A7EE47000FA564D /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
+		2D6193602A7EE82C00FA564D /* ExpenseBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBarModel.swift; sourceTree = "<group>"; };
 		2DA7D7882A4AB76C00F25939 /* DimeDasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DimeDasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA7D78B2A4AB76C00F25939 /* DimeDasherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimeDasherApp.swift; sourceTree = "<group>"; };
 		2DA7D78F2A4AB76D00F25939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */,
+				2D6193602A7EE82C00FA564D /* ExpenseBarModel.swift */,
 				2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */,
 			);
 			path = Models;
@@ -278,6 +283,7 @@
 			children = (
 				2D61935C2A7EE22C00FA564D /* ChartViewModel.swift */,
 				2DA7D7A92A4AC89500F25939 /* ChartView.swift */,
+				2D61935E2A7EE47000FA564D /* BarGraphView.swift */,
 			);
 			path = ChartView;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				2D1940432A51B62200A45537 /* Persistence+Expense.swift in Sources */,
 				2DA7D7BD2A4AEECA00F25939 /* HeaderView.swift in Sources */,
 				2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */,
+				2D61935F2A7EE47000FA564D /* BarGraphView.swift in Sources */,
 				2DA7D7B32A4AE4FC00F25939 /* SummaryView.swift in Sources */,
 				2D3721BF2A75C1340038FBCB /* GeneralSettingsView.swift in Sources */,
 				2D6193582A7AEC0600FA564D /* VisualEffectView.swift in Sources */,
@@ -494,6 +501,7 @@
 				2D61935A2A7AFDCF00FA564D /* TransactionDetailsView.swift in Sources */,
 				2D1940462A51DDE200A45537 /* Extensions.swift in Sources */,
 				2D19405F2A55386800A45537 /* TransactionsListViewModel.swift in Sources */,
+				2D6193612A7EE82C00FA564D /* ExpenseBarModel.swift in Sources */,
 				2D61935D2A7EE22C00FA564D /* ChartViewModel.swift in Sources */,
 				2D19403C2A5188C400A45537 /* ExpenseEnum.swift in Sources */,
 				2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */,

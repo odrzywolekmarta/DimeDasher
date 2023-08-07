@@ -54,7 +54,6 @@ enum DateSelection: String, CaseIterable {
     init() {
         fetchExpenses()
         fetchIncome()
-        print("view model init")
     }
     
     func fetchExpenses() {
