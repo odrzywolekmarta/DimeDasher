@@ -13,7 +13,7 @@ struct AddTransactionView: View {
     
     @StateObject private var viewModel = AddTransactionViewModel()
     @State private var amount: Double?
-    @State private var transactionDescription: String = ""
+    @State private var transactionDescription: String = "" 
     @State private var expenseType: ExpenseType = .housing
     @State private var incomeType: IncomeType = .work
     @State private var date: Date = Date()
@@ -52,7 +52,7 @@ struct AddTransactionView: View {
                     ExpensesPicker(expense: $expenseType)
                 }
                 
-                TextField("Note..", text: $transactionDescription, axis: .vertical)
+                TextField("Note..", text: $transactionDescription.max(70), axis: .vertical)
                     .padding()
                     .font(.custom(Constants.Fonts.raleway, size: 20))
                     .padding()

@@ -39,6 +39,7 @@ struct TransactionDetailsView: View {
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .opacity(0.7)
             } // vstack
+            .padding()
         } else if let income = income {
             VStack(spacing: 7) {
                 Image(systemName: Constants.income)
@@ -65,7 +66,8 @@ struct TransactionDetailsView: View {
                 Text(income.incomeDescription)
                     .font(.custom(Constants.Fonts.raleway, size: 17))
                     .opacity(0.7)
-            }
+            } // vstack
+            .padding()
         }
     }
 }

@@ -114,3 +114,15 @@ extension View {
         opacity(shouldHide ? 0 : 1)
     }
 }
+
+//MARK: - Binding String
+extension Binding where Value == String {
+    func max(_ limit: Int) -> Self {
+        if self.wrappedValue.count > limit {
+            DispatchQueue.main.async {
+                self.wrappedValue = String(self.wrappedValue.dropLast())
+            }
+        }
+        return self
+    }
+}
