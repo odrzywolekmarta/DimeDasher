@@ -13,6 +13,7 @@ struct TransactionsListView: View {
     @State private var transactionType: TransactionType = .income
     @State private var sideBarVisible: Bool = false
     @State private var filtersVisible: Bool = false
+    @State private var detailsPresented: Bool = false
 
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(

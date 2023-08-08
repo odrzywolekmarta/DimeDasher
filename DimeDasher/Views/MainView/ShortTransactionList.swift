@@ -11,6 +11,7 @@ struct ShortTransactionList: View {
     @EnvironmentObject var viewModel: MainViewModel
     @EnvironmentObject var listViewModel: TransactionsListViewModel
     @State private var transactionType: TransactionType = .income
+    @State private var detailsPresented: Bool = false
     
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
@@ -65,9 +66,9 @@ struct ShortTransactionList: View {
                 .background(Color(Constants.Colors.beige))
                 .scrollContentBackground(.hidden)
             case .expense:
-                List($viewModel.shortExpenses, id: \.self,
+                List($viewModel.shortExpenses, id: \.id,
                      editActions: .delete) { $expense in
-                    TransactionListExpenseItem(expense: expense)
+                    TransactionListExpenseItem( expense: expense)
                         .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .background(Color(Constants.Colors.beige))

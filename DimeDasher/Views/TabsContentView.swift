@@ -15,6 +15,7 @@ enum Tab {
 struct TabsContentView: View {
     @StateObject private var mainViewModel = MainViewModel(fileManager: LocalFileManager())
     @StateObject var listViewModel = TransactionsListViewModel()
+    @StateObject var chartViewModel = ChartViewModel()
     @State private var selectedTab: Tab = .main
     @State private var newTransactionPresented: Bool = false
     @State private var addViewPresented: Bool = false
@@ -31,9 +32,8 @@ struct TabsContentView: View {
                             .environmentObject(listViewModel)
                     }
                 case .chart:
-                    NavigationView {
                         ChartView()
-                    }
+                        .environmentObject(chartViewModel)
                 } // switch
                 
                 CustomTabView(selectedTab: $selectedTab,
@@ -57,6 +57,7 @@ struct TabsContentView: View {
             mainViewModel.calculateBalance()
             listViewModel.fetchExpenses()
             listViewModel.fetchIncome()
+            chartViewModel.fetchExpenses()
         }, content: {
             AddTransactionView(transactionType: transactionType)
         })

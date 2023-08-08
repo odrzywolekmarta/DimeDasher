@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TransactionListExpenseItem: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @State private var detailsPresented: Bool = false
     var expense: ExpenseModel
     
     var body: some View {
@@ -37,6 +38,13 @@ struct TransactionListExpenseItem: View {
         )
         .padding(.horizontal)
         .padding(.vertical, 5)
+        .onTapGesture {
+            detailsPresented.toggle()
+        }
+        .sheet(isPresented: $detailsPresented) {
+            TransactionDetailsView(expense: expense)
+                .presentationDetents([.height(250)])
+        }
     }
 }
 

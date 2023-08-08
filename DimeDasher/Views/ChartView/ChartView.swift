@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ChartView: View {
-    @StateObject var viewModel = ChartViewModel()
+    @EnvironmentObject var viewModel: ChartViewModel
     @State private var timeSelected: TimePeriodType = .week
+    @State private var selectedWeekDate = Date()
+    @State private var selectedMonthDate = Date()
+    @State private var detailsPresented: Bool = false
     
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
@@ -39,15 +42,16 @@ struct ChartView: View {
                 .onChange(of: timeSelected) { _ in
                     switch timeSelected {
                     case .week:
-                        viewModel.filterWeek(date: Date())
+                        viewModel.filterWeek(date: selectedWeekDate)
                     case .month:
-                        viewModel.filterMonth(date: Date())
+                        viewModel.filterMonth(date: selectedMonthDate)
                     case .year:
                         viewModel.filterYear()
                     }
                 }
                 
                 BarGraphView()
+                   
                 
                 HStack {
                     Text("Transactions")
@@ -56,20 +60,26 @@ struct ChartView: View {
                     Spacer()
                 }
                 
-                List(viewModel.filteredExpensesForSelection.isEmpty ? $viewModel.filteredExpensesForPeriod : $viewModel.filteredExpensesForSelection, id: \.id,
-                     editActions: .delete) { $expense in
-                    TransactionListExpenseItem(expense: expense)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .background(Color(Constants.Colors.beige))
-                } // list
-                     .listStyle(PlainListStyle())
-                     .background(Color(Constants.Colors.beige))
-                     .scrollContentBackground(.hidden)
+                if !viewModel.filteredExpensesForPeriod.isEmpty || !viewModel.filteredExpensesForSelection.isEmpty
+                {
+                    List {
+                        ForEach(viewModel.filteredExpensesForSelection.isEmpty ? $viewModel.filteredExpensesForPeriod : $viewModel.filteredExpensesForSelection, id: \.id) { $expense in
+                            TransactionListExpenseItem(expense: expense)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .background(Color(Constants.Colors.beige))
+                        } // foreach
+                    } // list
+                         .listStyle(PlainListStyle())
+                         .background(Color(Constants.Colors.beige))
+                         .scrollContentBackground(.hidden)
+                }
+               
                 Spacer()
             } // vstack
         } // zstack
         .environmentObject(viewModel)
+        .background(Color(Constants.Colors.beige))
     }
 }
 
