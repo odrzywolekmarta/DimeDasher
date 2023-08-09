@@ -51,7 +51,7 @@ struct ChartView: View {
                 }
                 
                 BarGraphView()
-                   
+                    .padding(.horizontal, 5)
                 
                 HStack {
                     Text("Transactions")
@@ -86,5 +86,6 @@ struct ChartView: View {
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
         ChartView()
+            .environmentObject(ChartViewModel())
     }
 }

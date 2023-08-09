@@ -17,6 +17,7 @@ enum TimePeriodType: String, CaseIterable {
 @MainActor final class ChartViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
     private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
+    var displayedDate: Date = Date()
     private var calendar: Calendar = {
         var calendar = Calendar.current
         calendar.firstWeekday = 2
@@ -26,6 +27,7 @@ enum TimePeriodType: String, CaseIterable {
     @Published var filteredExpensesForPeriod = [ExpenseModel]() // for transactions list
     @Published var filteredExpensesForSelection = [ExpenseModel]() // for transactions list when bar selected on chart
     @Published var barExpenses = [ExpenseBarModel]() // for bar graph
+    @Published var maxExpense: Int = 0
     @Published var expensesDictionary = OrderedDictionary<String, Double>() // for bar graph
     
     @Published var summaryLabelText: String = ""
@@ -68,6 +70,7 @@ enum TimePeriodType: String, CaseIterable {
         // use reduce(into)?
         if let start = calendar.weekBoundary(for: date)?.startOfWeek,
            let end = calendar.weekBoundary(for: date)?.endOfWeek {
+            displayedDate = start
             labelText = "\(start.labelText()) - \(end.labelText())"
             for expense in expenses {
                 if (start...end).contains(expense.expenseDate) {
@@ -91,6 +94,9 @@ enum TimePeriodType: String, CaseIterable {
             self.barExpenses.append(ExpenseBarModel(amount: expense, time: day))
             weekSummary += expense
         }
+        
+        let maxBar = barExpenses.max { $0.amount < $1.amount }
+        maxExpense = Int(maxBar?.amount ?? 200)
 
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: weekSummary)) ?? "")
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
@@ -134,6 +140,18 @@ enum TimePeriodType: String, CaseIterable {
     
     func filterYear() {
         
+    }
+    
+    func calculatePreviousWeek() {
+        if let date = displayedDate.previousWeek() {
+            filterWeek(date: date)
+        }
+    }
+    
+    func calculateNextWeek() {
+        if let date = displayedDate.nextWeek() {
+            filterWeek(date: date)
+        }
     }
     
     func getDaySummary(time: String) -> String {

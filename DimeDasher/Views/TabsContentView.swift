@@ -57,7 +57,7 @@ struct TabsContentView: View {
             mainViewModel.calculateBalance()
             listViewModel.fetchExpenses()
             listViewModel.fetchIncome()
-            chartViewModel.fetchExpenses()
+            chartViewModel.filterWeek(date: chartViewModel.displayedDate)
         }, content: {
             AddTransactionView(transactionType: transactionType)
         })

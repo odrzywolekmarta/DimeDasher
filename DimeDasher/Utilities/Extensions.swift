@@ -47,7 +47,33 @@ extension Date {
     }
     
     func shortMonth() -> String {
-        self.formatted(Date.FormatStyle().month(.abbreviated))
+        self.formatted(Date.FormatStyle().month(.narrow))
+    }
+    
+    func dayBefore() -> Date? {
+        let components = Calendar.current.dateComponents([.day], from: self)
+        if let nextDate = Calendar.current.nextDate(after: self, matching: components, matchingPolicy: .nextTime, repeatedTimePolicy: .first, direction: .backward) {
+            return nextDate
+        } else {
+            return nil
+        }
+    }
+    
+    func dayAfter() -> Date? {
+        let components = Calendar.current.dateComponents([.day], from: self)
+        if let nextDate = Calendar.current.nextDate(after: self, matching: components, matchingPolicy: .nextTime, repeatedTimePolicy: .first, direction: .forward){
+            return nextDate
+        } else {
+            return nil
+        }
+    }
+    
+    func previousWeek() -> Date? {
+       Calendar.current.date(byAdding: .weekOfYear, value: -1, to: self)
+    }
+    
+    func nextWeek() -> Date? {
+        return Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self)
     }
 }
 
@@ -75,6 +101,11 @@ extension Calendar {
         
         return (startOfWeek, endOfWeek)
     }
+    
+//    func previousWeekStart(from date: Date) -> Date? {
+//        let components =
+//        let date = self.date(from: <#T##DateComponents#>)
+//    }
 }
 
 //MARK: - Double
