@@ -47,7 +47,7 @@ enum TimePeriodType: String, CaseIterable {
     
     func fetchExpenses() {
         expenses = persistenceController.fetchExpenses()
-        filterWeek(date: Date())
+        filterWeek(date: displayedDate)
         // set 3 published properties
     }
     
