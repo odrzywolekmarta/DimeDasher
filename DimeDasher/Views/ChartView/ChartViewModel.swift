@@ -102,7 +102,7 @@ enum TimePeriodType: String, CaseIterable {
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
     
-    func filterMonth(date: Date) {
+    func filterYear(date: Date) {
         clearData()
         let months = calendar.shortStandaloneMonthSymbols
         
@@ -112,7 +112,7 @@ enum TimePeriodType: String, CaseIterable {
         }
         
         // use reduce(into)?
-        labelText = "\(date.formatted(Date.FormatStyle().month(.wide)))"
+        labelText = "\(date.formatted(Date.FormatStyle().year()))"
             for expense in expenses {
                 if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .month) {
                     filteredExpensesForPeriod.append(expense)
@@ -141,8 +141,42 @@ enum TimePeriodType: String, CaseIterable {
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
     
-    func filterYear() {
+    func filterMonth(date: Date) {
+        clearData()
+        let monthDays = date.getDaysInMonth()
         
+        var dayExpenses: OrderedDictionary<String, Double> = [:]
+        for day in 1...monthDays {
+            dayExpenses[String(day)] = 0.0
+        }
+        
+        labelText = "\(date.formatted(Date.FormatStyle().month(.wide)))"
+            for expense in expenses {
+                if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .day) {
+                    filteredExpensesForPeriod.append(expense)
+                    let date = String(expense.expenseDate.get(.day))
+                    if dayExpenses.keys.contains(date) {
+                        dayExpenses[date] = (dayExpenses[date] ?? 0) + expense.amount
+                    }
+                }
+            }
+        
+        expensesDictionary = dayExpenses
+        filteredExpensesForPeriod.sort {
+            $0.expenseDate < $1.expenseDate
+        }
+        
+        var monthSummary: Double = 0.0
+        for (day, expense) in dayExpenses {
+            self.barExpenses.append(ExpenseBarModel(amount: expense, time: day))
+            monthSummary += expense
+        }
+        
+        let maxBar = barExpenses.max { $0.amount < $1.amount }
+        maxExpense = Int(maxBar?.amount ?? 200)
+        
+        var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
+        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
     
     func calculatePreviousWeek() {
@@ -155,6 +189,14 @@ enum TimePeriodType: String, CaseIterable {
         if let date = displayedDate.nextWeek() {
             filterWeek(date: date)
         }
+    }
+    
+    func calculatePreviousMonth() {
+        
+    }
+    
+    func calculateNextMonth() {
+        
     }
     
     func getDaySummary(time: String) -> String {

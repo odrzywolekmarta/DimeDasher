@@ -75,6 +75,22 @@ extension Date {
     func nextWeek() -> Date? {
         return Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self)
     }
+    
+    func getDaysInMonth() -> Int {
+        let calendar = Calendar.current
+
+        let dateComponents = DateComponents(year: calendar.component(.year, from: self), month: calendar.component(.month, from: self))
+        var numDays = 0
+        if let date = calendar.date(from: dateComponents) {
+            let range = calendar.range(of: .day, in: .month, for: date)
+            numDays = range?.count ?? 0
+        }
+        return numDays
+    }
+    
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
 }
 
 //MARK: - Calendar

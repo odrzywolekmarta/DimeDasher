@@ -12,6 +12,7 @@ import Collections
 struct BarGraphView: View {
     @EnvironmentObject var viewModel: ChartViewModel
     @State private var select = ""
+    @Binding var timeSelected: TimePeriodType
 
     func animateBars() {
         for (index, _) in viewModel.barExpenses.enumerated() {
@@ -33,15 +34,35 @@ struct BarGraphView: View {
         }
     }
     
+    func shouldDisplayButtons() -> Bool {
+        if timeSelected == .year && viewModel.filteredExpensesForPeriod.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+   
     var body: some View {
         HStack {
-            Button {
-                viewModel.calculatePreviousWeek()
-            } label: {
-                Image(systemName: "chevron.compact.left")
-                    .foregroundColor(.black)
-                    .frame(height: 350)
+            if shouldDisplayButtons() {
+                Button {
+                    select = ""
+                    switch timeSelected {
+                    case .week:
+                        viewModel.calculatePreviousWeek()
+                    case .month:
+                        viewModel.calculatePreviousMonth()
+                    case .year:
+                        ()
+                    }
+                } label: {
+                    Image(systemName: "chevron.compact.left")
+                        .foregroundColor(.black)
+                        .frame(height: 350)
+                }
             }
+               
+            
 
             GroupBox {
                 Chart(viewModel.barExpenses) { expense in
@@ -92,22 +113,33 @@ struct BarGraphView: View {
             .groupBoxStyle(WhiteGroupBox())
             .frame(height: 350)
             .padding(.vertical)
-            
-            Button {
-                viewModel.calculateNextWeek()
-            } label: {
-                Image(systemName: "chevron.compact.right")
-                    .foregroundColor(.black)
-                    .frame(height: 350)
+            if shouldDisplayButtons() {
+                Button {
+                    select = ""
+                    switch timeSelected {
+                    case .week:
+                        viewModel.calculateNextWeek()
+                    case .month:
+                        viewModel.calculateNextMonth()
+                    case .year:
+                        ()
+                    }
+                } label: {
+                    Image(systemName: "chevron.compact.right")
+                        .foregroundColor(.black)
+                        .frame(height: 350)
+
+                }
 
             }
-        }
+        } // hstack
+        .padding(.horizontal, shouldDisplayButtons() ? 0 : 15)
     }
 }
 
 struct BarGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        BarGraphView()
+        BarGraphView(timeSelected: .constant(.month))
             .background(Color.black)
             .environmentObject(ChartViewModel())
     }

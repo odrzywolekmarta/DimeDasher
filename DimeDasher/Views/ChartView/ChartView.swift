@@ -12,6 +12,7 @@ struct ChartView: View {
     @State private var timeSelected: TimePeriodType = .week
     @State private var selectedWeekDate = Date()
     @State private var selectedMonthDate = Date()
+    @State private var selectedYearDate = Date()
     @State private var detailsPresented: Bool = false
     
     init() {
@@ -46,11 +47,11 @@ struct ChartView: View {
                     case .month:
                         viewModel.filterMonth(date: selectedMonthDate)
                     case .year:
-                        viewModel.filterYear()
+                        viewModel.filterYear(date: selectedYearDate)
                     }
                 }
                 
-                BarGraphView()
+                BarGraphView(timeSelected: $timeSelected)
                     .padding(.horizontal, 5)
                 
                 HStack {
