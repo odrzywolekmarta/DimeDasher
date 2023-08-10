@@ -73,6 +73,11 @@ struct ChartView: View {
                          .listStyle(PlainListStyle())
                          .background(Color(Constants.Colors.beige))
                          .scrollContentBackground(.hidden)
+                } else {
+                    Text("No expenses added")
+                        .font(.custom(Constants.Fonts.raleway, size: 17))
+                        .opacity(0.6)
+                        .padding()
                 }
                
                 Spacer()

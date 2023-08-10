@@ -20,13 +20,13 @@ struct BarGraphView: View {
             }
         }
     }
+    
     func doSelection(at location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) {
         let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
         guard let xbar: String = proxy.value(atX: xPos) else { return }
         if select == xbar {
             select = ""
             viewModel.filteredExpensesForSelection.removeAll()
-//            viewModel.filterExpenses(for: Date())
         } else {
             select = xbar
             viewModel.filterExpenses(for: select)
@@ -38,8 +38,9 @@ struct BarGraphView: View {
             Button {
                 viewModel.calculatePreviousWeek()
             } label: {
-                Image(systemName: "chevron.left")
-                    .foregroundColor(Color(Constants.Colors.lightPink))
+                Image(systemName: "chevron.compact.left")
+                    .foregroundColor(.black)
+                    .frame(height: 350)
             }
 
             GroupBox {
@@ -95,8 +96,10 @@ struct BarGraphView: View {
             Button {
                 viewModel.calculateNextWeek()
             } label: {
-                Image(systemName: "chevron.right")
-                    .foregroundColor(Color(Constants.Colors.lightPink))
+                Image(systemName: "chevron.compact.right")
+                    .foregroundColor(.black)
+                    .frame(height: 350)
+
             }
         }
     }

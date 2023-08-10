@@ -104,7 +104,7 @@ enum TimePeriodType: String, CaseIterable {
     
     func filterMonth(date: Date) {
         clearData()
-        var months = calendar.shortMonthSymbols
+        let months = calendar.shortStandaloneMonthSymbols
         
         var monthExpenses: OrderedDictionary<String, Double> = [:]
         months.forEach { month in
@@ -116,8 +116,8 @@ enum TimePeriodType: String, CaseIterable {
             for expense in expenses {
                 if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .month) {
                     filteredExpensesForPeriod.append(expense)
-                    let components = calendar.dateComponents([.month], from: expense.expenseDate)
-                    if let date = calendar.date(from: components)?.shortMonth(), monthExpenses.keys.contains(date) {
+                    let date = expense.expenseDate.shortMonth()
+                    if monthExpenses.keys.contains(date) {
                         monthExpenses[date] = (monthExpenses[date] ?? 0) + expense.amount
                     }
                 }
@@ -133,6 +133,9 @@ enum TimePeriodType: String, CaseIterable {
             self.barExpenses.append(ExpenseBarModel(amount: expense, time: month))
             monthSummary += expense
         }
+        
+        let maxBar = barExpenses.max { $0.amount < $1.amount }
+        maxExpense = Int(maxBar?.amount ?? 200)
 
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")

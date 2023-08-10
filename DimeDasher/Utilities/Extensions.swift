@@ -47,7 +47,7 @@ extension Date {
     }
     
     func shortMonth() -> String {
-        self.formatted(Date.FormatStyle().month(.narrow))
+        self.formatted(Date.FormatStyle().month(.abbreviated))
     }
     
     func dayBefore() -> Date? {

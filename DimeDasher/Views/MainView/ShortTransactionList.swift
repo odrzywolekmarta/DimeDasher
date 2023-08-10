@@ -52,30 +52,44 @@ struct ShortTransactionList: View {
             .cornerRadius(4)
             .padding(.horizontal )
             
-
+            
             switch transactionType {
             case .income:
-                List($viewModel.shortIncome, id: \.id,
-                     editActions: .delete) { $income in
-                    TransactionListIncomeItem(income: income)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .background(Color(Constants.Colors.beige))
-                } // list
-                .listStyle(PlainListStyle())
-                .background(Color(Constants.Colors.beige))
-                .scrollContentBackground(.hidden)
+                if viewModel.shortIncome.isEmpty {
+                    Text("No income added")
+                        .font(.custom(Constants.Fonts.raleway, size: 17))
+                        .opacity(0.6)
+                        .padding()
+                } else {
+                    List($viewModel.shortIncome, id: \.id,
+                         editActions: .delete) { $income in
+                        TransactionListIncomeItem(income: income)
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .background(Color(Constants.Colors.beige))
+                    } // list
+                         .listStyle(PlainListStyle())
+                         .background(Color(Constants.Colors.beige))
+                         .scrollContentBackground(.hidden)
+                }
             case .expense:
-                List($viewModel.shortExpenses, id: \.id,
-                     editActions: .delete) { $expense in
-                    TransactionListExpenseItem( expense: expense)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .background(Color(Constants.Colors.beige))
-                } // list
-                .listStyle(PlainListStyle())
-                .background(Color(Constants.Colors.beige))
-                .scrollContentBackground(.hidden)
+                if viewModel.shortExpenses.isEmpty {
+                    Text("No expenses added")
+                        .font(.custom(Constants.Fonts.raleway, size: 17))
+                        .opacity(0.6)
+                        .padding()
+                } else {
+                    List($viewModel.shortExpenses, id: \.id,
+                         editActions: .delete) { $expense in
+                        TransactionListExpenseItem( expense: expense)
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .background(Color(Constants.Colors.beige))
+                    } // list
+                         .listStyle(PlainListStyle())
+                         .background(Color(Constants.Colors.beige))
+                         .scrollContentBackground(.hidden)
+                }
             }
         }
     }
@@ -85,5 +99,6 @@ struct TransactionList_Previews: PreviewProvider {
     static var previews: some View {
         ShortTransactionList()
             .environmentObject(MainViewModel(fileManager: LocalFileManager()))
+            .environmentObject(TransactionsListViewModel())
     }
 }
