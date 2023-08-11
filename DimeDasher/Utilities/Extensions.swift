@@ -137,6 +137,18 @@ extension Double {
         return amountString.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
 }
+
+//MARK: - Int
+extension Int {
+    func isEven() -> Bool {
+        if self % 2 == 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 //MARK: - String
 extension String {
     mutating func stringWithCurrencySymbol(currency: String) -> String {

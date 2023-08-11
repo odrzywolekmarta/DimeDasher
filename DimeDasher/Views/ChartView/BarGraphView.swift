@@ -35,7 +35,7 @@ struct BarGraphView: View {
     }
     
     func shouldDisplayButtons() -> Bool {
-        if timeSelected == .year && viewModel.filteredExpensesForPeriod.isEmpty {
+        if timeSelected == .year && viewModel.filteredExpensesForPeriod.count > 1 {
             return false
         } else {
             return true
@@ -61,8 +61,6 @@ struct BarGraphView: View {
                         .frame(height: 350)
                 }
             }
-               
-            
 
             GroupBox {
                 Chart(viewModel.barExpenses) { expense in
@@ -80,7 +78,18 @@ struct BarGraphView: View {
                             }
                         }
                 } // chart
-                .chartYScale(domain: (0...viewModel.maxExpense + 20))
+                .chartYScale(domain: (0...viewModel.maxExpense))
+                .chartXAxis(content: {
+                    AxisMarks(preset: .aligned) { value in
+                        if timeSelected == .month {
+                            if value.index.isEven() {
+                                AxisValueLabel()
+                            }
+                        } else {
+                            AxisValueLabel()
+                        }
+                    }
+                })
                 .onChange(of: viewModel.barExpenses, perform: { _ in
                     animateBars()
                 })
@@ -128,9 +137,7 @@ struct BarGraphView: View {
                     Image(systemName: "chevron.compact.right")
                         .foregroundColor(.black)
                         .frame(height: 350)
-
                 }
-
             }
         } // hstack
         .padding(.horizontal, shouldDisplayButtons() ? 0 : 15)
