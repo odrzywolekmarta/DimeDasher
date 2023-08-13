@@ -17,6 +17,8 @@ enum TimePeriodType: String, CaseIterable {
 @MainActor final class ChartViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
     private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
+    private var generalChartTitle = ""
+    private var generalChartSummary = ""
     var displayedDate: Date = Date()
     private var calendar: Calendar = {
         var calendar = Calendar.current
@@ -31,7 +33,7 @@ enum TimePeriodType: String, CaseIterable {
     @Published var expensesDictionary = OrderedDictionary<String, Double>() // for bar graph
     
     @Published var summaryLabelText: String = ""
-    @Published var labelText: String = ""
+    @Published var chartTitle: String = ""
     
     private let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -71,7 +73,8 @@ enum TimePeriodType: String, CaseIterable {
         if let start = calendar.weekBoundary(for: date)?.startOfWeek,
            let end = calendar.weekBoundary(for: date)?.endOfWeek {
             displayedDate = start
-            labelText = "\(start.labelText()) - \(end.labelText())"
+            chartTitle = "\(start.labelText()) - \(end.labelText())"
+            generalChartTitle = chartTitle
             for expense in expenses {
                 if (start...end).contains(expense.expenseDate) {
                     filteredExpensesForPeriod.append(expense)
@@ -100,6 +103,7 @@ enum TimePeriodType: String, CaseIterable {
 
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: weekSummary)) ?? "")
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        generalChartSummary = summaryLabelText
     }
     
     func filterYear(date: Date) {
@@ -112,9 +116,11 @@ enum TimePeriodType: String, CaseIterable {
         }
         
         // use reduce(into)?
-        labelText = "\(date.formatted(Date.FormatStyle().year()))"
+        chartTitle = "\(date.year())"
+        generalChartTitle = chartTitle
+
             for expense in expenses {
-                if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .month) {
+                if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .year) {
                     filteredExpensesForPeriod.append(expense)
                     let date = expense.expenseDate.shortMonth()
                     if monthExpenses.keys.contains(date) {
@@ -139,6 +145,7 @@ enum TimePeriodType: String, CaseIterable {
 
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        generalChartSummary = summaryLabelText
     }
     
     func filterMonth(date: Date) {
@@ -150,9 +157,13 @@ enum TimePeriodType: String, CaseIterable {
             dayExpenses[String(day)] = 0.0
         }
         
-        labelText = "\(date.formatted(Date.FormatStyle().month(.wide)))"
+        displayedDate = date
+
+        chartTitle = "\(date.formatted(Date.FormatStyle().month(.wide)))"
+        generalChartTitle = chartTitle
+
             for expense in expenses {
-                if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .day) {
+                if calendar.isDate(date, equalTo: expense.expenseDate, toGranularity: .month) {
                     filteredExpensesForPeriod.append(expense)
                     let date = String(expense.expenseDate.get(.day))
                     if dayExpenses.keys.contains(date) {
@@ -177,6 +188,7 @@ enum TimePeriodType: String, CaseIterable {
         
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
         summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        generalChartSummary = summaryLabelText
     }
     
     func calculatePreviousWeek() {
@@ -192,25 +204,45 @@ enum TimePeriodType: String, CaseIterable {
     }
     
     func calculatePreviousMonth() {
-        
+        if let date = displayedDate.previousMonth() {
+         filterMonth(date: date)
+        }
     }
     
     func calculateNextMonth() {
-        
+        if let date = displayedDate.nextMonth() {
+         filterMonth(date: date)
+        }
     }
     
-    func getDaySummary(time: String) -> String {
-        guard let amount = expensesDictionary[time] else { return "" }
-        return String(amount)
+    func getDaySummary(for time: String, timeSelected: TimePeriodType) {
+        guard let amount = expensesDictionary[time] else { return }
+        let selected = filteredExpensesForSelection.first { expense in
+            expense.expenseDate.shortWeekDay() == time || expense.expenseDate.shortMonth() == time || expense.expenseDate.day() == time
+        }
+        switch timeSelected {
+        case .week:
+            chartTitle = selected?.expenseDate.toStringLong() ?? ""
+        case .month:
+            chartTitle = selected?.expenseDate.toStringLong() ?? ""
+        case .year:
+            chartTitle = selected?.expenseDate.formatted(Date.FormatStyle().month(.wide)) ?? ""
+        }
+        summaryLabelText = String(amount)
     }
     
     func filterExpenses(for selection: String) {
         filteredExpensesForSelection = []
         for expense in filteredExpensesForPeriod {
-            if expense.expenseDate.shortMonth() == selection || expense.expenseDate.shortWeekDay() == selection {
+            if expense.expenseDate.shortMonth() == selection || expense.expenseDate.shortWeekDay() == selection || expense.expenseDate.day() == selection {
                 filteredExpensesForSelection.append(expense)
             }
         }
     }
     
+    func undoSelection() {
+        filteredExpensesForSelection.removeAll()
+        summaryLabelText = generalChartSummary
+        chartTitle = generalChartTitle
+    }
 }

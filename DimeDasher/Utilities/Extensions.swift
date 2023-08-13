@@ -36,6 +36,12 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func toStringLong() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return formatter.string(from: self)
+    }
+    
     func labelText() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM"
@@ -48,6 +54,14 @@ extension Date {
     
     func shortMonth() -> String {
         self.formatted(Date.FormatStyle().month(.abbreviated))
+    }
+    
+    func year() -> String {
+        self.formatted(Date.FormatStyle().year())
+    }
+    
+    func day() -> String {
+        self.formatted(Date.FormatStyle().day())
     }
     
     func dayBefore() -> Date? {
@@ -73,7 +87,23 @@ extension Date {
     }
     
     func nextWeek() -> Date? {
-        return Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self)
+        Calendar.current.date(byAdding: .weekOfYear, value: 1, to: self)
+    }
+
+    func previousMonth() -> Date? {
+        Calendar.current.date(byAdding: .month, value: -1, to: self)
+    }
+    
+    func nextMonth() -> Date? {
+        Calendar.current.date(byAdding: .month, value: 1, to: self)
+    }
+    
+    func previousYear() -> Date? {
+        Calendar.current.date(byAdding: .year, value: 1, to: self)
+    }
+    
+    func nextYear() -> Date? {
+        Calendar.current.date(byAdding: .year, value: -1, to: self)
     }
     
     func getDaysInMonth() -> Int {
@@ -117,11 +147,6 @@ extension Calendar {
         
         return (startOfWeek, endOfWeek)
     }
-    
-//    func previousWeekStart(from date: Date) -> Date? {
-//        let components =
-//        let date = self.date(from: <#T##DateComponents#>)
-//    }
 }
 
 //MARK: - Double

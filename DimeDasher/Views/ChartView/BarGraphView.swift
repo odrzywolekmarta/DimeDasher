@@ -27,10 +27,11 @@ struct BarGraphView: View {
         guard let xbar: String = proxy.value(atX: xPos) else { return }
         if select == xbar {
             select = ""
-            viewModel.filteredExpensesForSelection.removeAll()
+            viewModel.undoSelection()
         } else {
             select = xbar
             viewModel.filterExpenses(for: select)
+            viewModel.getDaySummary(for: select, timeSelected: timeSelected)
         }
     }
     
@@ -64,19 +65,10 @@ struct BarGraphView: View {
 
             GroupBox {
                 Chart(viewModel.barExpenses) { expense in
-                    BarMark(x: .value("period", expense.time),
-                            y: .value("amount", expense.animate ? expense.amount : 0))
-                        .foregroundStyle(select == expense.time ? Color(Constants.Colors.darkPink) : Color(Constants.Colors.lightPink))
-                        .annotation(position: .top, alignment: .center, spacing: 5) {
-                            if select == expense.time {
-                                Text(viewModel.getDaySummary(time: expense.time))
-                                    .padding(2)
-                                    .font(.custom(Constants.Fonts.raleway, size: 12))
-                                    .background(
-                                        Color(Constants.Colors.beige)
-                                        .cornerRadius(2))
-                            }
-                        }
+                        BarMark(x: .value("period", expense.time),
+                                y: .value("amount", expense.animate ? expense.amount : 0))
+                        
+                            .foregroundStyle(select == expense.time ? Color(Constants.Colors.darkPink) : Color(Constants.Colors.lightPink))
                 } // chart
                 .chartYScale(domain: (0...viewModel.maxExpense))
                 .chartXAxis(content: {
@@ -109,7 +101,7 @@ struct BarGraphView: View {
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(viewModel.labelText)
+                        Text(viewModel.chartTitle)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                         Text(String(viewModel.summaryLabelText))
                             .font(.custom(Constants.Fonts.raleway, size: 15))
