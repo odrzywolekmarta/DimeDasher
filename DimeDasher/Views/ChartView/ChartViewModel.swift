@@ -14,6 +14,11 @@ enum TimePeriodType: String, CaseIterable {
     case year
 }
 
+enum ChartType {
+    case pieChart
+    case barChart
+}
+
 @MainActor final class ChartViewModel: ObservableObject {
     private let persistenceController = PersistenceController.shared
     private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
@@ -222,9 +227,9 @@ enum TimePeriodType: String, CaseIterable {
         }
         switch timeSelected {
         case .week:
-            chartTitle = selected?.expenseDate.toStringLong() ?? ""
+            chartTitle = selected?.expenseDate.labelText() ?? ""
         case .month:
-            chartTitle = selected?.expenseDate.toStringLong() ?? ""
+            chartTitle = selected?.expenseDate.labelText() ?? ""
         case .year:
             chartTitle = selected?.expenseDate.formatted(Date.FormatStyle().month(.wide)) ?? ""
         }

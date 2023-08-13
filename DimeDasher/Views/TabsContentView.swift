@@ -32,7 +32,7 @@ struct TabsContentView: View {
                             .environmentObject(listViewModel)
                     }
                 case .chart:
-                        ChartView()
+                        StatsView()
                         .environmentObject(chartViewModel)
                 } // switch
                 

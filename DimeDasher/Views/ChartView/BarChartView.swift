@@ -9,10 +9,11 @@ import SwiftUI
 import Charts
 import Collections
 
-struct BarGraphView: View {
+struct BarChartView: View {
     @EnvironmentObject var viewModel: ChartViewModel
     @State private var select = ""
     @Binding var timeSelected: TimePeriodType
+    @Binding var chartType: ChartType
 
     func animateBars() {
         for (index, _) in viewModel.barExpenses.enumerated() {
@@ -107,7 +108,20 @@ struct BarGraphView: View {
                             .font(.custom(Constants.Fonts.raleway, size: 15))
                             .opacity(0.7)
                     }
+                    
                     Spacer()
+                    
+                    Button {
+                        chartType = .pieChart
+                    } label: {
+                        Image(systemName: "chart.pie")
+                            .padding(10)
+                            .foregroundColor(.black)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(Constants.Colors.beige)))
+                    }
+
                 }
                 Divider()
             } // groupbox
@@ -138,7 +152,7 @@ struct BarGraphView: View {
 
 struct BarGraphView_Previews: PreviewProvider {
     static var previews: some View {
-        BarGraphView(timeSelected: .constant(.month))
+        BarChartView(timeSelected: .constant(.month), chartType: .constant(.barChart))
             .background(Color.black)
             .environmentObject(ChartViewModel())
     }

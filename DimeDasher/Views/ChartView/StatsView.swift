@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct ChartView: View {
+struct StatsView: View {
     @EnvironmentObject var viewModel: ChartViewModel
     @State private var timeSelected: TimePeriodType = .week
     @State private var selectedWeekDate = Date()
     @State private var selectedMonthDate = Date()
     @State private var selectedYearDate = Date()
     @State private var detailsPresented: Bool = false
+    @State private var chartType: ChartType = .barChart
     
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
@@ -51,8 +52,13 @@ struct ChartView: View {
                     }
                 }
                 
-                BarGraphView(timeSelected: $timeSelected)
-                    .padding(.horizontal, 5)
+                switch chartType {
+                case .pieChart:
+                    PieChartView()
+                case .barChart:
+                    BarChartView(timeSelected: $timeSelected, chartType: $chartType)
+                        .padding(.horizontal, 5)
+                }
                 
                 HStack {
                     Text("Transactions")
@@ -91,7 +97,7 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        ChartView()
+        StatsView()
             .environmentObject(ChartViewModel())
     }
 }
