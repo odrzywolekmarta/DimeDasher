@@ -67,7 +67,9 @@
 		2DA7D7C82A4C827900F25939 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */; };
 		2DA7D7CE2A4CB67000F25939 /* FirstLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */; };
 		2DA7D7D02A4CC45C00F25939 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7D7CF2A4CC45C00F25939 /* MainViewModel.swift */; };
-		2DD347F42A897992009D766F /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD347F32A897992009D766F /* PieChartView.swift */; };
+		2DD347F42A897992009D766F /* CategoriesPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD347F32A897992009D766F /* CategoriesPieChartView.swift */; };
+		2DD348012A8A2B9D009D766F /* PieChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD348002A8A2B9D009D766F /* PieChartModels.swift */; };
+		2DD348082A8A3DAC009D766F /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD348072A8A3DAC009D766F /* PieChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,7 +132,9 @@
 		2DA7D7C72A4C827900F25939 /* FirstLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		2DA7D7CD2A4CB67000F25939 /* FirstLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewModel.swift; sourceTree = "<group>"; };
 		2DA7D7CF2A4CC45C00F25939 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		2DD347F32A897992009D766F /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		2DD347F32A897992009D766F /* CategoriesPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPieChartView.swift; sourceTree = "<group>"; };
+		2DD348002A8A2B9D009D766F /* PieChartModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartModels.swift; sourceTree = "<group>"; };
+		2DD348072A8A3DAC009D766F /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +251,7 @@
 				2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */,
 				2D6193602A7EE82C00FA564D /* ExpenseBarModel.swift */,
 				2D3721C22A75CC4A0038FBCB /* IncomeModel.swift */,
+				2DD348002A8A2B9D009D766F /* PieChartModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 				2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */,
 				2D3721B82A75B0500038FBCB /* WhiteGroupBox.swift */,
 				2D6193572A7AEC0600FA564D /* VisualEffectView.swift */,
+				2DD348072A8A3DAC009D766F /* PieChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -288,7 +294,7 @@
 				2D61935C2A7EE22C00FA564D /* ChartViewModel.swift */,
 				2DA7D7A92A4AC89500F25939 /* StatsView.swift */,
 				2D61935E2A7EE47000FA564D /* BarChartView.swift */,
-				2DD347F32A897992009D766F /* PieChartView.swift */,
+				2DD347F32A897992009D766F /* CategoriesPieChartView.swift */,
 				2D6193622A810F3200FA564D /* ChartSummaryView.swift */,
 			);
 			path = ChartView;
@@ -461,7 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DD347F42A897992009D766F /* PieChartView.swift in Sources */,
+				2DD347F42A897992009D766F /* CategoriesPieChartView.swift in Sources */,
 				2DA7D7AC2A4ACB2200F25939 /* TabsContentView.swift in Sources */,
 				2D3721BD2A75B9620038FBCB /* SettingsRowView.swift in Sources */,
 				2D19404D2A54313800A45537 /* Income+CoreDataClass.swift in Sources */,
@@ -478,6 +484,7 @@
 				2D19405D2A55380E00A45537 /* TransactionsListView.swift in Sources */,
 				2DA7D7982A4AB76D00F25939 /* DimeDasher.xcdatamodeld in Sources */,
 				2D1940372A5184C400A45537 /* Expense+CoreDataClass.swift in Sources */,
+				2DD348082A8A3DAC009D766F /* PieChart.swift in Sources */,
 				2D19403E2A51958A00A45537 /* ExpensesPicker.swift in Sources */,
 				2DA7D7AA2A4AC89500F25939 /* StatsView.swift in Sources */,
 				2D19404E2A54313800A45537 /* Income+CoreDataProperties.swift in Sources */,
@@ -504,6 +511,7 @@
 				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
 				2DA7D7C12A4AF1C900F25939 /* TransactionListExpenseItem.swift in Sources */,
 				2D3721C12A75C3A30038FBCB /* SettingsViewModel.swift in Sources */,
+				2DD348012A8A2B9D009D766F /* PieChartModels.swift in Sources */,
 				2D3721B92A75B0500038FBCB /* WhiteGroupBox.swift in Sources */,
 				2D1940382A5184C400A45537 /* Expense+CoreDataProperties.swift in Sources */,
 				2D61935A2A7AFDCF00FA564D /* TransactionDetailsView.swift in Sources */,

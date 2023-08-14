@@ -20,36 +20,38 @@ enum ChartType {
 }
 
 @MainActor final class ChartViewModel: ObservableObject {
+    @Published var filteredExpensesForPeriod = [ExpenseModel]() // for transactions list
+    @Published var filteredExpensesForSelection = [ExpenseModel]() // for transactions list when bar selected on chart
+    @Published var barExpenses = [ExpenseBarModel]() // for bar graph
+    @Published var maxExpense: Int = 0 // for bar graph
+    @Published var expensesDictionary = OrderedDictionary<String, Double>() // for bar graph
+    @Published var summaryLabelText: String = ""
+    @Published var chartTitle: String = ""
+    @Published var pieChartData = [String: Double]()
+    
     private let persistenceController = PersistenceController.shared
     private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
     private var generalChartTitle = ""
     private var generalChartSummary = ""
     var displayedDate: Date = Date()
+    var displayedTimePeriod: TimePeriodType = .week
+    
     private var calendar: Calendar = {
         var calendar = Calendar.current
         calendar.firstWeekday = 2
         return calendar
     }()
     
-    @Published var filteredExpensesForPeriod = [ExpenseModel]() // for transactions list
-    @Published var filteredExpensesForSelection = [ExpenseModel]() // for transactions list when bar selected on chart
-    @Published var barExpenses = [ExpenseBarModel]() // for bar graph
-    @Published var maxExpense: Int = 0
-    @Published var expensesDictionary = OrderedDictionary<String, Double>() // for bar graph
-    
-    @Published var summaryLabelText: String = ""
-    @Published var chartTitle: String = ""
-    
     private let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.usesGroupingSeparator = true
         return formatter
-    } ()
-    
+    }()
 
     init() {
         fetchExpenses()
+        filterCategories()
     }
     
     func fetchExpenses() {
@@ -64,6 +66,7 @@ enum ChartType {
         filteredExpensesForSelection = []
     }
     
+    //MARK: - Filter Data
     func filterWeek(date: Date) {
         clearData()
         var weekDays = Calendar.current.shortWeekdaySymbols
@@ -74,7 +77,6 @@ enum ChartType {
             weekExpenses[day] = 0.0
         }
         
-        // use reduce(into)?
         if let start = calendar.weekBoundary(for: date)?.startOfWeek,
            let end = calendar.weekBoundary(for: date)?.endOfWeek {
             displayedDate = start
@@ -83,7 +85,6 @@ enum ChartType {
             for expense in expenses {
                 if (start...end).contains(expense.expenseDate) {
                     filteredExpensesForPeriod.append(expense)
-//                    let components = calendar.dateComponents([.day], from: expense.expenseDate)
                     let date = expense.expenseDate.shortWeekDay()
                     if weekExpenses.keys.contains(date) {
                         weekExpenses[date] = (weekExpenses[date] ?? 0) + expense.amount
@@ -120,7 +121,6 @@ enum ChartType {
             monthExpenses[month] = 0.0
         }
         
-        // use reduce(into)?
         chartTitle = "\(date.year())"
         generalChartTitle = chartTitle
 
@@ -196,6 +196,46 @@ enum ChartType {
         generalChartSummary = summaryLabelText
     }
     
+    func filterCategories() {
+        var categories = [String: Double]()
+        
+        ExpenseType.allCases.forEach { type in
+            categories[type.rawValue] = 0.0
+        }
+
+        for expense in expenses {
+            var category = categories[expense.expenseType.rawValue] ?? 0
+            switch displayedTimePeriod {
+                case .week:
+                if let start = calendar.weekBoundary(for: displayedDate)?.startOfWeek,
+                   let end = calendar.weekBoundary(for: displayedDate)?.endOfWeek {
+                    if (start...end).contains(expense.expenseDate) {
+                        categories[expense.expenseType.rawValue]! += expense.amount
+                    }
+                }
+                
+                case .month:
+                    if calendar.isDate(displayedDate, equalTo: expense.expenseDate, toGranularity: .month) {
+                        category += expense.amount
+                    }
+                case .year:
+                    if calendar.isDate(displayedDate, equalTo: expense.expenseDate, toGranularity: .year) {
+                        category += expense.amount
+                    }
+                }
+        }
+        
+        for (key, value) in categories {
+            if value == 0.0 {
+                categories.removeValue(forKey: key)
+            }
+        }
+        
+        pieChartData = categories
+    }
+    
+    //MARK: - Calculate Date Change
+        // TODO: w jedną funkcję to włożyć wszystko
     func calculatePreviousWeek() {
         if let date = displayedDate.previousWeek() {
             filterWeek(date: date)
@@ -220,11 +260,13 @@ enum ChartType {
         }
     }
     
-    func getDaySummary(for time: String, timeSelected: TimePeriodType) {
+    //MARK: - Selection Handling
+    func getSummary(for time: String, timeSelected: TimePeriodType) {
         guard let amount = expensesDictionary[time] else { return }
         let selected = filteredExpensesForSelection.first { expense in
             expense.expenseDate.shortWeekDay() == time || expense.expenseDate.shortMonth() == time || expense.expenseDate.day() == time
         }
+        
         switch timeSelected {
         case .week:
             chartTitle = selected?.expenseDate.labelText() ?? ""
@@ -233,9 +275,10 @@ enum ChartType {
         case .year:
             chartTitle = selected?.expenseDate.formatted(Date.FormatStyle().month(.wide)) ?? ""
         }
+        
         summaryLabelText = String(amount)
     }
-    
+
     func filterExpenses(for selection: String) {
         filteredExpensesForSelection = []
         for expense in filteredExpensesForPeriod {

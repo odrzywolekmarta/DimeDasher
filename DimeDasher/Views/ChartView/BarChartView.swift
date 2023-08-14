@@ -32,7 +32,7 @@ struct BarChartView: View {
         } else {
             select = xbar
             viewModel.filterExpenses(for: select)
-            viewModel.getDaySummary(for: select, timeSelected: timeSelected)
+            viewModel.getSummary(for: select, timeSelected: timeSelected)
         }
     }
     

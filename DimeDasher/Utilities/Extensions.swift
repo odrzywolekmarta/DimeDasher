@@ -210,3 +210,15 @@ extension Binding where Value == String {
         return self
     }
 }
+
+//MARK: - Number Formatter
+extension NumberFormatter {
+    var currencyFormatter: NumberFormatter {
+        get {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.usesGroupingSeparator = true
+            return formatter
+        }
+    }
+}

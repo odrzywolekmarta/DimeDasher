@@ -45,49 +45,53 @@ struct StatsView: View {
                     switch timeSelected {
                     case .week:
                         viewModel.filterWeek(date: selectedWeekDate)
+                        viewModel.displayedTimePeriod = .week
                     case .month:
                         viewModel.filterMonth(date: selectedMonthDate)
+                        viewModel.displayedTimePeriod = .month
                     case .year:
                         viewModel.filterYear(date: selectedYearDate)
+                        viewModel.displayedTimePeriod = .year
                     }
                 }
                 
                 switch chartType {
                 case .pieChart:
-                    PieChartView()
+                    CategoriesPieChartView()
                 case .barChart:
                     BarChartView(timeSelected: $timeSelected, chartType: $chartType)
                         .padding(.horizontal, 5)
-                }
-                
-                HStack {
-                    Text("Transactions")
-                        .padding(.horizontal)
-                        .font(.custom(Constants.Fonts.ralewayBold, size: 20))
+                    HStack {
+                        Text("Transactions")
+                            .padding(.horizontal)
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 20))
+                        Spacer()
+                    }
+                    
+                    if !viewModel.filteredExpensesForPeriod.isEmpty || !viewModel.filteredExpensesForSelection.isEmpty
+                    {
+                        List {
+                            ForEach(viewModel.filteredExpensesForSelection.isEmpty ? $viewModel.filteredExpensesForPeriod : $viewModel.filteredExpensesForSelection, id: \.id) { $expense in
+                                TransactionListExpenseItem(expense: expense)
+                                    .listRowSeparator(.hidden)
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                    .background(Color(Constants.Colors.beige))
+                            } // foreach
+                        } // list
+                             .listStyle(PlainListStyle())
+                             .background(Color(Constants.Colors.beige))
+                             .scrollContentBackground(.hidden)
+                    } else {
+                        Text("No expenses added")
+                            .font(.custom(Constants.Fonts.raleway, size: 17))
+                            .opacity(0.6)
+                            .padding()
+                    }
+                   
                     Spacer()
                 }
                 
-                if !viewModel.filteredExpensesForPeriod.isEmpty || !viewModel.filteredExpensesForSelection.isEmpty
-                {
-                    List {
-                        ForEach(viewModel.filteredExpensesForSelection.isEmpty ? $viewModel.filteredExpensesForPeriod : $viewModel.filteredExpensesForSelection, id: \.id) { $expense in
-                            TransactionListExpenseItem(expense: expense)
-                                .listRowSeparator(.hidden)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                .background(Color(Constants.Colors.beige))
-                        } // foreach
-                    } // list
-                         .listStyle(PlainListStyle())
-                         .background(Color(Constants.Colors.beige))
-                         .scrollContentBackground(.hidden)
-                } else {
-                    Text("No expenses added")
-                        .font(.custom(Constants.Fonts.raleway, size: 17))
-                        .opacity(0.6)
-                        .padding()
-                }
-               
-                Spacer()
+                
             } // vstack
         } // zstack
         .environmentObject(viewModel)
