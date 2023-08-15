@@ -119,7 +119,8 @@ struct BarChartView: View {
                             .foregroundColor(.black)
                             .background(
                                 RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(Constants.Colors.beige)))
+                                .fill(Color(Constants.Colors.beige))
+                                .frame(width: 30, height: 30))
                     }
 
                 }

@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct PieSliceData {
+struct PieSliceData: Hashable, Identifiable {
+    let id = UUID()
     var startAngle: Angle
     var endAngle: Angle
     var text: String

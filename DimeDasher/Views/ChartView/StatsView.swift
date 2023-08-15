@@ -57,10 +57,13 @@ struct StatsView: View {
                 
                 switch chartType {
                 case .pieChart:
-                    CategoriesPieChartView()
+                    CategoriesPieChartView(chartType: $chartType)
+                        .padding(.horizontal, 5)
+
                 case .barChart:
                     BarChartView(timeSelected: $timeSelected, chartType: $chartType)
                         .padding(.horizontal, 5)
+                    
                     HStack {
                         Text("Transactions")
                             .padding(.horizontal)
@@ -87,11 +90,8 @@ struct StatsView: View {
                             .opacity(0.6)
                             .padding()
                     }
-                   
-                    Spacer()
                 }
-                
-                
+                Spacer()
             } // vstack
         } // zstack
         .environmentObject(viewModel)

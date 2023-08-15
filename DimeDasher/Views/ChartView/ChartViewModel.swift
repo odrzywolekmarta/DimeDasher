@@ -27,7 +27,7 @@ enum ChartType {
     @Published var expensesDictionary = OrderedDictionary<String, Double>() // for bar graph
     @Published var summaryLabelText: String = ""
     @Published var chartTitle: String = ""
-    @Published var pieChartData = [String: Double]()
+    @Published var pieChartData = OrderedDictionary<String, Double>()
     
     private let persistenceController = PersistenceController.shared
     private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
@@ -197,7 +197,7 @@ enum ChartType {
     }
     
     func filterCategories() {
-        var categories = [String: Double]()
+        var categories = OrderedDictionary<String, Double>()
         
         ExpenseType.allCases.forEach { type in
             categories[type.rawValue] = 0.0
@@ -231,6 +231,7 @@ enum ChartType {
             }
         }
         
+        categories.sort { $0.value > $1.value }
         pieChartData = categories
     }
     
