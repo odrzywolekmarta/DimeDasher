@@ -75,34 +75,47 @@ struct PieChartLegend: View {
     var percents: [String]
     
     var body: some View {
-        ScrollView {
-            ForEach(0..<values.count) { i in
-                HStack {
-                    RoundedRectangle(cornerRadius: 5.0)
-                        .fill(colors[i])
-                        .frame(width: 25, height: 25)
-                    Text(names[i])
-                        .font(.custom(activeIndex == i ? Constants.Fonts.ralewayBold : Constants.Fonts.raleway, size: activeIndex == i ? 20 : 18))
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text(values[i])
+        ScrollViewReader { value in
+            ScrollView {
+                ForEach(0..<values.count) { i in
+                    HStack {
+                        RoundedRectangle(cornerRadius: 5.0)
+                            .fill(colors[i])
+                            .frame(width: 25, height: 25)
+                        Text(names[i])
                             .font(.custom(activeIndex == i ? Constants.Fonts.ralewayBold : Constants.Fonts.raleway, size: activeIndex == i ? 20 : 18))
-                        
-                        Text(percents[i])
-                            .font(.custom(Constants.Fonts.ralewayBold, size: activeIndex == i ? 17 : 15))
-                            .foregroundColor(activeIndex == i ? Color(Constants.Colors.darkPink) : Color.gray)
-                    } // vstack
-                } // hstack
-                .onTapGesture {
-                    if activeIndex == i {
-                        activeIndex = -1
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text(values[i])
+                                .font(.custom(activeIndex == i ? Constants.Fonts.ralewayBold : Constants.Fonts.raleway, size: activeIndex == i ? 20 : 18))
+                            
+                            Text(percents[i])
+                                .font(.custom(Constants.Fonts.ralewayBold, size: activeIndex == i ? 17 : 15))
+                                .foregroundColor(activeIndex == i ? Color(Constants.Colors.darkPink) : Color.gray)
+                        } // vstack
+                    } // hstack
+                    .animation(Animation.default, value: activeIndex)
+                    .id(i)
+                    .onTapGesture {
+                        if activeIndex == i {
+                            activeIndex = -1
+                        } else {
+                            activeIndex = i
+                        }
+                    }
+                } // foreach
+            } // scrollview
+            .scrollIndicators(.hidden)
+            .onChange(of: activeIndex) { newValue in
+                withAnimation {
+                    if activeIndex == -1 {
+                        value.scrollTo(0)
                     } else {
-                        activeIndex = i
+                        value.scrollTo(activeIndex)
                     }
                 }
-            } // foreach
-        } // scrollview
-        .scrollIndicators(.hidden)
+            }
+        }
     }
 }
 
