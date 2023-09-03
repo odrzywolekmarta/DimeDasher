@@ -11,12 +11,20 @@ struct CategoriesPieChartView: View {
     @EnvironmentObject var viewModel: ChartViewModel
     @State private var selectedIndex: Int = -1
     @Binding var chartType: ChartType
+    @Binding var timeSelected: TimePeriodType
     
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    
+                    switch timeSelected {
+                    case .week:
+                        viewModel.calculatePreviousWeek()
+                    case .month:
+                        viewModel.calculatePreviousMonth()
+                    case .year:
+                        ()
+                    }
                 } label: {
                     Image(systemName: "chevron.compact.left")
                         .foregroundColor(.black)
@@ -54,7 +62,14 @@ struct CategoriesPieChartView: View {
                 .padding(.vertical)
               
                 Button {
-                    
+                    switch timeSelected {
+                    case .week:
+                        viewModel.calculatePreviousWeek()
+                    case .month:
+                        viewModel.calculatePreviousMonth()
+                    case .year:
+                        ()
+                    }
                 } label: {
                     Image(systemName: "chevron.compact.right")
                         .foregroundColor(.black)
@@ -77,7 +92,7 @@ struct CategoriesPieChartView: View {
 
 struct CategoriesPieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesPieChartView(chartType: .constant(.barChart))
+        CategoriesPieChartView(chartType: .constant(.barChart), timeSelected: .constant(.week))
             .environmentObject(ChartViewModel())
     }
 }

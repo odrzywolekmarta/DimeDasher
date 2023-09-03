@@ -240,24 +240,28 @@ enum ChartType {
     func calculatePreviousWeek() {
         if let date = displayedDate.previousWeek() {
             filterWeek(date: date)
+            filterCategories()
         }
     }
     
     func calculateNextWeek() {
         if let date = displayedDate.nextWeek() {
             filterWeek(date: date)
+            filterCategories()
         }
     }
     
     func calculatePreviousMonth() {
         if let date = displayedDate.previousMonth() {
-         filterMonth(date: date)
+            filterMonth(date: date)
+            filterCategories()
         }
     }
     
     func calculateNextMonth() {
         if let date = displayedDate.nextMonth() {
-         filterMonth(date: date)
+            filterMonth(date: date)
+            filterCategories()
         }
     }
     

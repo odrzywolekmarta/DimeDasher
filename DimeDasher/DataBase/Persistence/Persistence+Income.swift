@@ -24,7 +24,7 @@ extension PersistenceController {
             return []
         }
     }
-    
+
     func saveIncome(type: IncomeType, amount: Double, description: String, date: Date) {
         let income = Income(context: viewContext)
         income.id = UUID()

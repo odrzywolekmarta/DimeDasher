@@ -44,20 +44,23 @@ struct StatsView: View {
                 .onChange(of: timeSelected) { _ in
                     switch timeSelected {
                     case .week:
-                        viewModel.filterWeek(date: selectedWeekDate)
                         viewModel.displayedTimePeriod = .week
+                            viewModel.filterWeek(date: selectedWeekDate)
+                            viewModel.filterCategories()
                     case .month:
-                        viewModel.filterMonth(date: selectedMonthDate)
                         viewModel.displayedTimePeriod = .month
+                            viewModel.filterMonth(date: selectedMonthDate)
+                            viewModel.filterCategories()
                     case .year:
-                        viewModel.filterYear(date: selectedYearDate)
                         viewModel.displayedTimePeriod = .year
+                            viewModel.filterYear(date: selectedYearDate)
+                            viewModel.filterCategories()
                     }
                 }
                 
                 switch chartType {
                 case .pieChart:
-                    CategoriesPieChartView(chartType: $chartType)
+                    CategoriesPieChartView(chartType: $chartType, timeSelected: $timeSelected)
                         .padding(.horizontal, 5)
 
                 case .barChart:
