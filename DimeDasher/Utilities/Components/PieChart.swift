@@ -77,7 +77,7 @@ struct PieChartLegend: View {
     var body: some View {
         ScrollViewReader { value in
             ScrollView {
-                ForEach(0..<values.count) { i in
+                ForEach(0..<values.count, id: \.self) { i in
                     HStack {
                         RoundedRectangle(cornerRadius: 5.0)
                             .fill(colors[i])
