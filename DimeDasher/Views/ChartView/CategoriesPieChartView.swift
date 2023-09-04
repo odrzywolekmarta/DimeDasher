@@ -17,6 +17,7 @@ struct CategoriesPieChartView: View {
         VStack {
             HStack {
                 Button {
+                    selectedIndex = -1
                     switch timeSelected {
                     case .week:
                         viewModel.calculatePreviousWeek()
@@ -62,11 +63,12 @@ struct CategoriesPieChartView: View {
                 .padding(.vertical)
               
                 Button {
+                    selectedIndex = -1
                     switch timeSelected {
                     case .week:
-                        viewModel.calculatePreviousWeek()
+                        viewModel.calculateNextWeek()
                     case .month:
-                        viewModel.calculatePreviousMonth()
+                        viewModel.calculateNextMonth()
                     case .year:
                         ()
                     }

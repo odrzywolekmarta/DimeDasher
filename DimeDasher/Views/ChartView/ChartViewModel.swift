@@ -210,18 +210,15 @@ enum ChartType {
                 if let start = calendar.weekBoundary(for: displayedDate)?.startOfWeek,
                    let end = calendar.weekBoundary(for: displayedDate)?.endOfWeek {
                     if (start...end).contains(expense.expenseDate) {
-                        categories[expense.expenseType.rawValue]! += expense.amount
+                            categories[expense.expenseType.rawValue] = category + expense.amount
                     }
                 }
-                
                 case .month:
                     if calendar.isDate(displayedDate, equalTo: expense.expenseDate, toGranularity: .month) {
-                        category += expense.amount
-                    }
+                        categories[expense.expenseType.rawValue] = category + expense.amount                    }
                 case .year:
                     if calendar.isDate(displayedDate, equalTo: expense.expenseDate, toGranularity: .year) {
-                        category += expense.amount
-                    }
+                        categories[expense.expenseType.rawValue] = category + expense.amount                    }
                 }
         }
         
