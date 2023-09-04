@@ -34,6 +34,7 @@ struct PieChartView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                if !values.isEmpty {
                 ForEach(0..<values.count, id: \.self) { i in
                     PieSliceView(pieSliceData: slices[i])
                         .scaleEffect(activeIndex == i ? 1.05 : 1)
@@ -54,15 +55,22 @@ struct PieChartView: View {
                     .onTapGesture {
                         activeIndex = -1
                     }
-                
-                VStack {
-                    Text(activeIndex == -1 ? "Total" : names[activeIndex])
-                        .font(.custom(Constants.Fonts.ralewayBold, size: 27))
-                        .foregroundColor(.black)
-                    Text(activeIndex == -1 ? values.reduce(0, +).moneyValue() : values[activeIndex].moneyValue())
-                        .font(.custom(Constants.Fonts.raleway, size: 23))
+                    VStack {
+                        Text(activeIndex == -1 ? "Total" : names[activeIndex])
+                            .font(.custom(Constants.Fonts.ralewayBold, size: 27))
+                            .foregroundColor(.black)
+                        Text(activeIndex == -1 ? values.reduce(0, +).moneyValue() : values[activeIndex].moneyValue())
+                            .font(.custom(Constants.Fonts.raleway, size: 23))
+                    } // vstack
+                } else {
+                    Text("No expenses added")
+                        .font(.custom(Constants.Fonts.raleway, size: 17))
+                        .opacity(0.6)
+                        .padding()
                 }
-            }
+             
+            } // zstack
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
