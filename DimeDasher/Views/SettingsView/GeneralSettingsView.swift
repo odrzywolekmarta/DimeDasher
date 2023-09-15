@@ -10,8 +10,8 @@ import SwiftUI
 struct GeneralSettingsView: View {
     @AppStorage("isDarkMode") private var isDarkMode = false
     @EnvironmentObject var viewModel: SettingsViewModel
-    @State private var isShowingDeleteAlert: Bool = false
-    @State private var isShowingResultAlert: Bool = false
+    @Binding var isShowingDeleteAlert: Bool
+    @Binding var isShowingResultAlert: Bool
     @Binding var editProfilePresented: Bool
     
     var body: some View {
@@ -42,11 +42,9 @@ struct GeneralSettingsView: View {
                 .padding(.trailing, 10)
                 .alert("Your data will be deleted completely. Do you want to continue?", isPresented: $isShowingDeleteAlert) {
                     Button("Ok", role: .none) {
-                        viewModel.clearData {
-                            Task {
-                                isShowingResultAlert.toggle()
-                            }
-                        }
+                        viewModel.clearData { }
+                            isShowingResultAlert.toggle()
+                        
                     }
                     Button("Cancel", role: .cancel) {
                         
@@ -58,17 +56,6 @@ struct GeneralSettingsView: View {
                     }
                 }
             }
-            
-            Divider()
-            
-            //MARK: - Dark Mode
-            HStack {
-                Text("Dark Mode")
-                Spacer()
-                Toggle("", isOn: $isDarkMode)
-                    .tint(Color(Constants.Colors.darkPink))
-            } // hstack
-            
         
         } // vstack
         .font(.custom(Constants.Fonts.raleway, size: 16))
@@ -77,7 +64,7 @@ struct GeneralSettingsView: View {
 
 struct GeneralSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneralSettingsView(editProfilePresented: .constant(false))
+        GeneralSettingsView(isShowingDeleteAlert: .constant(false), isShowingResultAlert: .constant(false), editProfilePresented: .constant(false))
             .previewLayout(.sizeThatFits)
             .environmentObject(SettingsViewModel(fileManager: LocalFileManager()))
     }

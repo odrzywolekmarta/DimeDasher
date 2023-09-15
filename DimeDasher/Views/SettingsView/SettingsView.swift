@@ -10,9 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = SettingsViewModel(fileManager: LocalFileManager())
-    @State private var darkMode: Bool = false
     @State private var editProfilePresented: Bool = false
-
+    @State private var isShowingDeleteAlert: Bool = false
+    @State private var isShowingResultAlert: Bool = false
     var refresh: (() -> Void)
 
     init(refresh: @escaping (() -> Void)) {
@@ -38,7 +38,7 @@ struct SettingsView: View {
                 .groupBoxStyle(WhiteGroupBox())
              
                 GroupBox {
-                    GeneralSettingsView(editProfilePresented: $editProfilePresented)
+                    GeneralSettingsView(isShowingDeleteAlert: $isShowingDeleteAlert, isShowingResultAlert: $isShowingResultAlert, editProfilePresented: $editProfilePresented)
                 } label: {
                     SettingsSectionHeaderView(title: "GENERAL", icon: "gearshape.fill")
                     Divider()

@@ -113,6 +113,7 @@ struct BarChartView: View {
                     
                     Button {
                         chartType = .pieChart
+                        viewModel.undoSelection()
                     } label: {
                         Image(systemName: "chart.pie")
                             .padding(10)

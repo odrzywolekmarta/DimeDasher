@@ -46,6 +46,7 @@ struct CategoriesPieChartView: View {
                         
                         Button {
                             chartType = .barChart
+                            viewModel.undoSelection()
                         } label: {
                             Image(systemName: "chart.bar")
                                 .padding(10)

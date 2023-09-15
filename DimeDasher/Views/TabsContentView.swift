@@ -49,7 +49,18 @@ struct TabsContentView: View {
                     .zIndex(1)
             }
         } // zstack
-
+        .onChange(of: selectedTab, perform: { _ in
+            switch selectedTab {
+            case .main:
+                mainViewModel.fetchExpenses()
+                mainViewModel.fetchIncome()
+                mainViewModel.calculateBalance()
+                listViewModel.fetchExpenses()
+                listViewModel.fetchIncome()
+            case .chart:
+                chartViewModel.fetchExpenses()
+            }
+        })
         .edgesIgnoringSafeArea(.bottom)
         .sheet(isPresented: $addViewPresented, onDismiss: {
             mainViewModel.fetchExpenses()

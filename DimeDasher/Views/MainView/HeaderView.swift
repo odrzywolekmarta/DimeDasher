@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var listViewModel: TransactionsListViewModel
     @AppStorage("username") var username: String = ""
 
     var body: some View {
@@ -45,6 +46,8 @@ struct HeaderView: View {
                     SettingsView {
                         viewModel.fetchIncome()
                         viewModel.fetchExpenses()
+                        listViewModel.fetchIncome()
+                        listViewModel.fetchExpenses()
                         viewModel.getProfilePicture()
                     }
                 } label: {

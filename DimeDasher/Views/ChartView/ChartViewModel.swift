@@ -57,6 +57,7 @@ enum ChartType {
     func fetchExpenses() {
         expenses = persistenceController.fetchExpenses()
         filterWeek(date: displayedDate)
+        filterCategories()
         // set 3 published properties
     }
     
@@ -204,7 +205,7 @@ enum ChartType {
         }
 
         for expense in expenses {
-            var category = categories[expense.expenseType.rawValue] ?? 0
+            let category = categories[expense.expenseType.rawValue] ?? 0
             switch displayedTimePeriod {
                 case .week:
                 if let start = calendar.weekBoundary(for: displayedDate)?.startOfWeek,
