@@ -11,7 +11,7 @@ import OrderedCollections
 struct FirstLaunchView: View {
     @StateObject private var viewModel = FirstLaunchViewModel()
     @State private var name: String = ""
-    @State private var startingBalance: Double?
+    @State private var startingBalance: String = ""
     @State private var chosenCurrency: String = "USD"
     private var chosenLocale: String = ""
     
@@ -42,16 +42,35 @@ struct FirstLaunchView: View {
                             .cornerRadius(10))
                     .padding()
                 
-                TextField(value: $startingBalance, format: .number) {
-                    Text("Enter starting balance")
-                }
-                .keyboardType(.decimalPad)
-                .padding()
-                .font(.custom(Constants.Fonts.raleway, size: 20))
-                .background(
-                    Color(Constants.Colors.beige)
-                        .cornerRadius(10))
-                .padding()
+                TextField("Enter starting balace", text: $startingBalance)
+                    .onChange(of: startingBalance) { newValue in
+                        if newValue.contains(".") {
+                            var splitted = newValue.split(separator: ".")
+                            if splitted.count >= 2 {
+                                if splitted[1].count > 2 {
+                                    splitted[1] = splitted[1].prefix(2)
+                                }
+                                startingBalance = "\(splitted[0]).\(splitted[1])"
+                            }
+                        }
+                    }
+                    .keyboardType(.decimalPad)
+                    .padding()
+                    .font(.custom(Constants.Fonts.raleway, size: 20))
+                    .background(
+                        Color(Constants.Colors.beige)
+                            .cornerRadius(10))
+                    .padding()
+//                TextField(value: $startingBalance, format: .number) {
+//                    Text("Enter starting balance")
+//                }
+//                .keyboardType(.decimalPad)
+//                .padding()
+//                .font(.custom(Constants.Fonts.raleway, size: 20))
+//                .background(
+//                    Color(Constants.Colors.beige)
+//                        .cornerRadius(10))
+//                .padding()
                 
                 Picker(selection: $chosenCurrency) {
                     ForEach(currencies.keys, id: \.self) { key in
@@ -66,13 +85,18 @@ struct FirstLaunchView: View {
                 .padding()
                 
                 Button {
-                    viewModel.saveDefaults(name: name, balance: startingBalance ?? 0, currency: chosenCurrency)
+                    viewModel.saveDefaults(name: name, balance: Double(startingBalance) ?? 0, currency: chosenCurrency)
                 } label: {
                     Text("Start")
                         .font(.custom(Constants.Fonts.raleway, size: 20))
                 }
                 .tint(Color(Constants.Colors.darkPink))
+                .background(
+                    Color(self.startingBalance == "" ? Constants.Colors.lightPink : Constants.Colors.mediumPink)
+                        .cornerRadius(10)
+                )
                 .buttonStyle(.borderedProminent)
+                .disabled(self.startingBalance == "")
                 .padding()
 
             } // vstack

@@ -55,18 +55,6 @@ struct AddTransactionView: View {
                             .cornerRadius(10))
                     .padding()
                 
-//                TextField(value: $amount, format: .number) {
-//                    Text("$100..")
-//                }
-//                .keyboardType(.decimalPad)
-//
-//                .padding()
-//                .font(.custom(Constants.Fonts.raleway, size: 20))
-//                .background(
-//                    Color.white
-//                        .cornerRadius(10))
-//                .padding()
-                
                 switch transactionType {
                 case .income:
                     IncomePickerView(income: $incomeType)
