@@ -13,6 +13,7 @@ struct AddTransactionView: View {
     
     @StateObject private var viewModel = AddTransactionViewModel()
     @State private var amount: Double?
+    @State private var doubleAmount: String = ""
     @State private var transactionDescription: String = "" 
     @State private var expenseType: ExpenseType = .housing
     @State private var incomeType: IncomeType = .work
@@ -34,16 +35,37 @@ struct AddTransactionView: View {
                 .labelsHidden()
                 .environment(\.locale, Locale(identifier: "en_UK"))
 
-                TextField(value: $amount, format: .number) {
-                    Text("$100..")
-                }
-                .keyboardType(.decimalPad)
-                .padding()
-                .font(.custom(Constants.Fonts.raleway, size: 20))
-                .background(
-                    Color.white
-                        .cornerRadius(10))
-                .padding()
+                TextField("", text: $doubleAmount)
+                    .onChange(of: doubleAmount) { newValue in
+                        if newValue.contains(".") {
+                            var splitted = newValue.split(separator: ".")
+                            if splitted.count >= 2 {
+                                if splitted[1].count > 2 {
+                                    splitted[1] = splitted[1].prefix(2)
+                                }
+                                doubleAmount = "\(splitted[0]).\(splitted[1])"
+                            }
+                        }
+                    }
+                    .keyboardType(.decimalPad)
+                    .padding()
+                    .font(.custom(Constants.Fonts.raleway, size: 20))
+                    .background(
+                        Color.white
+                            .cornerRadius(10))
+                    .padding()
+                
+//                TextField(value: $amount, format: .number) {
+//                    Text("$100..")
+//                }
+//                .keyboardType(.decimalPad)
+//
+//                .padding()
+//                .font(.custom(Constants.Fonts.raleway, size: 20))
+//                .background(
+//                    Color.white
+//                        .cornerRadius(10))
+//                .padding()
                 
                 switch transactionType {
                 case .income:
@@ -60,9 +82,9 @@ struct AddTransactionView: View {
                 Button {
                     switch transactionType {
                     case .income:
-                        viewModel.saveIncome(type: incomeType, amount: amount ?? 0, description: transactionDescription, date: date)
+                        viewModel.saveIncome(type: incomeType, amount: Double(doubleAmount) ?? 0, description: transactionDescription, date: date)
                     case .expense:
-                        viewModel.saveExpense(type: expenseType, amount: amount ?? 0, description: transactionDescription, date: date)
+                        viewModel.saveExpense(type: expenseType, amount: Double(doubleAmount) ?? 0, description: transactionDescription, date: date)
                     }
                     dismiss()
                 } label: {
@@ -72,11 +94,11 @@ struct AddTransactionView: View {
                 }
                 .padding()
                 .background(
-                    Color(self.amount == nil ? Constants.Colors.lightPink : Constants.Colors.mediumPink)
+                    Color(self.doubleAmount == "" ? Constants.Colors.lightPink : Constants.Colors.mediumPink)
                         .cornerRadius(10)
                 )
                 .buttonStyle(.borderless)
-                .disabled(self.amount == nil)
+                .disabled(self.doubleAmount == "")
                 .padding()
             } // vstack
         }
