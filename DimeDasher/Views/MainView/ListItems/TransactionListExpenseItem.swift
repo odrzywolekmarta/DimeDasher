@@ -43,7 +43,7 @@ struct TransactionListExpenseItem: View {
         }
         .sheet(isPresented: $detailsPresented) {
             TransactionDetailsView(expense: expense)
-                .presentationDetents([.height(250)])
+                .presentationDetents([.height(300)])
         }
     }
 }
