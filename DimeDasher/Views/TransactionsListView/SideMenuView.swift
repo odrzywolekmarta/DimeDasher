@@ -19,13 +19,19 @@ struct SideMenuView: View {
     @State private var selectedDates: Set<DateComponents> = []
     @State private var isSelectingFromDate: Bool = false
     @State private var isSelectingToDate: Bool = false
+    @State private var selectedDatesInvalid: Bool = false
     @Binding var sideBarVisible: Bool
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.8
     
-    func setDatesOnPickers() {
-        if selectedFromDate != nil &&
-           selectedToDate != nil {
-            selectedToDate = selectedFromDate
+    func selectedDatesValid() -> Bool {
+        if let from = selectedFromDate,
+           let to = selectedToDate,
+           from > to {
+            selectedDatesInvalid = true
+            return false
+        } else {
+            selectedDatesInvalid = false
+            return true
         }
     }
     
@@ -135,10 +141,12 @@ struct SideMenuView: View {
                             Button {
                                 switch dateSelectionStyle {
                                 case .range:
-                                    viewModel.applyFilers(fromDate: selectedFromDate,
-                                                          toDate: selectedToDate,
-                                                          categories: selectedCategories,
-                                                          sort: selectedSorting)
+                                    if selectedDatesValid() {
+                                        viewModel.applyFilers(fromDate: selectedFromDate,
+                                                              toDate: selectedToDate,
+                                                              categories: selectedCategories,
+                                                              sort: selectedSorting)
+                                    }
                                 case .multipleDates:
                                     viewModel.applyFilers(dates: selectedDates, categories: selectedCategories, sort: selectedSorting)
                                 }
@@ -182,6 +190,12 @@ struct SideMenuView: View {
                 Spacer()
             } // hstack
         } // zstack
+        .alert("Selected date range is not valid. Please enter valid dates.", isPresented: $selectedDatesInvalid) {
+            Button("Ok", role: .none) {
+                selectedFromDate = nil
+                selectedToDate = nil
+            }
+        }
     }
 }
 
