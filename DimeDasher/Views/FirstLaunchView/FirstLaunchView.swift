@@ -34,7 +34,7 @@ struct FirstLaunchView: View {
                 Text("Hello!")
                     .font(.custom(Constants.Fonts.ralewayBold, size: 40))
                 
-                TextField("Enter your name", text: $name)
+                TextField("Enter your name", text: $name.max(15))
                     .padding()
                     .font(.custom(Constants.Fonts.raleway, size: 20))
                     .background(
@@ -61,16 +61,6 @@ struct FirstLaunchView: View {
                         Color(Constants.Colors.beige)
                             .cornerRadius(10))
                     .padding()
-//                TextField(value: $startingBalance, format: .number) {
-//                    Text("Enter starting balance")
-//                }
-//                .keyboardType(.decimalPad)
-//                .padding()
-//                .font(.custom(Constants.Fonts.raleway, size: 20))
-//                .background(
-//                    Color(Constants.Colors.beige)
-//                        .cornerRadius(10))
-//                .padding()
                 
                 Picker(selection: $chosenCurrency) {
                     ForEach(currencies.keys, id: \.self) { key in
