@@ -25,14 +25,20 @@ struct BarChartView: View {
     
     func doSelection(at location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) {
         let xPos = location.x - geometry[proxy.plotAreaFrame].origin.x
+        
         guard let xbar: String = proxy.value(atX: xPos) else { return }
+        
         if select == xbar {
             select = ""
             viewModel.undoSelection()
         } else {
             select = xbar
             viewModel.filterExpenses(for: select)
-            viewModel.getSummary(for: select, timeSelected: timeSelected)
+            if viewModel.filteredExpensesForSelection.isEmpty {
+                viewModel.undoSelection()
+            } else {
+                viewModel.getSummary(for: select, timeSelected: timeSelected)
+            }
         }
     }
     
@@ -130,6 +136,7 @@ struct BarChartView: View {
             .groupBoxStyle(WhiteGroupBox())
             .frame(height: 350)
             .padding(.vertical)
+        
             if shouldDisplayButtons() {
                 Button {
                     select = ""
