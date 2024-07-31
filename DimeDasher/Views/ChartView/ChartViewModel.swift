@@ -56,7 +56,14 @@ enum ChartType {
     
     func fetchExpenses() {
         expenses = persistenceController.fetchExpenses()
-        filterWeek(date: displayedDate)
+        switch displayedTimePeriod {
+        case .week:
+            filterWeek(date: displayedDate)
+        case .month:
+            filterMonth(date: displayedDate)
+        case .year:
+            filterYear(date: displayedDate)
+        }
         filterCategories()
         // set 3 published properties
     }
