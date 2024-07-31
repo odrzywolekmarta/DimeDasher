@@ -65,7 +65,6 @@ enum ChartType {
             filterYear(date: displayedDate)
         }
         filterCategories()
-        // set 3 published properties
     }
     
     func clearData() {

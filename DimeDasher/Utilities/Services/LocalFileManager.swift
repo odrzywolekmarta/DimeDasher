@@ -14,7 +14,7 @@ final class LocalFileManager {
     
     func saveImage(image: UIImage, imageName: String, folderName: String) {
         createFoderIfNeeded(folderName: folderName)
-           
+        
         guard let url = getUrlForImage(imageName: imageName, folderName: folderName) else { return }
         
         do {
@@ -60,5 +60,34 @@ final class LocalFileManager {
         }
     }
     
-   
+    func createCSV(from array: [ExpenseModel]) -> URL? {
+        let heading = "Day, Expense, Category, Description\n"
+        let rows: [String] = array.map { "\($0.expenseDate),\($0.amount),\($0.expenseType.rawValue),\($0.expenseDescription)"}
+        let stringData = heading + rows.joined(separator: "\n")
+        
+        var fileURL = URL(string: "")
+        
+        do {
+            let path = try FileManager.default.url(for: .documentDirectory,
+                                                   in: .allDomainsMask,
+                                                   appropriateFor: nil,
+                                                   create: false)
+            
+            fileURL = path.appendingPathComponent("Expenses-Data.csv")
+            
+            // append string data to file
+            if let fileURL {
+                try stringData.write(to: fileURL, atomically: true, encoding: .utf8)
+                print("File url: \(fileURL)")
+            }
+        } catch {
+            print("Error generating csv file: \(error.localizedDescription)")
+        }
+        
+        if let fileURL, !fileURL.absoluteString.isEmpty {
+            return fileURL
+        } else {
+            return nil
+        }
+    }
 }
