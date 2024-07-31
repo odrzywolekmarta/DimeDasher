@@ -56,7 +56,17 @@ struct GeneralSettingsView: View {
                     }
                 }
             }
-        
+        //MARK: - Esport Data
+            HStack {
+                Text("Export Data")
+                Spacer()
+                ShareLink(item: viewModel.getFileURL()) {
+                    Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(Color(Constants.Colors.darkPink))
+                }
+              
+                .padding(.trailing, 10)
+            }
         } // vstack
         .font(.custom(Constants.Fonts.raleway, size: 16))
     }

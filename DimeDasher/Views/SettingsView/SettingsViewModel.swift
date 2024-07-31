@@ -95,4 +95,9 @@ enum DataClearStatus {
         self.currency = UserDefaults.standard.string(forKey: "currency") ?? ""
     }
     
+    func getFileURL() -> URL {
+        let expenses = persistenceController.fetchExpenses()
+        return fileManager.createCSV(from: expenses)
+    }
+    
 }

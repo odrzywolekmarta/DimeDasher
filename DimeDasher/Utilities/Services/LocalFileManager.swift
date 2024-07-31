@@ -10,8 +10,9 @@ import _PhotosUI_SwiftUI
 
 final class LocalFileManager {
     
-    init() { }
+    init() {}
     
+    //MARK: - Image Methods
     func saveImage(image: UIImage, imageName: String, folderName: String) {
         createFoderIfNeeded(folderName: folderName)
         
@@ -60,34 +61,25 @@ final class LocalFileManager {
         }
     }
     
-    func createCSV(from array: [ExpenseModel]) -> URL? {
-        let heading = "Day, Expense, Category, Description\n"
-        let rows: [String] = array.map { "\($0.expenseDate),\($0.amount),\($0.expenseType.rawValue),\($0.expenseDescription)"}
+    //MARK: - Expenses Data to CSV
+    func createCSV(from array: [ExpenseModel]) -> URL {
+        let heading = "Date, Amount, Category, Description\n"
+        let rows: [String] = array.map { "\($0.expenseDate.toString()),\($0.amount.moneyValue()),\($0.expenseType.rawValue),\($0.expenseDescription)"}
         let stringData = heading + rows.joined(separator: "\n")
-        
-        var fileURL = URL(string: "")
-        
+        var fileURL: URL! // TODO: FIX FORCE UNWRAP SITUATIONA
         do {
             let path = try FileManager.default.url(for: .documentDirectory,
                                                    in: .allDomainsMask,
                                                    appropriateFor: nil,
                                                    create: false)
             
-            fileURL = path.appendingPathComponent("Expenses-Data.csv")
-            
-            // append string data to file
-            if let fileURL {
-                try stringData.write(to: fileURL, atomically: true, encoding: .utf8)
-                print("File url: \(fileURL)")
-            }
+            let fileURL = path.appendingPathComponent("Expenses-Data.csv")
+            try stringData.write(to: fileURL, atomically: true, encoding: .utf8)
+            print("File url: \(fileURL)")
         } catch {
             print("Error generating csv file: \(error.localizedDescription)")
         }
         
-        if let fileURL, !fileURL.absoluteString.isEmpty {
-            return fileURL
-        } else {
-            return nil
-        }
+        return fileURL
     }
 }
