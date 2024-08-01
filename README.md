@@ -8,7 +8,7 @@
 * [Screenshots](#screenshots)
 * [External libraries](#external-libraries)
 # App Preview
-- in progress
+![mockup-featuring-two-iphones-x-floating-against-a-solid-color-background-28764](https://github.com/user-attachments/assets/9a4b2aa8-0381-41ea-b9a4-1c1f82021544)
 ## General Information
 - Dime Dasher app was developed solely for educational purposes
 - Custom Tab View was created to include a button for adding new records quickly
