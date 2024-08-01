@@ -97,7 +97,7 @@ enum DataClearStatus {
     
     func getFileURL() -> URL {
         let expenses = persistenceController.fetchExpenses()
-        return fileManager.createCSV(from: expenses)
+        return fileManager.createCSV(from: expenses)! // TODO: fix force unwrap
     }
     
 }

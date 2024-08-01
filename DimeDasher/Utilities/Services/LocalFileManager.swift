@@ -62,11 +62,13 @@ final class LocalFileManager {
     }
     
     //MARK: - Expenses Data to CSV
-    func createCSV(from array: [ExpenseModel]) -> URL {
+    func createCSV(from array: [ExpenseModel]) -> URL? {
         let heading = "Date, Amount, Category, Description\n"
         let rows: [String] = array.map { "\($0.expenseDate.toString()),\($0.amount.moneyValue()),\($0.expenseType.rawValue),\($0.expenseDescription)"}
         let stringData = heading + rows.joined(separator: "\n")
-        var fileURL: URL! // TODO: FIX FORCE UNWRAP SITUATIONA
+        
+        
+        
         do {
             let path = try FileManager.default.url(for: .documentDirectory,
                                                    in: .allDomainsMask,
@@ -74,12 +76,16 @@ final class LocalFileManager {
                                                    create: false)
             
             let fileURL = path.appendingPathComponent("Expenses-Data.csv")
+            
+            // append string data to file
+            
             try stringData.write(to: fileURL, atomically: true, encoding: .utf8)
             print("File url: \(fileURL)")
+            return fileURL
         } catch {
             print("Error generating csv file: \(error.localizedDescription)")
+            return nil
         }
         
-        return fileURL
     }
 }
