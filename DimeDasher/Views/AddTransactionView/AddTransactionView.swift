@@ -26,6 +26,9 @@ struct AddTransactionView: View {
         ZStack {
             Color(Constants.Colors.beige)
                 .ignoresSafeArea()
+                .onTapGesture {
+                    self.endTextEditing()
+                }
             VStack(spacing: 0) {
                 Text("Add new \(transactionType.rawValue)")
                     .font(.custom(Constants.Fonts.ralewayBold, size: 30))
@@ -90,9 +93,7 @@ struct AddTransactionView: View {
                 .padding()
             } // vstack
         }
-        .onTapGesture {
-            self.endTextEditing()
-        }
+               
     }
 }
 
