@@ -22,6 +22,7 @@
 - SwiftUI 
 - Core Data
 ## Screenshots
-- in progress
+<img src="https://github.com/user-attachments/assets/d81c609a-be2e-4610-8067-b870ecd90415" width=30% height=30%> <img src="https://github.com/user-attachments/assets/f2e5d4de-b9eb-4ca9-8641-b94311204dd8" width=30% height=30%> <img src="https://github.com/user-attachments/assets/1d45f4e0-74b4-485c-94be-11055ff9a0d6" width=30% height=30%> 
+
 ## External Libraries
 - swift-collections
