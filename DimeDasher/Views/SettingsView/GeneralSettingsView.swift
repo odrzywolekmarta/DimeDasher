@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GeneralSettingsView: View {
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @EnvironmentObject var viewModel: SettingsViewModel
     @Binding var isShowingDeleteAlert: Bool
     @Binding var isShowingResultAlert: Bool
@@ -18,12 +17,12 @@ struct GeneralSettingsView: View {
         VStack(spacing: 15) {
             //MARK: - Edit profile
             HStack {
-                Text("Edit Profile")
+                Text(Constants.editProfile)
                 Spacer()
                 Button {
                     editProfilePresented.toggle()
                 } label: {
-                    Image(systemName: "pencil.line")
+                    Image(systemName: Constants.pencil)
                         .foregroundColor(Color(Constants.Colors.darkPink))
                 }
                 .padding(.trailing, 10)
@@ -31,37 +30,37 @@ struct GeneralSettingsView: View {
                         
             //MARK: - Clear Data
             HStack {
-                Text("Clear Data")
+                Text(Constants.clearData)
                 Spacer()
                 Button {
                     isShowingDeleteAlert.toggle()
                 } label: {
-                    Image(systemName: "trash")
+                    Image(systemName: Constants.trash)
                         .foregroundColor(Color(Constants.Colors.darkPink))
                 }
                 .padding(.trailing, 10)
-                .alert("Your data will be deleted completely. Do you want to continue?", isPresented: $isShowingDeleteAlert) {
-                    Button("Ok", role: .none) {
+                .alert(Constants.clearDataWarning, isPresented: $isShowingDeleteAlert) {
+                    Button(Constants.ok, role: .none) {
                         viewModel.clearData { }
                             isShowingResultAlert.toggle()
                         
                     }
-                    Button("Cancel", role: .cancel) {
+                    Button(Constants.cancel, role: .cancel) {
                         
                     }
                 }
-                .alert(viewModel.clearSuccess == .success ? "Your data has been deleted succesfully." : "Oops, something went wrong :(", isPresented: $isShowingResultAlert) {
-                    Button("Ok", role: .cancel) {
+                .alert(viewModel.clearSuccess == .success ? Constants.clearDataSuccess : Constants.clearDataFailure, isPresented: $isShowingResultAlert) {
+                    Button(Constants.ok, role: .cancel) {
                         isShowingResultAlert.toggle()
                     }
                 }
             }
         //MARK: - Esport Data
             HStack {
-                Text("Export Data")
+                Text(Constants.exportData)
                 Spacer()
                 ShareLink(item: viewModel.getFileURL()) {
-                    Image(systemName: "square.and.arrow.up")
+                    Image(systemName: Constants.export)
                         .foregroundColor(Color(Constants.Colors.darkPink))
                 }
               

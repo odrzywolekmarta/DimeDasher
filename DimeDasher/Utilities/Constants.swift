@@ -10,7 +10,6 @@ import SwiftUI
 import Collections
 
 struct Constants {
-    
     static let currencies: OrderedDictionary = ["USD": "en_US", "EUR": "fr_FR", "GBP": "en_GB", "PLN": "pl"]
     
     static let chartColors = [Color(Constants.ChartColors.color1), Color(Constants.ChartColors.color2), Color(Constants.ChartColors.color3), Color(Constants.ChartColors.color4), Color(Constants.ChartColors.color5), Color(Constants.ChartColors.color6), Color(Constants.ChartColors.color7), Color(Constants.ChartColors.color8), Color(Constants.ChartColors.color9), Color(Constants.ChartColors.color10), Color(Constants.ChartColors.color11), Color(Constants.ChartColors.color12), Color(Constants.ChartColors.color13), Color(Constants.ChartColors.color14), Color(Constants.ChartColors.color15), Color(Constants.ChartColors.color16), Color(Constants.ChartColors.color17), Color(Constants.ChartColors.color18)]
@@ -44,10 +43,23 @@ struct Constants {
     static let category = "folder.fill"
     static let date = "calendar"
     static let sort = "arrow.up.arrow.down"
+    static let exit = "xmark.circle"
+    static let list = "list.bullet"
+    static let add = "plus.circle.fill"
+    static let pieChart = "chart.pie"
+    static let launchImage = "launchImage"
+    static let info = "info.circle"
+    static let settings = "gearshape.fill"
+    static let iphone = "iphone"
+    static let left = "chevron.left"
+    static let link = "arrow.up.right.square"
+    static let pencil = "pencil.line"
+    static let trash = "trash"
+    static let export = "square.and.arrow.up"
+    static let camera = "camera.fill"
+    
     //MARK: - Expense Categories Images
-    
     static let income = "dollarsign.circle.fill"
-    
     static let healthcare = "pill.circle.fill"
     static let travel = "airplane.circle.fill"
     static let housing = "house.circle.fill"
@@ -88,6 +100,60 @@ struct Constants {
         static let color17 = "chartColor17"
         static let color18 = "chartColor18"
     }
+    
+    //MARK: - App Storage keys
+    static let showOnboarding = "showOnboarding"
+    static let startingBalance = "startingBalance"
+    static let currency = "currency"
+    static let username = "username"
+
+    static let imageName = "photo"
+    static let folderName = "profilePicture"
+    
+    //MARK: - Descriptions
+    static let noExpenses = "No expenses added"
+    static let noIncome = "No income added"
+    static let firstLaunchHeader = "Hello!"
+    static let firstLaunchName = "Enter your name"
+    static let firstLaunchBalance = "Enter starting balace"
+    static let start = "Start"
+
+    static let headerViewTitle = "Hello!"
+    static let summaryViewTitle = "Total balance"
+    static let summaryIncome = "Income"
+    static let summaryExpenses = "Expenses"
+    static let summaryViewThisMonth = "this month"
+    
+    static let transactionsTitle = "Transactions"
+    static let viewAll = "View all"
+    
+    static let appDescription = "Dime Dasher app was created to help you track your expenses and optimize your finances."
+    static let infoSectionHeader = "DIME DASHER"
+    static let generalSectionHeader = "GENERAL"
+    static let dev = "Developer"
+    static let me = "Marta"
+    static let designer = "Designer"
+    static let website = "Website"
+    static let github = "GitHub"
+    static let githubLink = "https://github.com/odrzywolekmarta"
+    static let version = "Version"
+    static let versionNumber = "1.0"
+    static let appSectionHeader = "APPLICATION"
+    static let settingsNavigationTitle = "Settings"
+    static let back = "Back"
+    static let editProfile = "Edit Profile"
+    static let clearData = "Clear Data"
+    static let clearDataWarning = "Your data will be deleted completely. Do you want to continue?"
+    static let clearDataSuccess = "Your data has been deleted succesfully."
+    static let clearDataFailure = "Oops, something went wrong :("
+    static let exportData = "Export Data"
+    static let name = "Name"
+    
+    static let ok = "Ok"
+    static let cancel = "Cancel"
+    //MARK: - File Extensions
+    static let jpg = ".jpg"
 }
+
 
 

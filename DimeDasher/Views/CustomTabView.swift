@@ -18,7 +18,7 @@ struct CustomTabView: View {
             Button {
                 selectedTab = .main
             } label: {
-                Image(systemName: "list.bullet")
+                Image(systemName: Constants.list)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30)
@@ -36,7 +36,7 @@ struct CustomTabView: View {
                     Circle()
                         .frame(width: 80)
                         .foregroundColor(Color(Constants.Colors.lightPink))
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: Constants.add)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70)
@@ -52,7 +52,7 @@ struct CustomTabView: View {
             Button {
                 selectedTab = .chart
             } label: {
-                Image(systemName: "chart.pie")
+                Image(systemName: Constants.pieChart)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30)

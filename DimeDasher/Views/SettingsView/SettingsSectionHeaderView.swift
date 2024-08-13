@@ -24,6 +24,6 @@ struct SettingsSectionHeaderView: View {
 
 struct SettingsSectionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsSectionHeaderView(title: "Application", icon: "info.circle")
+        SettingsSectionHeaderView(title: Constants.appSectionHeader, icon: Constants.info)
     }
 }

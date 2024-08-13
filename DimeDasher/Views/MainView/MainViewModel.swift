@@ -32,7 +32,7 @@ import UIKit
         fetchExpenses()
         fetchIncome()
         calculateBalance()
-        profilePic = fileManager.loadImage(imageName: "photo", folderName: "profilePicture")
+        profilePic = fileManager.loadImage(imageName: Constants.imageName, folderName: Constants.folderName)
     }
     
     func fetchExpenses() {
@@ -50,8 +50,8 @@ import UIKit
     }
 
     func calculateBalance() {
-        let startingBalance = UserDefaults.standard.double(forKey: "startingBalance")
-        
+        let startingBalance = UserDefaults.standard.double(forKey: Constants.startingBalance)
+    
         // total balance
         var totalIncome: Double = 0.0
         var totalExpenses: Double = 0.0
@@ -84,37 +84,13 @@ import UIKit
         }
         var stringExpense = currencyFormatter.string(from: NSNumber(floatLiteral: expenseBalanceThisMonth))
         
-        balance = stringBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
-        self.incomeThisMonth = stringIncome?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
-        self.expensesThisMonth = stringExpense?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
+        balance = stringBalance?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "") ?? ""
+        self.incomeThisMonth = stringIncome?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "") ?? ""
+        self.expensesThisMonth = stringExpense?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "") ?? ""
     }
     
     func getProfilePicture() {
-        profilePic = fileManager.loadImage(imageName: "photo", folderName: "profilePicture")
+        profilePic = fileManager.loadImage(imageName: Constants.imageName, folderName: Constants.folderName)
     }
 
-}
-
-extension MainViewModel {
-//    convenience init(forPreview: Bool = true) {
-//        self.init()
-//        username = "John Doe"
-//        balance = "10000"
-//        let expense = Expense(context: persistenceController.viewContext)
-//        expense.id = UUID()
-//        expense.amount = 200
-//        expense.expenseDescription = "test"
-//        expense.type = .books
-//        expense.expenseDate = Date()
-////        expenses = [expense, expense, expense, expense, expense, expense]
-//        let inc = Income(context: persistenceController.viewContext)
-//        inc.id = UUID()
-//        inc.amount = 1000
-//        inc.incomeDate = Date()
-//        inc.type = .work
-//        inc.incomeDescription = "salary"
-//        income = [inc, inc, inc, inc, inc, inc, inc, inc]
-//        shortIncome = [inc, inc, inc]
-//        shortExpenses = [expense, expense, expense]
-//    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct HeaderView: View {
     @EnvironmentObject var viewModel: MainViewModel
     @EnvironmentObject var listViewModel: TransactionsListViewModel
-    @AppStorage("username") var username: String = ""
+    @AppStorage(Constants.username) var username: String = ""
 
     var body: some View {
             HStack {
@@ -33,7 +33,7 @@ struct HeaderView: View {
                 }
                
                 VStack(alignment: .leading) {
-                    Text("Hello!")
+                    Text(Constants.headerViewTitle)
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .opacity(0.5)
                     Text(username)

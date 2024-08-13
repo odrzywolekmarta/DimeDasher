@@ -29,9 +29,9 @@ enum DataClearStatus {
     
     init(fileManager: LocalFileManager) {
         self.fileManager = fileManager
-        selectedPhoto = fileManager.loadImage(imageName: "photo", folderName: "profilePicture")
-        username = UserDefaults.standard.string(forKey: "username") ?? ""
-        currency = UserDefaults.standard.string(forKey: "currency") ?? ""
+        selectedPhoto = fileManager.loadImage(imageName: Constants.imageName, folderName: Constants.folderName)
+        username = UserDefaults.standard.string(forKey: Constants.username) ?? ""
+        currency = UserDefaults.standard.string(forKey: Constants.currency) ?? ""
     }
     
     func setImage(from selection: PhotosPickerItem?) {
@@ -47,7 +47,7 @@ enum DataClearStatus {
                 }
                 
                 selectedPhoto = uiImage
-                fileManager.saveImage(image: uiImage, imageName: "photo", folderName: "profilePicture")
+                fileManager.saveImage(image: uiImage, imageName: Constants.imageName, folderName: Constants.folderName)
             } catch {
                 print("Error setting image: \(error)")
             }
@@ -55,7 +55,7 @@ enum DataClearStatus {
     }
 
     func clearData(closure: @escaping () -> Void) {
-        UserDefaults.standard.set(0, forKey: "startingBalance")
+        UserDefaults.standard.set(0, forKey: Constants.startingBalance)
         let expenseRequest = NSFetchRequest<Expense>(entityName: "Expense")
             do {
                 let expenses = try persistenceController.viewContext.fetch(expenseRequest)
@@ -86,13 +86,13 @@ enum DataClearStatus {
     }
     
     func setUsername(_ username: String) {
-        UserDefaults.standard.set(username, forKey: "username")
-        self.username = UserDefaults.standard.string(forKey: "username") ?? ""
+        UserDefaults.standard.set(username, forKey: Constants.username)
+        self.username = UserDefaults.standard.string(forKey: Constants.username) ?? ""
     }
     
     func setCurrency( _ currency: String) {
-        UserDefaults.standard.set(currency, forKey: "currency")
-        self.currency = UserDefaults.standard.string(forKey: "currency") ?? ""
+        UserDefaults.standard.set(currency, forKey: Constants.currency)
+        self.currency = UserDefaults.standard.string(forKey: Constants.currency) ?? ""
     }
     
     func getFileURL() -> URL {

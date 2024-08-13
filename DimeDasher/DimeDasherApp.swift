@@ -9,8 +9,7 @@ import SwiftUI
 
 @main
 struct DimeDasherApp: App {
-    @AppStorage("showOnboarding") var showOnboarding: Bool = true
-    @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage(Constants.showOnboarding) var showOnboarding: Bool = true
 
     var body: some Scene {
         WindowGroup {
@@ -18,7 +17,6 @@ struct DimeDasherApp: App {
                 FirstLaunchView()
             } else {
                 TabsContentView()
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
             }
         }
         

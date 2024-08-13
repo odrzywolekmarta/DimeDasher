@@ -67,7 +67,7 @@ struct NilDatePicker: View {
                         showDate = false
                         date = nil
                     } label: {
-                        Image(systemName: "xmark.circle")
+                        Image(systemName: Constants.exit)
                             .resizable()
                             .frame(width: 16, height: 16)
                     }

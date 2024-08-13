@@ -63,7 +63,7 @@ struct PieChartView: View {
                             .font(.custom(Constants.Fonts.raleway, size: 23))
                     } // vstack
                 } else {
-                    Text("No expenses added")
+                    Text(Constants.noExpenses)
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .opacity(0.6)
                         .padding()

@@ -26,14 +26,14 @@ struct ShortTransactionList: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Transactions")
+                Text(Constants.transactionsTitle)
                     .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                 Spacer()
                 NavigationLink {
                     TransactionsListView()
                         .environmentObject(listViewModel)
                 } label: {
-                    Text("View all")
+                    Text(Constants.viewAll)
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .foregroundColor(Color(Constants.Colors.darkPink))
                 }
@@ -56,7 +56,7 @@ struct ShortTransactionList: View {
             switch transactionType {
             case .income:
                 if viewModel.shortIncome.isEmpty {
-                    Text("No income added")
+                    Text(Constants.noIncome)
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .opacity(0.6)
                         .padding()
@@ -74,7 +74,7 @@ struct ShortTransactionList: View {
                 }
             case .expense:
                 if viewModel.shortExpenses.isEmpty {
-                    Text("No expenses added")
+                    Text(Constants.noExpenses)
                         .font(.custom(Constants.Fonts.raleway, size: 17))
                         .opacity(0.6)
                         .padding()

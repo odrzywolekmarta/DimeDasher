@@ -14,9 +14,7 @@ struct FirstLaunchView: View {
     @State private var startingBalance: String = ""
     @State private var chosenCurrency: String = "USD"
     private var chosenLocale: String = ""
-    
-    private let currencies: OrderedDictionary = ["USD": "en_US", "EUR": "fr_FR", "GBP": "en_GB", "PLN": "pl"]
-    
+        
     private var formatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -30,11 +28,11 @@ struct FirstLaunchView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                Image("launchImage")
-                Text("Hello!")
+                Image(Constants.launchImage)
+                Text(Constants.firstLaunchHeader)
                     .font(.custom(Constants.Fonts.ralewayBold, size: 40))
                 
-                TextField("Enter your name", text: $name.max(15))
+                TextField(Constants.firstLaunchName, text: $name.max(15))
                     .padding()
                     .font(.custom(Constants.Fonts.raleway, size: 20))
                     .background(
@@ -42,7 +40,7 @@ struct FirstLaunchView: View {
                             .cornerRadius(10))
                     .padding()
                 
-                TextField("Enter starting balace", text: $startingBalance)
+                TextField(Constants.firstLaunchBalance, text: $startingBalance)
                     .onChange(of: startingBalance) { newValue in
                         if newValue.contains(".") {
                             var splitted = newValue.split(separator: ".")
@@ -63,7 +61,7 @@ struct FirstLaunchView: View {
                     .padding()
                 
                 Picker(selection: $chosenCurrency) {
-                    ForEach(currencies.keys, id: \.self) { key in
+                    ForEach(Constants.currencies.keys, id: \.self) { key in
                         Text("\(key)")
                     }
                 } label: {
@@ -77,7 +75,7 @@ struct FirstLaunchView: View {
                 Button {
                     viewModel.saveDefaults(name: name, balance: Double(startingBalance) ?? 0, currency: chosenCurrency)
                 } label: {
-                    Text("Start")
+                    Text(Constants.start)
                         .font(.custom(Constants.Fonts.raleway, size: 20))
                 }
                 .tint(Color(Constants.Colors.darkPink))

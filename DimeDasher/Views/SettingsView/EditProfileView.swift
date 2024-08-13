@@ -10,8 +10,8 @@ import PhotosUI
 
 struct EditProfileView: View {
     @EnvironmentObject var viewModel: SettingsViewModel
-    @AppStorage("username") var username: String = ""
-    @AppStorage("currency") var currency: String = ""
+    @AppStorage(Constants.username) var username: String = ""
+    @AppStorage(Constants.currency) var currency: String = ""
     //    @State private var currency: String = ""
     @State private var isEditingUsername: Bool = false
     @State private var isEditingCurrency: Bool = false
@@ -22,7 +22,7 @@ struct EditProfileView: View {
                 .ignoresSafeArea()
             VStack(spacing: 20) {
                 VStack {
-                    Text("Edit Profile")
+                    Text(Constants.editProfile)
                         .font(.custom(Constants.Fonts.ralewayBold, size: 30))
                         .padding()
                     
@@ -50,7 +50,7 @@ struct EditProfileView: View {
                             Label {
                                 Text("")
                             } icon: {
-                                Image(systemName: "camera.fill")
+                                Image(systemName: Constants.camera)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 40)
@@ -63,17 +63,17 @@ struct EditProfileView: View {
                 
                 VStack {
                     HStack {
-                        Text("Name:")
+                        Text(Constants.name)
                             .font(.custom(Constants.Fonts.raleway, size: 20))
                         Spacer()
                         if isEditingUsername {
-                            TextField("username", text: $username)
+                            TextField(Constants.username, text: $username)
                                 .font(.custom(Constants.Fonts.raleway, size: 20))
                                 .multilineTextAlignment(.trailing)
                             Button {
                                 isEditingUsername.toggle()
                             } label: {
-                                Text("OK")
+                                Text(Constants.ok.uppercased())
                                     .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                                     .foregroundColor(Color(Constants.Colors.darkPink))
                             }
@@ -85,7 +85,7 @@ struct EditProfileView: View {
                                 isEditingUsername.toggle()
                                 username = ""
                             } label: {
-                                Image(systemName: "pencil.line")
+                                Image(systemName: Constants.pencil)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 18)
@@ -96,7 +96,7 @@ struct EditProfileView: View {
                     .padding()
                   
                     HStack {
-                        Text("Currency:")
+                        Text(Constants.currency.capitalized)
                             .font(.custom(Constants.Fonts.raleway, size: 20))
                         Spacer()
                         if isEditingCurrency {
@@ -111,7 +111,7 @@ struct EditProfileView: View {
                             Button {
                                 isEditingCurrency.toggle()
                             } label: {
-                                Text("OK")
+                                Text(Constants.ok.uppercased())
                                     .foregroundColor(Color(Constants.Colors.darkPink))
                             }
                         } else {
@@ -120,7 +120,7 @@ struct EditProfileView: View {
                             Button {
                                 isEditingCurrency.toggle()
                             } label: {
-                                Image(systemName: "pencil.line")
+                                Image(systemName: Constants.pencil)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 18)

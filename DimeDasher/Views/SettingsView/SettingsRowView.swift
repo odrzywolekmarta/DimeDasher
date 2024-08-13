@@ -25,7 +25,7 @@ struct SettingsRowView: View {
                     HStack {
                         Text(content)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 17))
-                        Image(systemName: "arrow.up.right.square")
+                        Image(systemName: Constants.link)
                             .foregroundColor(Color(Constants.Colors.darkPink))
                     }
                 }

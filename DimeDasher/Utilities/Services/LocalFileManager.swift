@@ -46,7 +46,7 @@ final class LocalFileManager {
             return nil
         }
         
-        return folderUrl.appending(path: imageName + ".jpg")
+        return folderUrl.appending(path: imageName + Constants.jpg)
     }
     
     func createFoderIfNeeded(folderName: String) {
