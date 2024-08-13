@@ -9,10 +9,7 @@ import SwiftUI
 
 struct StatsView: View {
     @EnvironmentObject var viewModel: ChartViewModel
-    @State private var timeSelected: TimePeriodType = .week
-    @State private var selectedWeekDate = Date()
-    @State private var selectedMonthDate = Date()
-    @State private var selectedYearDate = Date()
+    @State private var selectedDate = Date()
     @State private var detailsPresented: Bool = false
     @State private var chartType: ChartType = .barChart
     
@@ -32,7 +29,7 @@ struct StatsView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Picker("", selection: $timeSelected) {
+                Picker("", selection: $viewModel.displayedTimePeriod) {
                     ForEach(TimePeriodType.allCases, id: \.self) { period in
                         Text(period.rawValue)
                     } // foreach
@@ -41,30 +38,14 @@ struct StatsView: View {
                 .colorMultiply(Color(Constants.Colors.lightPink))
                 .cornerRadius(4)
                 .padding(.horizontal)
-                .onChange(of: timeSelected) { _ in
-                    switch timeSelected {
-                    case .week:
-                        viewModel.displayedTimePeriod = .week
-                            viewModel.filterWeek(date: selectedWeekDate)
-                            viewModel.filterCategories()
-                    case .month:
-                        viewModel.displayedTimePeriod = .month
-                            viewModel.filterMonth(date: selectedMonthDate)
-                            viewModel.filterCategories()
-                    case .year:
-                        viewModel.displayedTimePeriod = .year
-                            viewModel.filterYear(date: selectedYearDate)
-                            viewModel.filterCategories()
-                    }
-                }
                 
                 switch chartType {
                 case .pieChart:
-                    CategoriesPieChartView(chartType: $chartType, timeSelected: $timeSelected)
+                    CategoriesPieChartView(chartType: $chartType, timeSelected: $viewModel.displayedTimePeriod)
                         .padding(.horizontal, 5)
 
                 case .barChart:
-                    BarChartView(timeSelected: $timeSelected, chartType: $chartType)
+                    BarChartView(timeSelected: $viewModel.displayedTimePeriod, chartType: $chartType)
                         .padding(.horizontal, 5)
                     
                     HStack {

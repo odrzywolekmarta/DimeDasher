@@ -8,7 +8,7 @@
 import Foundation
 import OrderedCollections
 
-enum TimePeriodType: String, CaseIterable {
+enum TimePeriodType: String, CaseIterable, Equatable {
     case week
     case month
     case year
@@ -28,13 +28,27 @@ enum ChartType {
     @Published var summaryLabelText: String = ""
     @Published var chartTitle: String = ""
     @Published var pieChartData = OrderedDictionary<String, Double>()
+    @Published var displayedTimePeriod: TimePeriodType = .week {
+        didSet {
+            switch displayedTimePeriod {
+            case .week:
+                self.filterWeek(date: Date())
+                self.filterCategories()
+            case .month:
+                self.filterMonth(date: Date())
+                self.filterCategories()
+            case .year:
+                self.filterYear(date: Date())
+                self.filterCategories()
+            }
+        }
+    }
     
     private let persistenceController = PersistenceController.shared
     private var expenses = [ExpenseModel]() // all expenses (fetch only one year?)
     private var generalChartTitle = ""
     private var generalChartSummary = ""
     var displayedDate: Date = Date()
-    var displayedTimePeriod: TimePeriodType = .week
     
     private var calendar: Calendar = {
         var calendar = Calendar.current
@@ -71,6 +85,10 @@ enum ChartType {
         barExpenses = []
         filteredExpensesForPeriod = []
         filteredExpensesForSelection = []
+    }
+    
+    func prepareData() {
+        
     }
     
     //MARK: - Filter Data
@@ -276,7 +294,7 @@ enum ChartType {
             expense.expenseDate.shortWeekDay() == time || expense.expenseDate.shortMonth() == time || expense.expenseDate.day() == time
         }
         
-        switch timeSelected {
+        switch displayedTimePeriod {
         case .week:
             chartTitle = selected?.expenseDate.labelText() ?? ""
         case .month:
