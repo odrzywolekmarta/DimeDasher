@@ -285,7 +285,8 @@ enum ChartType {
             chartTitle = selected?.expenseDate.formatted(Date.FormatStyle().month(.wide)) ?? ""
         }
         
-        summaryLabelText = String(amount)
+        var summary = String(amount)
+        summaryLabelText = summary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
     }
 
     func filterExpenses(for selection: String) {

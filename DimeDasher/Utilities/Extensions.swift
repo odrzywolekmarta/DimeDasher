@@ -182,7 +182,7 @@ extension String {
         case "GBP": self.insert(contentsOf: "£", at: self.startIndex)
         case "EUR": self.insert(contentsOf: "€", at: self.startIndex)
         case "PLN": self.insert(contentsOf: " zł", at: self.endIndex)
-        default:  self.insert(contentsOf: "", at: self.endIndex)
+        default: self.insert(contentsOf: "", at: self.endIndex)
         }
         return self
     }
