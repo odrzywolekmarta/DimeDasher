@@ -11,7 +11,7 @@ struct ExpensesPicker: View {
     @Binding var expense: ExpenseType
     
     var body: some View {
-        Picker("Expense type", selection: $expense) {
+        Picker(Constants.expenseType, selection: $expense) {
             ForEach(ExpenseType.allCases, id: \.self) { expense in
                 HStack {
                     Image(systemName: expense.imageName)

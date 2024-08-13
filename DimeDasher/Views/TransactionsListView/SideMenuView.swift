@@ -51,7 +51,7 @@ struct SideMenuView: View {
                     } label: {
                         HStack {
                             Image(systemName: Constants.sort)
-                            Text("Sort")
+                            Text(Constants.sort)
                                 .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                         }
                     }
@@ -60,7 +60,7 @@ struct SideMenuView: View {
                     
                     //MARK: - Categories
                     DisclosureGroup {
-                        Text("Income")
+                        Text(Constants.summaryIncome)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                         ForEach(IncomeType.allCases, id: \.self) { income in
                             Text(income.rawValue)
@@ -73,7 +73,7 @@ struct SideMenuView: View {
                                     }
                                 }
                         }
-                        Text("Expenses")
+                        Text(Constants.summaryExpenses)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                         ForEach(ExpenseType.allCases, id: \.self) { expense in
                             Text(expense.rawValue)

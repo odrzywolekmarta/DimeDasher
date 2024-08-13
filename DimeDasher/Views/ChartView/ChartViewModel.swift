@@ -133,7 +133,7 @@ enum ChartType {
         maxExpense = Int(maxBar?.amount ?? 200)
 
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: weekSummary)) ?? "")
-        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "")
         generalChartSummary = summaryLabelText
     }
     
@@ -174,7 +174,7 @@ enum ChartType {
         maxExpense = Int(maxBar?.amount ?? 200)
 
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
-        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "")
         generalChartSummary = summaryLabelText
     }
     
@@ -217,7 +217,7 @@ enum ChartType {
         maxExpense = Int(maxBar?.amount ?? 200)
         
         var stringSummary = (currencyFormatter.string(from: NSNumber(floatLiteral: monthSummary)) ?? "")
-        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        summaryLabelText = stringSummary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "")
         generalChartSummary = summaryLabelText
     }
     
@@ -304,7 +304,7 @@ enum ChartType {
         }
         
         var summary = String(amount)
-        summaryLabelText = summary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "")
+        summaryLabelText = summary.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "")
     }
 
     func filterExpenses(for selection: String) {

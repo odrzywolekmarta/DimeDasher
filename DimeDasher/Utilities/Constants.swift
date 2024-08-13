@@ -47,11 +47,14 @@ struct Constants {
     static let list = "list.bullet"
     static let add = "plus.circle.fill"
     static let pieChart = "chart.pie"
+    static let barChart = "chart.bar"
     static let launchImage = "launchImage"
     static let info = "info.circle"
     static let settings = "gearshape.fill"
     static let iphone = "iphone"
     static let left = "chevron.left"
+    static let compactRight = "chevron.compact.right"
+    static let compactLeft = "chevron.compact.left"
     static let link = "arrow.up.right.square"
     static let pencil = "pencil.line"
     static let trash = "trash"
@@ -148,11 +151,22 @@ struct Constants {
     static let clearDataFailure = "Oops, something went wrong :("
     static let exportData = "Export Data"
     static let name = "Name"
-    
+    static let addNew = "Add new"
+    static let expense = "Expense"
+    static let expenseType = "Expense type"
+    static let incomeType = "IncomeType"
+    static let allTransactions = "All Transactions"
     static let ok = "Ok"
     static let cancel = "Cancel"
+    static let sortDescription = "Sort"
+    static let period = "period"
+    static let amount = "amount"
+    static let dateDescription = "Date:"
     //MARK: - File Extensions
     static let jpg = ".jpg"
+    
+    //MARK: - String Formats
+    static let percent = "%.0f%%"
 }
 
 

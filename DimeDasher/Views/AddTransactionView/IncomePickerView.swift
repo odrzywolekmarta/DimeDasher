@@ -10,7 +10,7 @@ import SwiftUI
 struct IncomePickerView: View {
     @Binding var income: IncomeType
     var body: some View {
-        Picker("Income type", selection: $income) {
+        Picker(Constants.incomeType, selection: $income) {
             ForEach(IncomeType.allCases, id: \.self) { income in 
                 HStack {
                     Image(systemName: Constants.income)

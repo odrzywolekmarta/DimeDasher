@@ -49,7 +49,7 @@ struct StatsView: View {
                         .padding(.horizontal, 5)
                     
                     HStack {
-                        Text("Transactions")
+                        Text(Constants.transactionsTitle)
                             .padding(.horizontal)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                         Spacer()

@@ -64,7 +64,7 @@ struct BarChartView: View {
                         ()
                     }
                 } label: {
-                    Image(systemName: "chevron.compact.left")
+                    Image(systemName: Constants.compactLeft)
                         .foregroundColor(.black)
                         .frame(height: 350)
                 }
@@ -72,8 +72,8 @@ struct BarChartView: View {
 
             GroupBox {
                 Chart(viewModel.barExpenses) { expense in
-                        BarMark(x: .value("period", expense.time),
-                                y: .value("amount", expense.animate ? expense.amount : 0))
+                    BarMark(x: .value(Constants.period, expense.time),
+                            y: .value(Constants.amount, expense.animate ? expense.amount : 0))
                         
                             .foregroundStyle(select == expense.time ? Color(Constants.Colors.darkPink) : Color(Constants.Colors.lightPink))
                 } // chart
@@ -121,7 +121,7 @@ struct BarChartView: View {
                         chartType = .pieChart
                         viewModel.undoSelection()
                     } label: {
-                        Image(systemName: "chart.pie")
+                        Image(systemName: Constants.pieChart)
                             .padding(10)
                             .foregroundColor(.black)
                             .background(
@@ -149,7 +149,7 @@ struct BarChartView: View {
                         ()
                     }
                 } label: {
-                    Image(systemName: "chevron.compact.right")
+                    Image(systemName: Constants.compactRight)
                         .foregroundColor(.black)
                         .frame(height: 350)
                 }

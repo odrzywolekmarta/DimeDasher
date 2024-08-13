@@ -28,7 +28,6 @@
 		2D19405F2A55386800A45537 /* TransactionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */; };
 		2D1940652A55503700A45537 /* IncomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940642A55503600A45537 /* IncomeListItem.swift */; };
 		2D1940672A56008F00A45537 /* ExpenseListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1940662A56008F00A45537 /* ExpenseListItem.swift */; };
-		2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */; };
 		2D3721A72A6513970038FBCB /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721A62A6513970038FBCB /* SideMenuView.swift */; };
 		2D3721AE2A72657E0038FBCB /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */; };
 		2D3721B02A7587CE0038FBCB /* NilDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */; };
@@ -90,7 +89,6 @@
 		2D19405E2A55386800A45537 /* TransactionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListViewModel.swift; sourceTree = "<group>"; };
 		2D1940642A55503600A45537 /* IncomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListItem.swift; sourceTree = "<group>"; };
 		2D1940662A56008F00A45537 /* ExpenseListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListItem.swift; sourceTree = "<group>"; };
-		2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListFilterView.swift; sourceTree = "<group>"; };
 		2D3721A62A6513970038FBCB /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		2D3721AD2A72657E0038FBCB /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		2D3721AF2A7587CE0038FBCB /* NilDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilDatePicker.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			children = (
 				2D1940642A55503600A45537 /* IncomeListItem.swift */,
 				2D1940662A56008F00A45537 /* ExpenseListItem.swift */,
-				2D19406A2A5889AB00A45537 /* TransactionsListFilterView.swift */,
 			);
 			path = ListItems;
 			sourceTree = "<group>";
@@ -502,7 +499,6 @@
 				2DA7D78C2A4AB76C00F25939 /* DimeDasherApp.swift in Sources */,
 				2D3721C32A75CC4A0038FBCB /* IncomeModel.swift in Sources */,
 				2D3721B72A75AE990038FBCB /* SettingsSectionHeaderView.swift in Sources */,
-				2D19406B2A5889AB00A45537 /* TransactionsListFilterView.swift in Sources */,
 				2DA7D7BF2A4AF1BB00F25939 /* ShortTransactionList.swift in Sources */,
 				2DA7D7C62A4B3BD600F25939 /* NewTransactionView.swift in Sources */,
 				2DA7D7C12A4AF1C900F25939 /* TransactionListExpenseItem.swift in Sources */,

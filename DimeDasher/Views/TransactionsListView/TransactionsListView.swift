@@ -31,7 +31,7 @@ struct TransactionsListView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack {
-                    Text("All Transactions")
+                    Text(Constants.allTransactions)
                         .font(.custom(Constants.Fonts.ralewayBold, size: 20))
                     
                     Spacer()
@@ -100,9 +100,9 @@ struct TransactionsListView: View {
                     dismiss()
                 } label: {
                     HStack {
-                        Image(systemName: "chevron.left")
+                        Image(systemName: Constants.left)
                             .foregroundColor(Color(Constants.Colors.darkPink))
-                        Text("Back")
+                        Text(Constants.back)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 18))
                         .foregroundColor(Color(Constants.Colors.darkPink))
                     }

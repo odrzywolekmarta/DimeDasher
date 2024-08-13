@@ -24,7 +24,7 @@ struct TransactionDetailsView: View {
                         Text(expense.expenseType.rawValue.capitalized)
                             .font(.custom(Constants.Fonts.ralewayBold, size: 28))
                         HStack {
-                            Text("Date:")
+                            Text(Constants.dateDescription)
                             Text(expense.expenseDate.toString())
                         } // hstack
                         .font(.custom(Constants.Fonts.raleway, size: 18))
@@ -52,7 +52,7 @@ struct TransactionDetailsView: View {
                     Text(income.incomeType.rawValue.capitalized)
                         .font(.custom(Constants.Fonts.ralewayBold, size: 28))
                     HStack {
-                        Text("Date:")
+                        Text(Constants.dateDescription)
                         Text(income.incomeDate.toString())
                     } // hstack
                     .font(.custom(Constants.Fonts.raleway, size: 18))

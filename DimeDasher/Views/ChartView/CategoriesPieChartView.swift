@@ -27,7 +27,7 @@ struct CategoriesPieChartView: View {
                         ()
                     }
                 } label: {
-                    Image(systemName: "chevron.compact.left")
+                    Image(systemName: Constants.compactLeft)
                         .foregroundColor(.black)
                         .frame(height: 350)
                 }
@@ -48,7 +48,7 @@ struct CategoriesPieChartView: View {
                             chartType = .barChart
                             viewModel.undoSelection()
                         } label: {
-                            Image(systemName: "chart.bar")
+                            Image(systemName: Constants.barChart)
                                 .padding(10)
                                 .foregroundColor(.black)
                                 .background(
@@ -74,7 +74,7 @@ struct CategoriesPieChartView: View {
                         ()
                     }
                 } label: {
-                    Image(systemName: "chevron.compact.right")
+                    Image(systemName: Constants.compactRight)
                         .foregroundColor(.black)
                         .frame(height: 350)
                 }
@@ -85,9 +85,9 @@ struct CategoriesPieChartView: View {
                            names: Array(viewModel.pieChartData.keys),
                            values: Array(viewModel.pieChartData.values).map { value in
                 var string = NumberFormatter().currencyFormatter.string(from: NSNumber(floatLiteral: value))
-                return string?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: "currency") ?? "") ?? ""
+                return string?.stringWithCurrencySymbol(currency: UserDefaults.standard.string(forKey: Constants.currency) ?? "") ?? ""
             },
-                           percents:  Array(viewModel.pieChartData.values).map { String(format: "%.0f%%", $0 * 100 /  Array(viewModel.pieChartData.values).reduce(0, +)) })
+                           percents:  Array(viewModel.pieChartData.values).map { String(format: Constants.percent, $0 * 100 /  Array(viewModel.pieChartData.values).reduce(0, +)) })
             .padding(.horizontal)
         }
     } // vstack

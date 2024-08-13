@@ -14,14 +14,14 @@ struct NewTransactionView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("Add new")
+            Text(Constants.addNew)
                 .font(.custom(Constants.Fonts.ralewayBold, size: 30))
             Button {
                 transactionType = .income
                 addViewPresented.toggle()
                 newTransactionPresented.toggle()
             } label: {
-                Text("Income")
+                Text(Constants.summaryIncome)
                     .font(.custom(Constants.Fonts.raleway, size: 18))
                     .foregroundColor(.white)
                     .padding()
@@ -36,7 +36,7 @@ struct NewTransactionView: View {
                 addViewPresented.toggle()
                 newTransactionPresented.toggle()
             } label: {
-                Text("Expense")
+                Text(Constants.expense)
                     .font(.custom(Constants.Fonts.raleway, size: 18))
                     .foregroundColor(.white)
                     .padding()
